@@ -1,0 +1,29 @@
+import model.habitantes.*
+import model.disfraces.*
+
+describe "gustos de disfraces" {
+
+	test "A Azucena le gustan los disfraces muy tiernos" {
+		disfrazCustom.ternura(10)
+		assert.that(azucena.leGusta(disfrazCustom))
+	}
+	test "A Azucena no le gustan los disfraces poco tiernos" {
+		assert.notThat(azucena.leGusta(disfrazZombie))
+	}
+	
+	test "A Sandra le gustan los disfraces más tiernos que aterradores"{
+		assert.that(sandra.leGusta(disfrazFrozen))
+	}
+	test "A Sandra no le gustan los disfraces menos tiernos que aterradores"{
+		assert.notThat(sandra.leGusta(disfrazZombie))
+	}
+	
+	test "A Jorge le gustan los disfraces muy aterradores"{
+		disfrazCustom.terror(20) 
+		assert.that(jorge.leGusta(disfrazCustom))
+	}
+	
+	test "A Jorge no le gustan los disfraces poco aterradores"{
+		assert.notThat(jorge.leGusta(disfrazFrozen))
+	}
+}

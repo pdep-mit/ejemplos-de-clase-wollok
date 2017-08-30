@@ -1,0 +1,20 @@
+import model.casa.*
+import model.habitantes.*
+import model.disfraces.*
+
+
+describe "Cuantos caramelos daría la casa con Jorge" {
+	fixture {
+		casa.quienAbreLaPuerta(jorge)
+	}
+	
+	test "Jorge puede dar 10 caramelos si hay al menos 50 en la casa"{
+		assert.that(casa.cuantosCaramelosHay() >= 50)
+		assert.equals(10,jorge.cuantosCaramelosDa(casa, disfrazZombie))
+	}
+	
+	test "Jorge puede dar 4 caramelos si hay menos de 50 en la casa"{
+		casa.cuantosCaramelosHay(40)
+		assert.equals(4,jorge.cuantosCaramelosDa(casa, disfrazZombie))
+	}
+}
