@@ -2,7 +2,9 @@
 
 El Quidditch es un deporte que juegan los magos y brujas de todo el mundo, donde se enfrentan 2 equipos volando con escobas mágicas.
 
-Queremos armar un sistema usando el paradigma orientado a objetos para modelar este extravagante juego. Se pide workspace, diagrama de clases y métodos para:
+Queremos armar un sistema usando el paradigma orientado a objetos para modelar este extravagante juego.
+
+Requerimientos:
 
 1. Saber el nivel de manejo de escoba de un jugador. Esto se calcula como los skills del jugador / su peso.
 
