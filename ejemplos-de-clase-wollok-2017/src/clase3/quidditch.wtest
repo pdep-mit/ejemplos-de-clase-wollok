@@ -1,0 +1,36 @@
+
+describe "Quidditch" {
+
+	test "El manejo de escoba de un jugador depende de sus skills y su peso" {
+		assert.fail("Pendiente")
+	}
+	
+	test "La velocidad de una Nimbus depende de sus años y su salud" {
+		assert.fail("Pendiente")
+	}
+	test "La velocidad de una Saeta de Fuego es constante" {
+		assert.fail("Pendiente")
+	}
+	
+	test "La velocidad de un jugador depende de su escoba y su manejo de escoba" {
+		assert.fail("Pendiente")
+	}
+	
+	test "La habilidad de un jugador depende de su velocidad y sus skills" {
+		assert.fail("Pendiente")
+	}
+	
+	test "Un jugador le pasa el trapo a otro si es el doble de habilidoso" {
+		assert.fail("Pendiente")
+	}
+	
+	test "Si a un jugador lo golpea una bludger pierde 2 skills" {
+		assert.fail("Pendiente")
+	}
+	test "Si a un jugador con una Nimbus lo golpea una bludger, su escoba pierde salud" {
+		assert.fail("Pendiente")
+	}
+	test "Si a un jugador con una Saeta de Fuego lo golpea una bludger, a la escoba no le pasa nada" {
+		assert.fail("Pendiente")
+	}
+}
