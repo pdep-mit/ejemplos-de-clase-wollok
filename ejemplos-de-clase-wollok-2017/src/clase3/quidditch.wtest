@@ -1,36 +1,51 @@
+import quidditch.*
 
 describe "Quidditch" {
 
 	test "El manejo de escoba de un jugador depende de sus skills y su peso" {
-		assert.fail("Pendiente")
+		const nimbus = new Nimbus(2005, 50) 
+		const unJugador = new Jugador(10, 2, nimbus)
+		assert.equals(5, unJugador.nivelDeManejoDeEscoba())
 	}
 	
-	test "La velocidad de una Nimbus depende de sus años y su salud" {
-		assert.fail("Pendiente")
+	test "La velocidad de una Nimbus depende de sus aï¿½os y su salud" {
+		const nimbus = new Nimbus(2005, 50)
+		assert.equals(34, nimbus.velocidad())
 	}
+
 	test "La velocidad de una Saeta de Fuego es constante" {
-		assert.fail("Pendiente")
+		assert.equals(100, saetaDeFuego.velocidad())
 	}
 	
 	test "La velocidad de un jugador depende de su escoba y su manejo de escoba" {
-		assert.fail("Pendiente")
+		const harry = new Jugador(10, 2, saetaDeFuego)
+		const velocidadSaeta = 100
+		const manejoDeEscobaDeHarry = 5
+		assert.equals(manejoDeEscobaDeHarry * velocidadSaeta,
+			harry.velocidad()
+		)
 	}
 	
 	test "La habilidad de un jugador depende de su velocidad y sus skills" {
-		assert.fail("Pendiente")
+		const harry = new Jugador(10, 2, saetaDeFuego)
+		assert.equals(510, harry.habilidad())
 	}
 	
 	test "Un jugador le pasa el trapo a otro si es el doble de habilidoso" {
-		assert.fail("Pendiente")
+		const harry = new Jugador(10, 2, saetaDeFuego)
+		const ginny = new Jugador(1, 1, saetaDeFuego)
+		assert.that(harry.lePasaElTrapoA(ginny))
 	}
 	
 	test "Si a un jugador lo golpea una bludger pierde 2 skills" {
-		assert.fail("Pendiente")
+		const harry = new Jugador(10, 2, saetaDeFuego)
+		harry.serGolpeado()
+		assert.equals(8, harry.skills())
 	}
 	test "Si a un jugador con una Nimbus lo golpea una bludger, su escoba pierde salud" {
-		assert.fail("Pendiente")
-	}
-	test "Si a un jugador con una Saeta de Fuego lo golpea una bludger, a la escoba no le pasa nada" {
-		assert.fail("Pendiente")
+		const nimbus = new Nimbus(2001, 100)
+		const harry = new Jugador(10, 2, nimbus)
+		harry.serGolpeado()
+		assert.equals(90, nimbus.salud())
 	}
 }
