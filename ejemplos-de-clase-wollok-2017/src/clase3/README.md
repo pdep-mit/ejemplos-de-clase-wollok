@@ -9,7 +9,7 @@ Requerimientos:
 1. Saber el nivel de manejo de escoba de un jugador. Esto se calcula como los skills del jugador / su peso.
 
 2. Saber la velocidad de un jugador, que es la velocidad de la escoba que use multiplicado por su nivel de manejo de escoba. Actualmente existen estas escobas:
-- Nimbus: La velocidad se calcula como 80 - la cantidad de años desde su fabricación por el porcentaje de salud de la misma. Por ejemplo, una Nimbus 2001 con un 50% de salud tendría una velocidad de (80-12)*0.5 = 34 km/h.
+- Nimbus: La velocidad se calcula como 80 - la cantidad de años desde su fabricación por el porcentaje de salud de la misma. Por ejemplo, una Nimbus 2001 con un 50% de salud en el 2017 tendría una velocidad de (80-16)*0.5 = 32 km/h.
 - Saeta de Fuego: es la escoba más veloz fabricada, la velocidad es de 100 km/h.
 
 3. Saber la habilidad de un jugador, que se calcula como su velocidad + sus skills.
