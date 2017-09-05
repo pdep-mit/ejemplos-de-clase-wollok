@@ -25,4 +25,4 @@ Los seguidores de Dany son caballeros, ex-mercenarios, ex-esclavos, y ¡dragones!
 
 Además, a sus dragones les aumenta la felicidad en 40 puntos porque les gusta escuchar la voz de su mamá.
 
-7. Finalmente necesitamos simular un ataque aéreo contra un enemigo. Para lanzar un ataque aéreo, Dany busca un dragón apto para la tarea y lo manda a atacar a su enemigo. Cuando un ejército enemigo sufre un ataque aéreo, pierde a la mitad más débil de sus soldados.
+7. Finalmente necesitamos simular un ataque aéreo contra un enemigo. Para lanzar un ataque aéreo, Dany busca un dragón apto para la tarea y lo manda a atacar a su enemigo. Cuando un ejército enemigo sufre un ataque aéreo, pierde a la mitad más débil de sus soldados. Además la felicidad del dragón que realizó el ataque aumenta en 20 puntos.
