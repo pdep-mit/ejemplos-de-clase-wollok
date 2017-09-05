@@ -24,7 +24,7 @@ describe "Dany's Army" {
 		assert.that(dany.trueQueen())
 	}
 
-	test "Los kamikazes son jorah y daario" {
+	test "Soldados kamikazes" {
 		dany.agregarSoldado(daario)
 		dany.agregarSoldado(dothraki)
 		dany.agregarSoldado(new ExEsclavo(300, 10))
@@ -77,7 +77,7 @@ describe "Dany's Army" {
 	
 
 	test "Dany no lanza un ataque aereo" {
-		var enemigo = new Enemigo([daario])
+		var enemigo = new EjercitoEnemigo([daario])
 		assert.throwsException({ dany.lanzarAtaqueAereo(enemigo) })
 	}
 	
@@ -87,7 +87,7 @@ describe "Dany's Army" {
 		const muerto2 = new Caballero(10, false)
 		const muerto3 = new ExEsclavo(5, 30)
 		
-		var enemigo = new Enemigo( [
+		var enemigo = new EjercitoEnemigo( [
 				new Caballero(200, false),
 				muerto1,
 				muerto2,

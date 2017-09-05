@@ -88,7 +88,7 @@ class Dragon {
 	method felicidad() = felicidad
 }
 
-class Enemigo {
+class EjercitoEnemigo {
 	var soldados
 	
 	constructor(_soldados){
