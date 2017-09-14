@@ -1,0 +1,32 @@
+import quidditch.*
+
+describe "Comportamiento que depende de la posicion" {
+
+	test "Si un guardian se concentra, aumenta su nivel de reflejos" {
+		const guardian = new Guardian(100, 40, saetaDeFuego)
+		
+		guardian.concentrarse()
+		assert.equals(30, guardian.nivelDeReflejos())
+
+	}
+	
+	test "Habilidad de un guardian" {
+		const guardian = new Guardian(100, 40, saetaDeFuego)
+		assert.equals(120, guardian.habilidad())
+	}
+	test "Se le puede seguir preguntando la velocidad a un guardian"{
+		const guardian = new Guardian(100, 40, saetaDeFuego)
+		assert.equals(250, guardian.velocidad())
+	}
+	
+	test "Habilidad de un cazador" {
+		const cazador = new Cazador(100, 40, saetaDeFuego,10)
+		assert.equals(350.25, cazador.habilidad())
+	}
+
+	test "Habilidad de un golpeador" {
+		const golpeador = new Golpeador(100, 40, saetaDeFuego, 10)
+		assert.equals(360, golpeador.habilidad())
+	}
+	
+}
