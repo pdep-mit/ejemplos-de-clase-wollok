@@ -3,10 +3,13 @@ import viajerosDeTierraMedia.*
 describe "Viajeros de Tierra Media" {
 	var sam = new Viajero(10, ['lembas'])
 	var frodo = new Viajero(15, ['anillo'])
-	var gandalf = new Viajero(150, [])
+	var gandalf = new Viajero(150, ['magia', 'baston'])
 	
 	var grupo = new Grupo([sam, frodo, gandalf])
-	var zona = new Zona(['lembas'], 50)
+	
+	var zona = new Zona(['lembas', 'anillo'], 50)
+	var zonaFacil = new Zona([], 10)
+	var zonaDificil = new Zona([], 1000000)
 	
 	test "El grupo puede atravesar la zona y suben de nivel matando orcos" {
 		var nivel = grupo.nivelTotal()
@@ -17,18 +20,9 @@ describe "Viajeros de Tierra Media" {
 	}
 	
 	test "El grupo no puede atravesar la zona porque no tienen nivel suficiente" {
-		grupo.quitarViajero(gandalf)
-		
+
 		assert.throwsExceptionWithType(new NivelInsuficiente(), 
-			{grupo.atravesarZona(zona)}
-		)
-	}
-	
-	test "El grupo no puede atravesar la zona porque les falta un elemento" {
-		grupo.quitarViajero(sam)
-		
-		assert.throwsExceptionWithType(new NoTieneElementos(), 
-			{grupo.atravesarZona(zona)}
+			{grupo.atravesarZona(zonaDificil)}
 		)
 	}
 	
@@ -40,9 +34,16 @@ describe "Viajeros de Tierra Media" {
 		assert.notThat(grupo.tieneElementos(zona))
 	}
 	
+	test "El grupo no puede atravesar la zona porque les falta un elemento" {
+		grupo.quitarViajero(sam)
+		
+		assert.throwsExceptionWithType(new NoTieneElementos(), 
+			{grupo.atravesarZona(zona)}
+		)
+	}
+	
 	test "El grupo transita un camino exitosamente"{
 		var camino = new Camino()
-		var zonaFacil = new Zona([], 10)
 		camino.agregarZona(zona)
 		camino.agregarZona(zonaFacil)
 		
@@ -53,8 +54,6 @@ describe "Viajeros de Tierra Media" {
 	
 	test "El grupo no puede transitar el camino pero sacrifican a uno"{
 		var camino = new Camino()
-		var zonaFacil = new Zona([], 10)
-		var zonaDificil = new Zona([], 1000000)
 		camino.agregarZona(zona)
 		camino.agregarZona(zonaDificil)
 		camino.agregarZona(zonaFacil)
@@ -65,9 +64,8 @@ describe "Viajeros de Tierra Media" {
 		assert.equals(0, zonaFacil.cantidadDeOrcos())
 	}
 	
-	test "El grupo no puede sacrificar a más de los que tiene"{
+	test "El grupo no puede sacrificar a mas de los que tiene"{
 		var camino = new Camino()
-		var zonaDificil = new Zona([], 1000000)
 		camino.agregarZona(zonaDificil)
 		camino.agregarZona(zonaDificil)
 		camino.agregarZona(zonaDificil)

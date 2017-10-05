@@ -44,7 +44,7 @@ class Grupo {
 				viajeros.max({viajero => viajero.nivel()})
 			)
 		} catch e:Exception {
-			throw new NoHayMasGente("", e)
+			throw new NoHayMasGente("No es posible sacrificar a alguien", e)
 		}
 		
 	}
@@ -61,15 +61,18 @@ class Grupo {
 class Zona {
 	var cantidadDeOrcos
 	var elementosNecesarios
+	
 	constructor(elementos, cantOrcos){
 		cantidadDeOrcos = cantOrcos
 		elementosNecesarios = elementos
 	}
+	
 	method cantidadDeOrcos() = cantidadDeOrcos
+	method elementosNecesarios() = elementosNecesarios
+	
 	method matarOrcos(){
 		cantidadDeOrcos = 0
 	}
-	method elementosNecesarios() = elementosNecesarios
 	
 }
 
@@ -81,11 +84,14 @@ class NoHayMasGente inherits Exception {}
 class Viajero {
 	var nivel
 	var elementos
+	
 	constructor(unNivel, unosElementos){
 		nivel = unNivel
 		elementos = unosElementos
 	}
+	
 	method nivel() = nivel
+	
 	method subirNivel(){
 		nivel += 1
 	}
@@ -95,6 +101,7 @@ class Viajero {
 
 class Camino {
 	var zonas = []
+	
 	method agregarZona(zona){
 		zonas.add(zona)
 	}
