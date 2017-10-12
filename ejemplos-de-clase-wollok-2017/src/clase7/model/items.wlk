@@ -12,6 +12,7 @@ class Arma {
 	}
 }
 
+
 object armeria {
 	method arco() = new Arma(25)
 	method espada() = new Arma(20)
@@ -30,6 +31,11 @@ class Armadura {
 	method resistencia() = resistencia
 	
 	method danioQueDejaPasar(danio) = danio - resistencia
+	
+	method defender(unidad, danio){
+		unidad.perderVida(self.danioQueDejaPasar(danio))
+		self.daniar()
+	}
 }
 
 class ArmaduraMagica inherits Armadura {

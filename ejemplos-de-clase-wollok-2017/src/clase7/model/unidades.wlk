@@ -12,6 +12,8 @@ class Unidad {
 			estado = muerto
 	}
 	
+	method vida() = vida
+	
 	method vidaQuePierdePorQuemarse() = 20
 	
 	method recibirAtaqueFisico(cantidad) {
@@ -19,8 +21,7 @@ class Unidad {
 	}
 	
 	method recibirDanioPorAtaqueFisico(cantidad){
-		self.perderVida(armadura.danioQueDejaPasar(cantidad))
-		armadura.daniar()
+		armadura.defender(self, cantidad)
 	}
 	
 	method puedeSerAtacado()= estado.puedeSerAtacado()
@@ -61,7 +62,9 @@ class UnidadArmada inherits Unidad {
 }
 
 class Arquero inherits UnidadArmada {
-	constructor() = super(armeria.arco())
+	//Por un error de Wollok esto no anda, pero debería
+	//constructor() = super(armeria.arco())
+	constructor() = super(new Arma(25))
 }
 
 class Paladin inherits UnidadArmada {
@@ -94,4 +97,3 @@ class ChamanHielo inherits Unidad {
 }
 
 class NoSePuedeAtacar inherits Exception {}
-
