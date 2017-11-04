@@ -1,22 +1,8 @@
 import model.unidades.*
 import model.items.*
+import atacable.*
 
 describe "Unidades Armadas" {
-	const atacable
-	
-	fixture {
-		// Para simplificar el testeo del daño que produce un ataque
-		// Este objeto es polimórfico con las unidades, puede ser atacado y no se defiende >:)
-		atacable = object {
-			var danioRecibido = 0
-			method danioRecibido() = danioRecibido
-			
-			method puedeSerAtacado() = true
-			method recibirAtaqueFisico(cantidad) {
-				danioRecibido += cantidad
-			}
-		}
-	}
 	
 	test "Atacar con una espada hace daño" {
 		const unidadConEspada = new UnidadArmada(armeria.espada())

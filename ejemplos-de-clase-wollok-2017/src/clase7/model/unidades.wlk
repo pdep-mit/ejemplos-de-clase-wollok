@@ -6,6 +6,11 @@ class Unidad {
 	var armadura = new Armadura(10)
 	var estado = normal
 
+	constructor(){}
+	constructor(_armadura){
+		armadura = _armadura
+	}
+	
 	method perderVida(cantidad) {
 		vida = (vida - cantidad).max(0)
 		if(vida == 0)
@@ -14,7 +19,7 @@ class Unidad {
 	
 	method vida() = vida
 	
-	method vidaQuePierdePorQuemarse() = 20
+	method vidaQuePierdePorAtaqueDeFuego() = 20
 	
 	method recibirAtaqueFisico(cantidad) {
 		estado.recibeAtaqueFisico(self, cantidad)
@@ -28,10 +33,10 @@ class Unidad {
 	
 	method atacar(unaUnidad) {
 		if(! unaUnidad.puedeSerAtacado()){
-			throw new NoSePuedeAtacar()
+			throw new NoSePuedeAtacar("La otra unidad no puede ser atacada")
 		} 	
 		if(! estado.permiteAtacar()){
-			throw new NoSePuedeAtacar()
+			throw new NoSePuedeAtacar("La unidad no puede atacar")
 		} 
 	}
 	
@@ -43,9 +48,12 @@ class Unidad {
 		estado.quemado(self)
 	}
 	
+	method seQuema() = true
+	
 	method estado(unEstado){
 		estado = unEstado
 	}
+	method estado() = estado
 }
 
 class UnidadArmada inherits Unidad {
@@ -57,8 +65,13 @@ class UnidadArmada inherits Unidad {
 	
 	override method atacar(unaUnidad){
 		super(unaUnidad)
-		arma.atacar(unaUnidad)
+		arma.ataca(self, unaUnidad)
+		estado.realizoAtaqueFisico(self, unaUnidad)
 	}
+	
+	method danioQueEfectuaPorAtaqueFisico() =
+		estado.danioQueEfectuaPorAtaqueFisico()
+	
 }
 
 class Arquero inherits UnidadArmada {
@@ -85,15 +98,15 @@ class ChamanFuego inherits Unidad {
 		self.perderVida(30)
 	}
 	
-	override method vidaQuePierdePorQuemarse() = super() / 2
-	
+	override method vidaQuePierdePorAtaqueDeFuego() = super() / 2
+	override method seQuema() = false
 }
 
 class ChamanHielo inherits Unidad {
 	override method atacar(unaUnidad){
 		super(unaUnidad)
 		unaUnidad.congelar()
+		estado.atacoConFrio(self)
 	}
 }
 
-class NoSePuedeAtacar inherits Exception {}

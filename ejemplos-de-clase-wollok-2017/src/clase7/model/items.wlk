@@ -7,8 +7,10 @@ class Arma {
 	
 	method danioQueProduce() = danioQueProduce
 	
-	method atacar(unaUnidad){
-		unaUnidad.recibirAtaqueFisico(danioQueProduce)
+	method ataca(unaUnidad, otra){
+		otra.recibirAtaqueFisico(danioQueProduce +
+			unaUnidad.danioQueEfectuaPorAtaqueFisico()
+		)
 	}
 }
 

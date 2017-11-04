@@ -16,12 +16,12 @@ describe "Comportamiento que depende de la posicion" {
 	}
 	test "Se le puede seguir preguntando la velocidad a un guardian"{
 		const guardian = new Guardian(100, 40, saetaDeFuego)
-		assert.equals(250, guardian.velocidad())
+		assert.equals(500, guardian.velocidad())
 	}
 	
 	test "Habilidad de un cazador" {
 		const cazador = new Cazador(100, 40, saetaDeFuego,10)
-		assert.equals(350.25, cazador.habilidad())
+		assert.equals(125.25, cazador.habilidad())
 	}
 
 	test "Habilidad de un golpeador" {

@@ -1,0 +1,28 @@
+import model.unidades.*
+import model.estados.*
+import model.items.*
+
+describe "Unidades congeladas" {
+	const unidad = new Arquero()
+	fixture {
+		unidad.estado(new Congelado())
+	}
+
+	test "Una unidad congelada no puede atacar hasta que se descongele" {
+		assert.throwsExceptionWithType(new NoSePuedeAtacar(), {unidad.atacar(new Arquero())})
+	}
+	
+	test "Cuando una unidad congelada recibe 3 ataques físicos, se descongela" {
+		const paladin = new Paladin(new Arma(10))
+	
+		paladin.atacar(unidad)
+		assert.notEquals(normal, unidad.estado())
+		
+		paladin.atacar(unidad)
+		assert.notEquals(normal, unidad.estado())
+		
+		paladin.atacar(unidad)
+		assert.equals(normal, unidad.estado())
+	}
+	
+}

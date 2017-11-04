@@ -23,16 +23,16 @@ Muy contentos con nuestra solución nos piden un último requerimiento, modelar a 
 
 Los chamanes se diferencian de las unidades que modelamos hasta ahora en que no usan armas, y por ende su ataque es distinto. Cuando atacan a una unidad si es un chamán de fuego, queman a la unidad y si es un chamán de hielo, la congelan.
 
-Cuando una unidad es congelada pierde 10 puntos de vida y no puede atacar hasta que se descongele, lo cual sucede si es quemado o si recibe 3 ataques físicos ya que rompen el hielo - podríamos renombrar recibirDanio por recibirAtaqueFisico. Los chamanes de fuego se comportan igual pero pierden 30 puntos de vida extra.
+Cuando una unidad es congelada pierde 10 puntos de vida y no puede atacar hasta que se descongele, lo cual sucede si es quemado o si recibe 3 ataques físicos ya que rompen el hielo (que serían los ataques de las unidades armadas). Los chamanes de fuego se comportan igual pero pierden 30 puntos de vida extra.
 
 Cuando una unidad es quemada, si estaba congelado sólo se descongela, de lo contrario al ser quemado pierde 20 puntos de vida en ese momento y queda quemado, a menos que sea un chamán de fuego, que sólo pierde 10 puntos de vida . Si una unidad quemada es congelada, deja de estar quemada y sigue las mismas reglas que se explicaron recién.
 
 Una unidad que está quemada recibe el doble de daño por ataques físicos, y a su vez cuando ataca:
-si es un chamán de hielo, además de congelar al enemigo, deja de estar quemado
-las unidades armadas aumentan en 10 el daño que realizan con su ataque a la unidad contraria, pero también pierden un punto de vida al finalizar su ataque por estar quemados.
+- si es un chamán de hielo, además de congelar al enemigo, deja de estar quemado
+- las unidades armadas aumentan en 10 el daño que realizan con su ataque a la unidad contraria, pero también pierden un punto de vida al finalizar su ataque por estar quemados.
 
 Un chaman además puede usar una habilidad especial: Curar una unidad, lo que aumenta 10 de vida de una unidad.
-Además cuando un mago de fuego cura una unidad congelada, la descongela, y si un mago de hielo cura una unidad quemada, deja de estar quemada.
+Además cuando un chamán de fuego cura una unidad congelada, la descongela, y si un chamán de hielo cura una unidad quemada, deja de estar quemada.
 
 Ah! Y si una unidad se muere en algún momento (porque su vida baja a 0):
 no puede realizar ataques

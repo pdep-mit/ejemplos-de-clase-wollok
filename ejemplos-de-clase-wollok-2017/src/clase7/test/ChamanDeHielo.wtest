@@ -1,0 +1,49 @@
+import model.unidades.*
+import model.estados.*
+
+describe "Chaman de hielo - ataque" {
+	const chaman = new ChamanHielo()
+	
+	test "Cuando un chaman de hielo ataca a una unidad quemada, deja de estar quemada" {
+		const unidad = new Arquero()
+		unidad.estado(quemado)
+		
+		chaman.atacar(unidad)
+		
+		assert.equals(90, unidad.vida())
+		assert.equals(normal, unidad.estado())
+	}
+	
+	test "Cuando un chaman de hielo ataca, congela a la otra unidad haciendo daño" {
+		const unidad = new Arquero()
+		
+		chaman.atacar(unidad)
+		
+		assert.equals(90, unidad.vida())
+	}
+	test "Cuando un chaman de hielo ataca a un chamán de fuelo le hace más daño" {
+		const unidad = new ChamanFuego()
+		
+		chaman.atacar(unidad)
+		
+		assert.equals(60, unidad.vida())
+	}
+	
+	test "Cuando un chaman de hielo ataca, congela a la otra unidad dejándola congelada" {
+		const unidad = new Arquero()
+		
+		chaman.atacar(unidad)
+		
+		//Son instancias distintas, no hay una buena forma de verificar que sean lo mismo sin redefinirle la igualdad
+		assert.equals(new Congelado().toString(), unidad.estado().toString())
+	}
+	
+	test "Cuando un chaman de hielo ataca estando quemado, deja de estarlo" {
+		const unidad = new Arquero()
+		chaman.estado(quemado)
+		
+		chaman.atacar(unidad)
+		
+		assert.equals(normal, chaman.estado())
+	}
+}
