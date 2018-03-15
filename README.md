@@ -39,6 +39,7 @@ Juego de Rol. Conceptos:
 - Modelado usando herencia y composición
 
 
-## Integrador
+## Integradores
 
-Ejercitación integradora: Glaciares
+Integrador 1: Glaciares
+Integrador 2: Minions
