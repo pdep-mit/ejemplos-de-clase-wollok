@@ -41,5 +41,5 @@ Juego de Rol. Conceptos:
 
 ## Integradores
 
-Integrador 1: Glaciares
-Integrador 2: Minions
+- Integrador 1: Glaciares
+- Integrador 2: Minions
