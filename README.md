@@ -37,3 +37,8 @@ Viajeros de la Tierra Media. Conceptos:
 
 Juego de Rol. Conceptos:
 - Modelado usando herencia y composición
+
+
+## Integrador
+
+Ejercitación integradora: Glaciares
