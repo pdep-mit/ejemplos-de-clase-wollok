@@ -1,0 +1,173 @@
+import src.empleado.*
+import src.tareas.*
+import empleadosHelper.*
+
+
+describe "realizar tareas" {
+	test "un empleado no puede arreglar una maquina con una complejidad mayor a su stamina" {
+		const arreglarUnaMaquina = new ArreglarUnaMaquina(10)
+		const empleadoConPocaStamina = empleadosHelper.ciclopeConStamina(3)
+		
+		assert.notThat(empleadoConPocaStamina.puedeRealizar(arreglarUnaMaquina))
+	}
+	
+	test "un empleado no puede arreglar una maquina si no tiene las herramientas necesarias" {
+		const arreglarUnaMaquina = new ArreglarUnaMaquina(10, ["martillo", "destornillador"])
+		const empleadoSinHerramientas = empleadosHelper.empleadoConStaminaYHerramientas(10, [])
+		
+		assert.notThat(empleadoSinHerramientas.puedeRealizar(arreglarUnaMaquina))
+	}
+	
+	test "un empleado con stamina mayor a la complejidad de la maquina y con las herramientas necesarias puede arreglarla" {
+		const empleado = empleadosHelper.obreroConStaminaYHerramientas(10, ["condensador de flujo"])
+		const arreglarUnaMaquina = new ArreglarUnaMaquina(9, ["condensador de flujo"])
+		
+		assert.that(empleado.puedeRealizar(arreglarUnaMaquina))
+	}
+	
+	test "un empleado falla si intenta arreglar una maquina que no puede arreglar" {
+		const arreglarUnaMaquina = new ArreglarUnaMaquina(10, ["martillo", "destornillador"])
+		const empleadoSinHerramientas = empleadosHelper.empleadoConStaminaYHerramientas(10, [])
+		
+		assert.throwsExceptionWithMessage("Empleado no pudo arreglar la maquina",
+			{empleadoSinHerramientas.realizarTarea(arreglarUnaMaquina)} )
+	}
+	
+	test "un empleado que arregla una maquina pierde tanta stamina como complejidad tenia la maquina" {
+		const empleado = empleadosHelper.biclopeConStamina(10)
+		const arreglarUnaMaquina = new ArreglarUnaMaquina(5)
+		
+		empleado.realizarTarea(arreglarUnaMaquina)
+		
+		assert.equals(5, empleado.stamina())
+	}
+	
+	test "un empleado con menos fuerza que el grado de amenaza no puede defender un sector" {
+		const empleadoDebil = empleadosHelper.ciclopeConStamina(1)
+		const defenderSectorPeligroso = new DefenderSector(15)
+		
+		assert.notThat(empleadoDebil.puedeRealizar(defenderSectorPeligroso))
+	}
+	
+	test "una mucama no puede defender un sector" {
+		const empleadoMucama = empleadosHelper.mucama()
+		const defenderUnSector = new DefenderSector(5)
+		
+		assert.notThat(empleadoMucama.puedeRealizar(defenderUnSector))
+	}
+
+	test "un empleado falla si intenta defender un sector que no puede defender" {
+		const empleadoMucama = empleadosHelper.mucama()
+		const defenderUnSector = new DefenderSector(5)
+		
+		assert.throwsExceptionWithMessage("Empleado no pudo defender el sector",
+			{ empleadoMucama.realizarTarea(defenderUnSector) }
+		)
+	}
+	
+	test "un empleado pierde la mitad de su stamina al defender un sector" {
+		const empleado = empleadosHelper.ciclopeConStamina(30)
+		const defenderSector = new DefenderSector(2)
+		
+		empleado.realizarTarea(defenderSector)
+		
+		assert.equals(15, empleado.stamina())
+	}
+	
+	test "un soldado no pierde stamina al defender un sector" {
+		const empleado = empleadosHelper.soldadoCiclopeConStaminaYPractica(30, 10)
+		const defenderSector = new DefenderSector(2)
+		
+		empleado.realizarTarea(defenderSector)
+		
+		assert.equals(30, empleado.stamina())
+	}
+	
+	test "un empleado con menos de 4 puntos de stamina no puede limpiar un sector grande" {
+		const empleado = empleadosHelper.ciclopeConStamina(3)
+		const limpiarSectorGrande = new LimpiarSector(true)
+		
+		assert.notThat(empleado.puedeRealizar(limpiarSectorGrande))
+	}
+	
+	test "un empleado con menos de 1 punto de stamina no puede limpiar un sector grande" {
+		const empleado = empleadosHelper.ciclopeConStamina(1)
+		const limpiarSector = new LimpiarSector(false)
+		
+		assert.notThat(empleado.puedeRealizar(limpiarSector))
+	}
+	
+	test "una mucama siempre puede limpiar un sector aunque tenga poca stamina" {
+		const empleadoMucama = empleadosHelper.mucamaConStamina(1)
+		const limpiarSector = new LimpiarSector(true)
+		
+		assert.that(empleadoMucama.puedeRealizar(limpiarSector))
+	}
+	
+	test "un empleado falla si intenta limpiar un sector que no puede limpiar" {
+		const empleado = empleadosHelper.ciclopeConStamina(3)
+		const limpiarSectorGrande = new LimpiarSector(true)
+		
+		assert.throwsExceptionWithMessage("Empleado no pudo limpiar sector",
+			{empleado.realizarTarea(limpiarSectorGrande)})
+	}
+	
+	test "un empleado pierde 4 de stamina al limpiar un sector grande" {
+		const empleado = empleadosHelper.ciclopeConStamina(10)
+		const limpiarSectorGrande = new LimpiarSector(true)
+		
+		empleado.realizarTarea(limpiarSectorGrande)
+		assert.equals(6, empleado.stamina())
+	}
+	
+	test "un empleado pierde 1 de stamina al limpiar un sector que no es grande" {
+		const empleado = empleadosHelper.ciclopeConStamina(10)
+		const limpiarSector = new LimpiarSector(false)
+		
+		empleado.realizarTarea(limpiarSector)
+		assert.equals(9, empleado.stamina())
+	}
+	
+	test "una mucama no pierde stamina al limpiar un sector" {
+		const empleado = empleadosHelper.mucamaConStamina(10)
+		const limpiarSectorGrande = new LimpiarSector(true)
+		
+		empleado.realizarTarea(limpiarSectorGrande)
+		assert.equals(10, empleado.stamina())
+	}
+	
+	test "un capataz puede realizar una tarea si alguno de sus subordinados puede realizarla" {
+		const subordinadoObrero = empleadosHelper.obreroConStaminaYHerramientas(10, ["destornillador"])
+		const capataz = empleadosHelper.capatazConSubordinados([subordinadoObrero])
+		const arreglarUnaMaquina = new ArreglarUnaMaquina(9, ["destornillador"])
+
+		assert.that(capataz.puedeRealizar(arreglarUnaMaquina))
+	}
+	
+	test "un capataz puede realizar una tarea si el mismo si cumple los requerimientos de la tarea" {
+		const capataz = empleadosHelper.capatazConStaminaYSubordinados(10, [])
+		const limpiarSector = new LimpiarSector(false)
+		
+		assert.that(capataz.puedeRealizar(limpiarSector))
+	}
+	
+	test "si uno de los subordinados de un capataz puede realizar una tarea, ese subordinado la realiza" {
+		const subordinado = empleadosHelper.biclopeConStamina(10)
+		const capataz = empleadosHelper.capatazConStaminaYSubordinados(10, [subordinado])
+		const limpiarSector = new LimpiarSector(false)
+		
+		capataz.realizarTarea(limpiarSector)
+		assert.equals(10, capataz.stamina())
+		assert.equals(9, subordinado.stamina())
+	}
+	
+	test "si ninguno de los subordinados de un capataz puede realizar una tarea, la realiza el" {
+		const subordinadoQueNoPuedeRealizarTarea = empleadosHelper.biclopeConStamina(1)
+		const capataz = empleadosHelper.capatazConStaminaYSubordinados(10, [subordinadoQueNoPuedeRealizarTarea])
+		const limpiarSectorGrande = new LimpiarSector(true)
+		
+		capataz.realizarTarea(limpiarSectorGrande)
+		assert.equals(1, subordinadoQueNoPuedeRealizarTarea.stamina())
+		assert.equals(6, capataz.stamina())
+	}
+}

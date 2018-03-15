@@ -1,0 +1,21 @@
+import src.empleado.*
+import src.tareas.*
+import empleadosHelper.*
+
+describe "experiencia de un empleado" {
+	test "la experiencia de un empleado que nunca realizo tareas es 0" {
+		const empleadoSinTareas = empleadosHelper.empleadoConTareas([])
+		
+		assert.equals(0, empleadoSinTareas.experiencia())
+	}
+	
+	test "la experiencia de un empleado con tareas es la cantidad de tareas por la suma de la dificultad de las mismas" {
+		const tarea = new DefenderSector(100)
+		const otraTarea = new DefenderSector(100)
+		const empleado = empleadosHelper.empleadoConTareas([tarea, otraTarea]) 
+		
+		assert.equals(400, empleado.experiencia())
+	}
+	
+	
+}

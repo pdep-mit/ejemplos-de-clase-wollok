@@ -1,0 +1,37 @@
+import src.empleado.*
+import src.frutas.*
+import empleadosHelper.*
+
+describe "comiendo frutas" {
+	const empleadoCiclope
+	const empleadoBiclope
+
+	fixture {
+		empleadoCiclope = empleadosHelper.ciclopeConStamina(5)
+		empleadoBiclope = empleadosHelper.biclopeConStamina(5)
+	}
+	
+	test "un empleado que come una uva sube en 1 su energia" {
+		empleadoCiclope.comerFruta(uva)
+	
+		assert.equals(6, empleadoCiclope.stamina())
+	}
+	
+	test "un empleado que come una manzana sube en 5 su energia" {
+		empleadoCiclope.comerFruta(manzana)
+		
+		assert.equals(10, empleadoCiclope.stamina())
+	}
+
+	test "un empleado que come una banana sube en 10 su energia" {
+		empleadoCiclope.comerFruta(banana)
+		
+		assert.equals(15, empleadoCiclope.stamina())
+	}
+
+	test "un empleado biclope no puede tener mas de 10 de energia" {
+		empleadoBiclope.comerFruta(banana)
+		
+		assert.equals(10, empleadoBiclope.stamina())
+	}
+}
