@@ -1,0 +1,47 @@
+import quidditch.*
+
+describe "Quidditch" {
+
+	test "El manejo de escoba de un jugador depende de sus skills y su peso" {
+		const nimbus = new Nimbus(2005, 50) 
+		const unJugador = new Cazador(10, 2, nimbus, 10)
+		assert.equals(5, unJugador.nivelDeManejoDeEscoba())
+	}
+	
+	test "La velocidad de una Nimbus depende de sus a�os y su salud" {
+		const nimbus = new Nimbus(2005, 50)
+		assert.equals(34, nimbus.velocidad())
+	}
+
+	test "La velocidad de una Saeta de Fuego es constante" {
+		assert.equals(100, saetaDeFuego.velocidad())
+	}
+	
+	test "La velocidad de un jugador depende de su escoba y su manejo de escoba" {
+		const angelina = new Cazador(10, 2, saetaDeFuego ,10)
+		assert.equals(50, angelina.velocidad())
+	}
+	
+	test "La habilidad de un jugador depende de su velocidad y sus skills" {
+		const angelina = new Cazador(10, 2, saetaDeFuego, 10)
+		assert.equals(65, angelina.habilidad())
+	}
+	
+	test "Un jugador le pasa el trapo a otro si es el doble de habilidoso" {
+		const angelina = new Cazador(10, 2, saetaDeFuego, 10)
+		const ginny = new Cazador(1, 1, saetaDeFuego, 10)
+		assert.that(angelina.lePasaElTrapoA(ginny))
+	}
+	
+	test "Si a un jugador lo golpea una bludger pierde 2 skills" {
+		const angelina = new Cazador(10, 2, saetaDeFuego, 10)
+		angelina.serGolpeado()
+		assert.equals(8, angelina.skills())
+	}
+	test "Si a un jugador con una Nimbus lo golpea una bludger, su escoba pierde salud" {
+		const nimbus = new Nimbus(2001, 100)
+		const angelina = new Cazador(10, 2, nimbus, 10)
+		angelina.serGolpeado()
+		assert.equals(90, nimbus.salud())
+	}
+}

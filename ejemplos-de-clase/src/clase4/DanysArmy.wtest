@@ -1,0 +1,112 @@
+import DanysArmy.*
+
+describe "Dany's Army" {
+	const jorah = new Caballero(150, true)
+	const greyWorm = new ExEsclavo(120, 100)
+	const daario = new ExMercenario(10)
+	const dothraki = new Caballero(20, false)
+	const viserion = new Dragon(10, 17, 5)
+	const rhaegal = new Dragon(52, 12, 15)
+	const drogon = new Dragon(100,100,100)
+
+	fixture {
+		dany.agregarSoldado(jorah)
+		dany.agregarSoldado(greyWorm)
+		dany.agregarDragon(viserion)
+		dany.agregarDragon(rhaegal)
+	}
+
+	test "Dany no es true queen si algún soldado no está suficientemente motivado" {
+		dany.agregarSoldado(daario)
+		assert.notThat(dany.trueQueen())
+	}
+	test "Dany es true queen si todos los soldados están suficientemente motivados" {
+		assert.that(dany.trueQueen())
+	}
+
+	test "Soldados kamikazes" {
+		dany.agregarSoldado(daario)
+		dany.agregarSoldado(dothraki)
+		dany.agregarSoldado(new ExEsclavo(300, 10))
+		
+		assert.equals(#{daario, jorah, greyWorm}, dany.kamikazes().asSet())
+	}
+	
+	test "Dany no puede lanzar un ataque aereo" {
+		assert.notThat(dany.puedeLanzarAtaqueAereo())
+	}
+	
+	test "Dany puede lanzar un ataque aereo con drogon" {
+		dany.agregarDragon(drogon)
+		assert.that(dany.puedeLanzarAtaqueAereo())
+	}
+	
+	test "La fuerza del ejercito es igual a la suma de fuerzas de los soldados" {
+		dany.agregarSoldado(daario)
+		dany.agregarSoldado(dothraki)
+		
+		assert.equals(450+220+60+60, dany.fuerzaEjercito())
+	}
+
+	test "Dany no puede combatir porque no puede lanzar ataque aereo ni su ejercito tiene fuerza suficiente" {
+		assert.notThat(dany.puedeCombatir())
+	}
+	
+	test "Dany puede combatir si puede lanzar un ataque aereo" {
+		dany.agregarDragon(drogon)
+		assert.that(dany.puedeCombatir())
+	}
+	test "Dany puede combatir si el ejercito tiene fuerza suficiente" {
+		dany.agregarSoldado(new ExEsclavo(5000, 5000))
+		assert.that(dany.puedeCombatir())
+	}
+
+	test "Dany da discurso y les aumenta la motivacion a los soldados y la felicidad a los dragones"
+	{
+		dany.agregarSoldado(daario)
+		dany.agregarSoldado(dothraki)
+		
+		dany.darDiscurso()
+		
+		assert.equals(220, jorah.motivacion())
+		assert.equals(50, dothraki.motivacion())
+		assert.equals(140, greyWorm.motivacion())
+		assert.equals(20, daario.motivacion())
+		assert.equals(50, viserion.felicidad())
+	}
+	
+
+	test "Dany no lanza un ataque aereo" {
+		var enemigo = new EjercitoEnemigo([daario])
+		assert.throwsException({ dany.lanzarAtaqueAereo(enemigo) })
+		
+		assert.equals(52, rhaegal.felicidad())
+		assert.equals(10, viserion.felicidad())
+		assert.equals([daario], enemigo.soldados())
+	}
+	
+	test "Dany lanzar un ataque aereo y se le eliminan soldados a su enemigo"
+	{
+		const vivo1 = new Caballero(200, false)
+		const vivo2 = new ExMercenario(300)
+		const vivo3 = new ExMercenario(50)
+		
+		var enemigo = new EjercitoEnemigo( [
+				vivo1,
+				new Caballero(20, false),
+				new Caballero(10, false),
+				vivo2, 
+				vivo3,
+				new ExEsclavo(5, 30)
+			] )
+		dany.agregarDragon(drogon)
+		
+		dany.lanzarAtaqueAereo(enemigo)
+		
+		assert.equals(#{vivo1, vivo2, vivo3}, enemigo.soldados().asSet())
+		
+		assert.equals(120, drogon.felicidad())
+		assert.equals(52, rhaegal.felicidad())
+		assert.equals(10, viserion.felicidad())
+	}
+}

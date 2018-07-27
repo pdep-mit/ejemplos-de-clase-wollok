@@ -1,0 +1,27 @@
+import empleadosHelper.*
+
+test "La fuerza de un empleado biclope es la mitad de (su stamina + 2)" {
+	const empleadoBiclope = empleadosHelper.biclopeConStamina(6)
+	
+	assert.equals(4, empleadoBiclope.fuerza())
+}
+
+test "La fuerza de un empleado ciclope es la mitad de un empleado biclope con la misma stamina" {
+	const empleadoCiclope = empleadosHelper.ciclopeConStamina(6)
+	const empleadoBiclope = empleadosHelper.biclopeConStamina(6)
+	
+	assert.equals(empleadoBiclope.fuerza() / 2, empleadoCiclope.fuerza())
+}
+
+test "La fuerza de un empleado soldado biclope es su practica + la mitad de (su stamina + 2)" {
+	const soldadoBiclope = empleadosHelper.soldadoBiclopeConStaminaYPractica(6, 3)
+	
+	assert.equals(7, soldadoBiclope.fuerza())
+}
+
+test "La fuerza de un soldado ciclope es la mitad de la de un soldado biclope con la misma stamina y practica" {
+	const soldadoCiclope = empleadosHelper.soldadoCiclopeConStaminaYPractica(6, 3)
+	const soldadoBiclope = empleadosHelper.soldadoBiclopeConStaminaYPractica(6, 3)
+	
+	assert.equals(soldadoBiclope.fuerza() / 2, soldadoCiclope.fuerza())
+}

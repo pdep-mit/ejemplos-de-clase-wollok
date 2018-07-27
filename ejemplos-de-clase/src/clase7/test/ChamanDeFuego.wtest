@@ -1,0 +1,48 @@
+import model.unidades.*
+import model.estados.*
+
+describe "Chaman de fuego - ataque" {
+	const chaman = new ChamanFuego()
+	
+	test "Cuando un chaman de fuego ataca, quema a la otra unidad haciendo daño" {
+		const unidad = new Arquero()
+		
+		chaman.atacar(unidad)
+		
+		assert.equals(80, unidad.vida())
+	}
+	
+	test "Cuando un chaman de fuego ataca, quema a la otra unidad dejándola quemada" {
+		const unidad = new Arquero()
+		
+		chaman.atacar(unidad)
+		
+		assert.equals(quemado, unidad.estado())
+	}
+	
+	test "Cuando un chaman de fuego ataca a otro, le hace un poco de daño" {
+		const unidad = new ChamanFuego()
+		
+		chaman.atacar(unidad)
+		
+		assert.equals(90, unidad.vida())
+	}
+	
+	test "Cuando un chaman de fuego ataca a otro, no queda quemado" {
+		const unidad = new ChamanFuego()
+		
+		chaman.atacar(unidad)
+		
+		assert.equals(normal, unidad.estado())
+	}
+	
+	test "Cuando un chaman de fuego ataca a una unidad congelada, la descongela" {
+		const unidad = new Arquero()
+		unidad.estado(new Congelado())
+	
+		chaman.atacar(unidad)
+		
+		assert.equals(100, unidad.vida())
+		assert.equals(normal, unidad.estado())
+	}
+}

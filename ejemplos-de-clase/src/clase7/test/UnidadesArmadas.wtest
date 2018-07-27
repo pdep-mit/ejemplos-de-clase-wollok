@@ -1,0 +1,74 @@
+import model.unidades.*
+import model.items.*
+import atacable.*
+
+describe "Unidades Armadas" {
+	
+	test "Atacar con una espada hace daño" {
+		const unidadConEspada = new UnidadArmada(armeria.espada())
+		
+		unidadConEspada.atacar(atacable)
+		
+		assert.equals(20, atacable.danioRecibido())
+	}
+	
+	test "Atacar con un mandoble hace daño" {
+		const unidadConEspada = new UnidadArmada(armeria.mandoble())
+		
+		unidadConEspada.atacar(atacable)
+		
+		assert.equals(30, atacable.danioRecibido())
+	}
+	
+	test "Atacar con un arco hace daño" {
+		const unidadConEspada = new UnidadArmada(armeria.arco())
+		
+		unidadConEspada.atacar(atacable)
+		
+		assert.equals(25, atacable.danioRecibido())
+	}
+	
+	test "Un arquero ataca con arco siempre" {
+		const arquero = new Arquero()
+		
+		arquero.atacar(atacable)
+		
+		assert.equals(25, atacable.danioRecibido())
+	}
+	
+	test "Un paladin gana vida al atacar" {
+		const paladin = new Paladin(armeria.espada())
+		const unidad = new UnidadArmada(armeria.arco())
+		
+		paladin.atacar(unidad)
+		
+		assert.equals(103, paladin.vida())
+	}
+	
+	test "La armadura provee defensa contra los ataques físicos" {
+		const paladin = new Paladin(armeria.espada())
+		const unidad = new UnidadArmada(armeria.arco())
+		
+		unidad.atacar(paladin)
+		
+		assert.equals(100-25+10, paladin.vida())
+	}
+	
+	test "La armadura pierde resistencia cuando defiende" {
+		const armadura = new Armadura(2)
+		const unidad = new Unidad()
+		
+		armadura.defender(unidad, 10)
+		assert.equals(1, armadura.resistencia())
+	}
+	
+	test "Una armadura con más resistencia deja pasar menos daño que una con menos" {
+		const armaduraDebil = new Armadura(2)
+		const armaduraFuerte = new Armadura(10)
+		const danio = 20
+		
+		assert.that(armaduraDebil.danioQueDejaPasar(danio) 
+						> armaduraFuerte.danioQueDejaPasar(danio)
+		)
+	}
+}
