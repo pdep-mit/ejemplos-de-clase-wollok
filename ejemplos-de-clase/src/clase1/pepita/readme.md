@@ -1,6 +1,7 @@
 ## Pepita, vola!
 
-Pepita es una golondrina que sabe volar y comer. Inicialmente tiene 100 joules de energía.
+Pepita es una golondrina que sabe volar y comer.
+Inicialmente tiene 100 joules de energía.
 
 Sabemos que:
 * Al volar gasta 5 joules de energía por cada kilómetro volado, más 40 joules para comenzar a volar.
@@ -14,13 +15,20 @@ Queremos hacer con pepita desde la consola:
 
 ## Aparece Josefa
 
-Queremos agregar a nuestro sistema a Josefa, que también sabe volar y comer, sólo que lo hace distinto.
+Queremos agregar a nuestro sistema a Josefa, 
+que también sabe volar y comer, sólo que lo hace distinto.
 
-A Josefa parece interesarle cuánto le pedimos que vuele y cuánto le pedimos que coma. Entonces en vez de recordar cuánta energía tiene, prefiere calcular esa información.
+A Josefa parece interesarle cuánto le pedimos que vuele y 
+cuánto le pedimos que coma. Entonces en vez de recordar cuánta energía tiene, 
+prefiere calcular esa información.
 
-La energía de Josefa se calcula como `su energía inicial + 5 * gramos comidos - 3 * kilómetro volados`. La energía inicial de Josefa es 80.
+La energía de Josefa se calcula como 
+`su energía inicial + 5 * gramos comidos - 3 * kilómetro volados`. 
+La energía inicial de Josefa es 80.
 
-Cuando le pedimos que coma una cantidad de gramos de alpiste o que vuele una cantidad de kilómetros sólo necesitamos aumentar los gramos comidos o kilómetros volados respectivamente.
+Cuando le pedimos que coma una cantidad de gramos de alpiste o 
+que vuele una cantidad de kilómetros sólo necesitamos aumentar los gramos 
+comidos o kilómetros volados respectivamente.
 
 Además a Josefa le podemos preguntar cómo se siente, y debe respondernos:
 * "Equilibrada" si comió lo mismo que lo que voló
