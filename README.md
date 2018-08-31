@@ -2,7 +2,7 @@
 
 ## Clase 1
 
-Introducción a objetos con Pepita, Josefa y el entrenador. Conceptos:
+Introducción a objetos. Conceptos:
 - Objeto, mensaje, método, referencias (incluyendo self)
 - Encapsulamiento, delegación y polimorfismo
 
