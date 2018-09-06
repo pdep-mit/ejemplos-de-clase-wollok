@@ -6,6 +6,15 @@ Introducción a objetos. Conceptos:
 - Objeto, mensaje, método, referencias (incluyendo self)
 - Encapsulamiento, delegación y polimorfismo
 
+Ejemplos:
+- Músicos
+- Pepita
+
+## Clase 2
+
+Ejercitación con testeo unitario: Halloween.
+Incompleto, con decisiones sobre responsabilidades ya tomadas para los primeros puntos, pueden continuarlo en sus casas.
+
 
 # Ejemplos de años anteriores
 
