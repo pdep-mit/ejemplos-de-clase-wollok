@@ -1,0 +1,46 @@
+import disfraces.*
+import habitantes.*
+
+describe "Saber si a alguien le gusta un disfraz" {
+
+	test "A azucena no le gusta el disfraz de zombie" {
+
+		assert.notThat( azucena.leGusta(zombie))
+
+	}
+	test "A azucena no le gusta el disfraz de frozen" {
+
+		assert.notThat( azucena.leGusta(frozen))
+
+	}
+	test "A azucena le gusta un disfraz tierno" {
+		disfrazCustom.ternura(10)
+		assert.that( azucena.leGusta(disfrazCustom))
+
+	}
+	
+	test "El disfraz custom no es naturalmente tierno"{
+		// Hicimos este test para demostrar en clase que
+		// el test anterior que modifica la ternura del disfrazCustom
+		// no impacta de ninguna forma en este test.
+		// Los tests son independientes, cada uno arranca de cero,
+		// lo cual es genial! porque no necesitamos preocuparnos por nada.
+		assert.equals(0, disfrazCustom.ternura())
+	}
+	
+	test "A Sandra le gusta el disfraz de frozen" {
+		assert.fail("Falta implementar")
+	}
+	
+	test "A Sandra no le gusta el disfraz de zombie" {
+		assert.fail("Falta implementar")
+	}
+	
+	test "A Jorge no le gusta el disfraz de frozen" {
+		assert.fail("Falta implementar")
+	}
+	
+	test "A Jorge le gusta el disfraz de zombie" {
+		assert.fail("Falta implementar")
+	}
+}

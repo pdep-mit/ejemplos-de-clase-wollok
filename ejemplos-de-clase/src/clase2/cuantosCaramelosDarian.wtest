@@ -1,0 +1,30 @@
+import habitantes.*
+import disfraces.*
+
+describe "Cuantos caramelos darían por un disfraz" {
+
+	test "Azucena da 5 caramelos cuando no le gusta el disfraz" {
+		assert.equals(5, azucena.cuantosCaramelosDaria(zombie))
+	}
+	
+	test "Azucena da tantos caramelos como ternura cuando le gusta" {
+		disfrazCustom.ternura(9)
+		assert.equals(9, azucena.cuantosCaramelosDaria(disfrazCustom))
+		disfrazCustom.ternura(11)
+		assert.equals(11, azucena.cuantosCaramelosDaria(disfrazCustom))
+	}
+	
+	test "Sandra da 8 caramelos cuando la casa está en orden" {
+		assert.fail("Falta implementar")
+	}
+	test "Sandra da 2 caramelos cuando la casa no está en orden" {
+		assert.fail("Falta implementar")
+	}
+	
+	test "Jorge da 10 caramelos cuando hay muchos en la casa" {
+		assert.fail("Falta implementar")
+	}
+	test "Jorge da 4 caramelos cuando hay menos caramelos en la casa" {
+		assert.fail("Falta implementar")
+	}
+}
