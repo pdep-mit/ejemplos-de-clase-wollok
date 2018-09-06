@@ -13,7 +13,8 @@ Ejemplos:
 ## Clase 2
 
 Ejercitación con testeo unitario: Halloween.
-Incompleto, con decisiones sobre responsabilidades ya tomadas para los primeros puntos, pueden continuarlo en sus casas.
+
+Incompleto, pero con decisiones sobre responsabilidades ya tomadas para los primeros puntos, pueden continuarlo en sus casas.
 
 
 # Ejemplos de años anteriores
