@@ -16,6 +16,10 @@ Ejercitación con testeo unitario: Halloween.
 
 Incompleto, pero con decisiones sobre responsabilidades ya tomadas para los primeros puntos, pueden continuarlo en sus casas.
 
+## Clase 3
+
+Ejercitación con colecciones: Stranger Things.
+
 
 # Ejemplos de años anteriores
 
