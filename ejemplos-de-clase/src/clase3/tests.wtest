@@ -1,0 +1,32 @@
+import ninios.*
+import armas.*
+import alimentos.*
+import grupoDeAmigos.*
+import demogorgon.*
+
+
+
+describe "group of tests" {
+
+	test "Mike es amigo de Eleven" {
+
+		assert.that(mike.esAmigoDe(eleven))
+
+	}
+	
+	test "Eleven tiene un sólo amigo" {
+		assert.equals(eleven.cuantosAmigosTiene(), 1)
+	}	
+
+	test "Dustin se puede hacer amigo de Eleven" {
+		dustin.hacerseAmigoDe(eleven)
+		assert.equals(dustin.amigos(), [mike, lucas, will, eleven])
+	}
+	
+	test "Lucas se pelea con Mike, que ya es su amigo" {
+		lucas.pelearseCon(mike)
+		assert.equals(lucas.amigos(), [dustin, will])
+	}
+	
+	
+}
