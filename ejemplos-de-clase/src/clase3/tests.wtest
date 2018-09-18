@@ -28,5 +28,62 @@ describe "group of tests" {
 		assert.equals(lucas.amigos(), [dustin, will])
 	}
 	
+	test "Mike causa 30 puntos de daño" {
+		assert.equals(mike.danioQueCausa(), 30)
+	}
+	
+	test "Dustin no comió postres y causa sólo 5 puntos de daño" {
+		assert.equals(dustin.danioQueCausa(), 5)
+	}
+	
+	test "Dustin ahora come 3 postres de chocolate, y causa 8 puntos de daño"{
+		dustin.comer(postrecitoDeChocolate)
+		dustin.comer(postrecitoDeChocolate)
+		dustin.comer(postrecitoDeChocolate)
+		assert.equals(dustin.danioQueCausa(), 8)
+	}
+	
+	test "El grupo de amigos causa 105 puntos de daño" {
+		assert.equals(grupoDeAmigos.danioQueCausa(), 105)
+	}
+	
+	test "El grupo de amigos conocidos puede enfrentarse al demogorgon" {
+		assert.that(grupoDeAmigos.puedeAtacar(demogorgon))
+	}
+	
+	test "Después de ser atacado, el demogorgon queda con 145 puntos de vida"{
+		grupoDeAmigos.atacar(demogorgon)
+		assert.equals(demogorgon.vida(), 145)
+	}
+	
+	test "Después de atacar al demogorgon, Dustin queda con 55 puntos de vida" {
+		grupoDeAmigos.atacar(demogorgon)
+		assert.equals(dustin.vida(), 55)
+	}
+	
+	test "Después de atacar al demogorgon, Eleven queda con 85 puntos de vida" {
+		grupoDeAmigos.atacar(demogorgon)
+		assert.equals(eleven.vida(), 85)
+	}
+	
+	test "Después de atacar al demogorgon el grupo no está herido"{
+		grupoDeAmigos.atacar(demogorgon)
+		assert.notThat(grupoDeAmigos.estaHerido())
+	}
+	
+	test "Si le doy de comer eggos al grupo, Lucas queda con 82 de vida"{
+		grupoDeAmigos.alimentar(eggos)
+		assert.equals(lucas.vida(), 82)
+	}
+	
+	test "Si le doy de comer un postrecito de chocolate al grupo, Mike queda con 86 de vida"{
+		grupoDeAmigos.alimentar(postrecitoDeChocolate)
+		assert.equals(mike.vida(), 86)
+	}
+	
+	test "Si le doy de comer un postrecito de chocolate al grupo, aumenta en 1 la cantidad de postres que comió Dustin"{
+		grupoDeAmigos.alimentar(postrecitoDeChocolate)
+		assert.equals(dustin.cuantosPostresComio(), 1)
+	}
 	
 }

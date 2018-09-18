@@ -35,10 +35,10 @@ object mike {
 		return vida < 20
 	}
 	method comer(comida){
-		vida = (vida + comida.puntosQueAporta()).min(100)
+		vida = (vida + comida.puntosQueAportaPara(self)).min(100)
 	}
 	method perderVida(cant){
-		vida = (vida - cant).min(0)
+		vida = (vida - cant).max(0)
 	}
 	method estaHerido(){
 		return vida < 35
@@ -82,14 +82,14 @@ object dustin {
 		return vida < 20
 	}
 	method comer(comida){
-		vida = (vida + comida.puntosQueAporta()).min(100)
-		if (comida === postrecitosDeChocolate){
+		vida = (vida + comida.puntosQueAportaPara(self)).min(100)
+		if (comida === postrecitoDeChocolate){
 			cantPostres += 1
 		}
 		
 	}
 	method perderVida(cant){
-		vida = (vida - cant).min(0)
+		vida = (vida - cant).max(0)
 	}
 	method estaHerido(){
 		return vida < 35
@@ -129,10 +129,10 @@ object eleven {
 		return vida < 20
 	}
 	method comer(comida){
-		vida = (vida + comida.puntosQueAporta()).min(100)
+		vida = (vida + comida.puntosQueAportaPara(self)).min(100)
 	}
 	method perderVida(cant){
-		vida = (vida - cant).min(0)
+		vida = (vida - cant).max(0)
 	}
 	method estaHerido(){
 		return vida < 35
@@ -173,10 +173,10 @@ method vida(){
 		return vida < 20
 	}
 	method comer(comida){
-		vida = (vida + comida.puntosQueAporta()).min(100)
+		vida = (vida + comida.puntosQueAportaPara(self)).min(100)
 	}
 	method perderVida(cant){
-		vida = (vida - cant).min(0)
+		vida = (vida - cant).max(0)
 	}
 	method estaHerido(){
 		return vida < 35

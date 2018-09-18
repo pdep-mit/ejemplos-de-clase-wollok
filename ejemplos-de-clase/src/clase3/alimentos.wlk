@@ -1,27 +1,22 @@
+import ninios.*
+
 object barraDeCereal {
-	var nutrientes = 30
-	
-	method puntosQueAporta(persona){
-		return nutrientes
+	method puntosQueAportaPara(persona){
+		return 30
 	}
-	
 }
 
 object eggos {
-	var nutrientes = 12
-	method puntosQueAporta(persona){
-		return nutrientes
+	method puntosQueAportaPara(persona){
+		return 12
 	}
 }
 
-object postrecitosDeChocolate{
-	var nutrientesHerido = 7
-	var nutrientesSano = 16
-	
-	method puntosQueAporta(persona){
-		if (persona.estaHerido()){
-			return nutrientesHerido
+object postrecitoDeChocolate{
+	method puntosQueAportaPara(persona){
+		if ( persona.estaHerido() ){
+			return 7
 		}
-		return nutrientesSano
+		return 16
 	}
 }

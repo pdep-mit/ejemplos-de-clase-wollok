@@ -7,6 +7,10 @@ object demogorgon {
 	}
 	
 	method sufrirDanio(cant){
-		vida = (vida - cant).min(0)
+		vida = (vida - cant).max(0)
+	}
+	
+	method vida(){
+		return vida
 	}
 }

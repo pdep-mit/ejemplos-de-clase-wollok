@@ -22,11 +22,11 @@ object grupoDeAmigos {
 	}
 	
 	method sufrirDanio(cantidad){
-		grupo.map({integrante => integrante.perderVida(cantidad)})
+		grupo.forEach({integrante => integrante.perderVida(cantidad)})
 	}
 	
 	method estaHerido(){
-		grupo.all({integrante => integrante.estaHerido()})
+		return grupo.all({integrante => integrante.estaHerido()})
 	}
 	
 	method alimentar(alimento){

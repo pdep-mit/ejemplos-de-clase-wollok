@@ -1,57 +1,45 @@
 import ninios.*
 
 object linterna {
-	var danioBase = 10
-	
 	method puntosDeDanio(){
-		return danioBase
+		return 10
 	}
 }
 
 object bate {
-	var danioBase = 20
-	
 	method puntosDeDanio(){
-		return danioBase
+		return 20
 	}
 	
 }
 
 object punioDustin {
-	var danioBase = 10
 	var duenio = dustin
-	
 	method puntosDeDanio(){
-		return danioBase + duenio.cuantosPostresComio()
+		return 5 + duenio.cuantosPostresComio()
 	}
-	
 }
+
 object punioEleven {
-	var danioBase = 5
-	
 	method puntosDeDanio(){
-		return danioBase
+		return 5
 	}
 	
 }
 object superGomera {
-	var danioBase = 15
-	
 	method puntosDeDanio(){
-		return danioBase
+		return 15
 	}
-	
 }
+
 object psiquis {
-	var danioNormal = 50
-	var danioEstadoCritico = 10
 	var duenio = eleven
-	
+
 	method puntosDeDanio(){
 		if (duenio.enCondicionCritica()){
-			return danioEstadoCritico
+			return 10
 		}
-		return danioNormal
+		return 50
 	}
 }
 
