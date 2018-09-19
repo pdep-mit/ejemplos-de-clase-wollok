@@ -1,0 +1,35 @@
+//import quidditch.*
+
+describe "Quidditch" {
+
+	test "El manejo de escoba de un jugador depende de sus skills y su peso" {
+		assert.fail("Falta implementar")
+	}
+	
+	test "La velocidad de una Nimbus depende de sus a�os y su salud" {
+		assert.fail("Falta implementar")
+	}
+
+	test "La velocidad de una Saeta de Fuego es constante" {
+		assert.fail("Falta implementar")
+	}
+	
+	test "La velocidad de un jugador depende de su escoba y su manejo de escoba" {
+		assert.fail("Falta implementar")
+	}
+	
+	test "La habilidad de un jugador depende de su velocidad y sus skills" {
+		assert.fail("Falta implementar")
+	}
+	
+	test "Un jugador le pasa el trapo a otro si es el doble de habilidoso" {
+		assert.fail("Falta implementar")
+	}
+	
+	test "Si a un jugador lo golpea una bludger pierde 2 skills" {
+		assert.fail("Falta implementar")
+	}
+	test "Si a un jugador con una Nimbus lo golpea una bludger, su escoba pierde salud" {
+		assert.fail("Falta implementar")
+	}
+}
