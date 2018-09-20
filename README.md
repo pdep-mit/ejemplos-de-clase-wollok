@@ -18,8 +18,15 @@ Incompleto, pero con decisiones sobre responsabilidades ya tomadas para los prim
 
 ## Clase 3
 
-Ejercitación con colecciones: Stranger Things.
+Colecciones.
 
+Ejercicio: Stranger Things.
+
+## Clase 4
+
+Clase de clases.
+
+Ejercicio: Quidditch.
 
 # Ejemplos de años anteriores
 
