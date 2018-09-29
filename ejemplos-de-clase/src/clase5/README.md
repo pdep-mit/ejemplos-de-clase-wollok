@@ -28,9 +28,9 @@ Para llevar un control efectivo del desempeño, los alquimistas nos piden que pu
 2. Saber  si son buenos exploradores, esto se cumple si poseen al menos tres tipos diferentes de ítems de recolección.
 
 3. Saber su capacidad ofensiva, que es la suma de la capacidad de cada ítem de combate. La capacidad de un ítem se calcula como:
-   -Bombas: la mitad del daño
-   -Pociones: su poder curativo más 10 puntos extras por cada material místico que contiene
-   -Debilitadores: un valor por defecto de 50, salvo que contenga algún material místico, en cuyo caso el valor pasa a ser 0.
+   - Bombas: la mitad del daño
+   - Pociones: su poder curativo más 10 puntos extras por cada material místico que contiene
+   - Debilitadores: un valor por defecto de 50, salvo que contenga algún material místico, en cuyo caso el valor pasa a ser 0.
 
 4. Saber si es profesional, esto se cumple si la calidad promedio de todos sus ítems es mayor a 50, todos sus ítems de combate son efectivos y es buen explorador.
 
