@@ -1,4 +1,4 @@
-#The alchemist and the mysterious objects
+# The alchemist and the mysterious objects
 
 Los alquimistas exploran diferentes regiones en busca de materiales para crear todo tipo de objetos y hacer que el mundo sea un lugar feliz. Sin embargo, para conseguir los mejores materiales deben ir a zonas peligrosas en las que hay muchos tipos de monstruos que quieren defender lo que les pertenece. 
 
@@ -13,13 +13,13 @@ Debilitadores: Infringe algún decrecimiento de los stats del enemigo  (potencia
 
 La calidad de los ítems de combate se calcula como: 
 
- -Bombas: la calidad del material con menor calidad
- -Pociones: calidad del primer material místico, o del primer material de no tener alguno místico
- -Debilitadores: promedio entre los dos ítems de mayor calidad
+ - Bombas: la calidad del material con menor calidad
+ - Pociones: calidad del primer material místico, o del primer material de no tener alguno místico
+ - Debilitadores: promedio entre los dos ítems de mayor calidad
 
 En cambio, si son de recolección, se considera una base de 30 más la décima parte de la calidad de los materiales con los que fue creado (sin importar con cuántos se haya creado).
  
-##Parte A: Los alquimistas
+## Parte A: Los alquimistas
 
 Para llevar un control efectivo del desempeño, los alquimistas nos piden que puedan saber si cumplen algunas condiciones básicas sobre su profesión:
 
@@ -34,7 +34,7 @@ Para llevar un control efectivo del desempeño, los alquimistas nos piden que pu
 
 4. Saber si es profesional, esto se cumple si la calidad promedio de todos sus ítems es mayor a 50, todos sus ítems de combate son efectivos y es buen explorador.
 
-##Parte B: ¡La cosa se pone seria!
+## Parte B: ¡La cosa se pone seria!
 
 También aparecen los monstruos, que tienen puntos de vida, un potencial defensivo y un daño de ataque. Al recibir daño, este se ve reducido según este valor: 
 daño real = daño total – potencial defensivo, y además 
@@ -47,6 +47,6 @@ Tanto la vida como el potencial defensivo no pueden ser menores que 0. Si la vid
 Junto con esto aparece un nuevo requerimiento:
 
 Lograr que un alquimista ataque a un enemigo. Esto consiste en usar algún ítem de combate según alguno de estos criterios:
- -Cómodo: Se elige el primero de los ítems que le pertenezcan
- -Estratégico: Se elige aquel que tenga la mayor capacidad
+ - Cómodo: Se elige el primero de los ítems que le pertenezcan
+ - Estratégico: Se elige aquel que tenga la mayor capacidad
 El alquimista después de usar un item lo pierde y no puede usarlo más.
