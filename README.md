@@ -28,6 +28,10 @@ Clase de clases.
 
 Ejercicio: Quidditch.
 
+## Clase 5
+
+ Ejercitación de clases y colecciones: The alchemist and the mysterious objects.
+
 # Ejemplos de años anteriores
 
 - [2017](https://github.com/pdep-mit/ejemplos-de-clase-wollok/tree/ejemplos-2017)
