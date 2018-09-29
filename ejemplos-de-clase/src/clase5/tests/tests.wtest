@@ -1,0 +1,128 @@
+import model.Alquimista.*
+import model.Materiales.*
+import model.Items.*
+import model.Monstruo.*
+import model.CriterioDeSeleccionDeItems.*
+
+describe "Tests de Alquimistas" {
+	//Materiales
+	const vidrio = new Material(30,false)
+	const metal = new Material(80,false)
+	const oro = new Material(500,false)
+	const escamaDeDragon = new Material(1000,true)
+	const venenoDeSerpiente = new Material(40,false)
+	
+	//Items de combate
+	const bomba = new Bomba(150,[vidrio,metal])
+	const pocion = new Pocion(40,[escamaDeDragon])
+	const debilitador = new Debilitador(50,[venenoDeSerpiente,vidrio,metal])
+	
+	//Items de recoleccion
+	const red = new ItemDeRecoleccion([metal])
+	const guante = new ItemDeRecoleccion([oro])
+	const pico = new ItemDeRecoleccion([escamaDeDragon])
+	
+	//Alquimista
+	const alquimista = new Alquimista()
+	
+	//Monstruo
+	const monstruo = new Monstruo(25,10)
+	
+	test "Una bomba es efectiva"
+	{
+		assert.that(bomba.esEfectivo())
+	}
+	
+	test "Una pocion no es efectiva"
+	{
+		assert.notThat(pocion.esEfectivo())
+	}
+	
+	test "Un debilitador es efectivo"
+	{
+		assert.that(debilitador.esEfectivo())
+	}
+	
+	test "La calidad de una bomba es la calidad del material de menor calidad"
+	{
+		assert.equals(30,bomba.calidad())
+	}
+	
+	test "La calidad de una pocion es la calidad del primer material místico"
+	{
+		assert.equals(1000,pocion.calidad())
+	}
+	
+	test "La calidad de un debilitador es el promedio de los 2 items de mayor calidad"
+	{
+		assert.equals(60,debilitador.calidad())
+	}
+	
+	test "La calidad de un item de recoleccion es 50 mas la decima parte de la calidad de sus materiales"
+	{
+		assert.equals(38,red.calidad())
+	}
+	
+	test "Un alquimista tiene criterio si al menos la mitad de sus items de combate son efectivos"
+	{
+		alquimista.agregarItemDeCombate(bomba)
+		alquimista.agregarItemDeCombate(pocion)
+		assert.that(alquimista.tieneCriterio())
+	}
+
+	test "Un alquimista es buen explorador si tiene al menos 3 tipos diferentes de items en su coleccion"
+	{
+		alquimista.agregarItemDeRecoleccion(red)
+		alquimista.agregarItemDeRecoleccion(guante)
+		alquimista.agregarItemDeRecoleccion(pico)
+		assert.that(alquimista.esBuenExplorador())
+	}
+	
+	test "La capacidad ofensiva de un alquimista es la suma de la capacidad de cada item de combate que posee"
+	{
+		alquimista.agregarItemDeCombate(bomba)
+		alquimista.agregarItemDeCombate(pocion)
+		alquimista.agregarItemDeCombate(debilitador)
+		assert.equals(175,alquimista.capacidadOfensiva())
+	}
+	
+	test "Un alquimista no es profesional si la calidad promedio de sus items es menor a 50"
+	{
+		alquimista.agregarItemDeCombate(bomba)
+		alquimista.agregarItemDeCombate(debilitador)
+		alquimista.agregarItemDeRecoleccion(red)
+		assert.notThat(alquimista.esProfesional())
+	}
+	
+	test "Un monstruo reduce el danio recibido dependiendo de su potencial defensivo"
+	{
+		monstruo.recibirDanio(50)
+		assert.equals(75,monstruo.vida())
+	}
+	
+	test "Un alquimista cuando ataca a un monstruo con una bomba pierde vida"
+	{
+		alquimista.agregarItemDeCombate(bomba)
+		alquimista.atacar(monstruo,comodo)
+		
+		assert.equals(90,alquimista.vida())
+	}
+	
+	test "Un alquimista cuando usa una pocion recupera vida"
+	{
+		monstruo.danioAtaque(50)
+		alquimista.agregarItemDeCombate(bomba)
+		alquimista.agregarItemDeCombate(pocion)
+		alquimista.atacar(monstruo,comodo)
+		alquimista.atacar(monstruo,comodo)
+		assert.equals(90,alquimista.vida())
+	}
+	
+	test "Cuando un alquimista utiliza un debilitador en un monstruo este pierde potencial defensivo"
+	{
+		
+		alquimista.agregarItemDeCombate(debilitador)
+		alquimista.atacar(monstruo,comodo)
+		assert.equals(0,monstruo.potencialDefensivo())
+	}
+}
