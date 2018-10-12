@@ -31,6 +31,12 @@ Ejercicio: Quidditch.
 ## Clase 5
 
  Ejercitación de clases y colecciones: The alchemist and the mysterious objects.
+ 
+## Clase 6
+
+Herencia.
+
+Ejercicio: Pro-bending
 
 # Ejemplos de años anteriores
 
