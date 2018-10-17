@@ -1,7 +1,5 @@
 class MaestroTierra inherits Maestro {
-	var base = 50
-	
-	method base() = base
+	var property base = 50
 	
 	override method poderDeAtaque() 
 		= self.base() + campo.piedras() / 3
