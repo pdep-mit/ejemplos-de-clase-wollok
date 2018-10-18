@@ -38,6 +38,12 @@ Herencia.
 
 Ejercicio: Pro-bending
 
+## Clase 7
+
+Excepciones.
+
+Ejemplo: Pepita (volvió, en forma de fichas).
+
 # Ejemplos de años anteriores
 
 - [2017](https://github.com/pdep-mit/ejemplos-de-clase-wollok/tree/ejemplos-2017)
