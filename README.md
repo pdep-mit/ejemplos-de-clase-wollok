@@ -44,6 +44,12 @@ Excepciones.
 
 Ejemplo: Pepita (volvió, en forma de fichas).
 
+## Clase 8
+
+Herencia vs Composición.
+
+Ejemplo: Hechiceros.
+
 # Ejemplos de años anteriores
 
 - [2017](https://github.com/pdep-mit/ejemplos-de-clase-wollok/tree/ejemplos-2017)
