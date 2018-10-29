@@ -33,7 +33,7 @@ class Hechicero {
 			throw new EnergiaMagicaInsuficiente(unHechizo)
 		}
 	}
-	method consecuenciasDeUsarHechizo(unHechizo)
+	method consecuenciasDeUsarHechizo(unHechizo){}
 	
 	method promoverAprendizSiCorresponde(unAprendiz){
 		// Los requerimientos de la tercera parte no se pueden hacer:
