@@ -50,6 +50,10 @@ Herencia vs Composición.
 
 Ejemplo: Hechiceros.
 
+## Clase 9
+
+Ejercicio integrador #1: Los Glaciares.
+
 # Ejemplos de años anteriores
 
 - [2017](https://github.com/pdep-mit/ejemplos-de-clase-wollok/tree/ejemplos-2017)
