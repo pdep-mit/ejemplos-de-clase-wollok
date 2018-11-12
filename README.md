@@ -56,4 +56,8 @@ Ejercicio integrador #1: Los Glaciares.
 
 # Ejemplos de años anteriores
 
+## Clase 10
+
+Ejercicio integrador #2: Wollolok!
+
 - [2017](https://github.com/pdep-mit/ejemplos-de-clase-wollok/tree/ejemplos-2017)
