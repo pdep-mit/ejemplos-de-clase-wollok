@@ -31,7 +31,7 @@ object maiu {
  * Luego cabe preguntarse, qué tiene que cumplir un objeto para que 
  * sea un músico válido para este programa? Necesita entender los mensajes
  * elegirCancion que no recibe parámetros y retorna una canción, 
- * y tocarAcompaniamiento que no recibe parámetros y no retorna nada,
+ * y tocarAcompaniamiento que recibe una canción y no retorna nada,
  * sino que lo esperado es que produzca un efecto (hacer que la canción suene).
  * 
  * De esto se desprende la idea de qué es un TIPO en este paradigma?
