@@ -66,7 +66,7 @@ class Aprendiz inherits Hechicero{
 	override method validarQuePuedeUsarHechizo(unHechizo){
 		super(unHechizo)
 		if(! self.esInvocable(unHechizo)){
-			throw new NoSePuedeInvocarHechizo("El hechizo es muy complejo para un aprendiz")
+			throw new NoSePuedeInvocarHechizo(message = "El hechizo es muy complejo para un aprendiz")
 		}
 	}
 }
@@ -101,7 +101,7 @@ class Archimago inherits Hechicero{
 	override method validarQuePuedeUsarHechizo(unHechizo){
 		super(unHechizo)
 		if(unHechizo.estaProhibido()){
-			throw new NoSePuedeInvocarHechizo("No se puede invocar un hechizo prohibido")
+			throw new NoSePuedeInvocarHechizo(message = "No se puede invocar un hechizo prohibido")
 		}
 	}
 }

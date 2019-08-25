@@ -103,11 +103,11 @@ class MasaDeAgua {
 class Lago inherits MasaDeAgua {
 	override method validarQueEsNavegablePor(embarcacion){
 		if(self.temperatura() < 0){
-			throw new UserException("Agua congelada")
+			throw new UserException(message = "Agua congelada")
 		}
 		if(self.cantidadDeTempanosGrandes() > 20 && 
 			embarcacion.tamanio() > 10){
-				throw new UserException("Embarcacion muy grande para lago complicado")
+				throw new UserException(message = "Embarcacion muy grande para lago complicado")
 			}
 	}
 }
@@ -123,7 +123,7 @@ class Rio inherits MasaDeAgua {
 		
 	override method validarQueEsNavegablePor(embarcacion){
 		if(self.velocidadAgua() > embarcacion.fuerza())
-			throw new UserException("Fuerza insuficiente para río rápido")
+			throw new UserException(message = "Fuerza insuficiente para río rápido")
 	}
 }
 
