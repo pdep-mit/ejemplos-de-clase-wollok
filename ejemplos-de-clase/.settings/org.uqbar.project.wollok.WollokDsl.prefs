@@ -1,0 +1,5 @@
+TYPE_SYSTEM_CHECKS_ENABLED=true
+TYPE_SYSTEM_IMPL=Constraints-based
+TYPE_SYSTEM_SEVERITY=WARN
+TypeSystemConfiguration.is_project_specific=true
+eclipse.preferences.version=1

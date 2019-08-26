@@ -1,26 +1,26 @@
 /*
-* Lo que hace maiu cuando alguien le pide que toque con feche 
-* mandando el mensaje maiu.tocaConFeche() es:
-* - Preguntarle a feche si está contento…
+* Lo que hace maiu cuando alguien le pide que toque con fede 
+* mandando el mensaje maiu.tocaConFede() es:
+* - Preguntarle a fede si está sentimental…
 *   - si dice que sí, pedirle su cancionero y al cancionero 
-*     pedirle la canción de Queen
+*     pedirle la canción romántica
 *   - si dice que no, pedirle su cancionero y al cancionero 
-*     pedirle la canción de Pink Floyd
-* - Darle una orden a feche para que toque el acompañamiento 
+*     pedirle la canción rockera
+* - Darle una orden a fede para que toque el acompañamiento 
 *   de la canción que nos dio el cancionero
 * - Darse una orden a sí misma para tocar la melodía de esa canción.
  */
 
 object maiu {
-  method tocarConFeche(){
+  method tocarConFede(){
     var cancion
-    if(feche.estaContento()) {
-        cancion = feche.cancionero().cancionDeQueen()
+    if(fede.estaSentimental()) {
+        cancion = fede.cancionero().cancionRomantica()
     } else {
-        cancion = feche.cancionero().cancionDePinkFloyd()
+        cancion = fede.cancionero().cancionRockera()
     }
 
-    feche.tocarAcompaniamiento(cancion)
+    fede.tocarAcompaniamiento(cancion)
 
     self.tocarMelodia(cancion)
     /*
@@ -41,30 +41,30 @@ object maiu {
 }
 
 /*
- * El objeto feche tiene dos atributos, uno variable, porque nos
+ * El objeto fede tiene dos atributos, uno variable, porque nos
  * interesa que pueda cambiar de ánimo, y el otro constante.
- * Podríamos directamente usar cancioneroDeFeche en todos los lugares
- * donde usamos el atributo cancionero porque cancioneroDeFeche
+ * Podríamos directamente usar cancioneroDeFede en todos los lugares
+ * donde usamos el atributo cancionero porque cancioneroDeFede
  * es una referencia global. Fue una decisión nuestra no hacerlo,
  * para mostrar que un objeto puede tener una referencia a un objeto
  * más interesante que simplemente un booleano, y que existen las
  * referencias constantes que a diferencia de las variables, no pueden
  * ser reasignadas.
  */
-object feche {
-  var estaContento = true
-  const cancionero = cancioneroDeFeche
+object fede {
+  var estaSentimental = true
+  const cancionero = cancioneroDeFede
 
-  // Los métodos cancionero() y estaContento() lo único que hacen
+  // Los métodos cancionero() y estaSentimental() lo único que hacen
   // es retornar el valor al que apuntan dichas referencias.
   // A métodos de ese estilo le llamamos "getters".
   method cancionero() = cancionero
-  method estaContento() = estaContento
+  method estaSentimental() = estaSentimental
   
   // Acá vemos cómo es posible modificar el objeto al que apunta
   // una referencia variable, mediante la asignación.
   method cambiarDeAnimo() {
-    estaContento = estaContento.negate()
+    estaSentimental = estaSentimental.negate()
   }
 
   // el objetivo sería producir un efecto, no lo programamos
@@ -77,7 +77,7 @@ object feche {
 // Las canciones las vamos a representar con un String
 // por una cuestión de simplicidad, ya que no necesitamos nada más que eso
 // para lo que necesitamos hacer con ellas.
-object cancioneroDeFeche {
-	method cancionDeQueen() = "Crazy Little Thing Called Love"
-	method cancionDePinkFloyd() = "Wish You Were Here"
+object cancioneroDeFede {
+	method cancionRomantica() = "More Than Words"
+	method cancionRockera() = "Kashmir"
 }

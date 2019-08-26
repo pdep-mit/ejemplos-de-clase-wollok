@@ -30,31 +30,20 @@ object maiu {
  * Sí, porque ahora maiu es de tipo músico porque entiende los mensajes 
  * que se esperan de un músico. Probamos el programa y validamos que funciona.
  * 
- * Lo que acabamos de hacer fue hacer que maiu sea POLIMÓRFICA con feche, 
+ * Lo que acabamos de hacer fue hacer que maiu sea POLIMÓRFICA con fede, 
  * agregándole los mensajes que necesita para que compartan un tipo.
  * Es importante notar que maiu en ningún momento pregunta quién es el 
- * músico que le pasaron, no importa si era feche o si era maiu. 
- * 
- * Y si le pasan a alguien que no es un músico, el programa se va a romper 
- * obviamente. Por ejemplo si hacemos: maiu.tocaCon(cancioneroDeFeche)
- * Eso se va a romper porque cancioneroDeFeche no es un músico ni 
- * vamos a pretender que lo sea, o sea que está bien que el programa se rompa, 
- * porque lo estamos usando mal.
- * 
- * Pero lo importante es que ahora es posible agregar tantos objetos
- * como querramos que respeten esa INTERFAZ y el programa va a 
- * funcionar sin problemas, sin tener que modificar la implementación
- * del método tocarCon(musico) del objeto maiu.
+ * músico que le pasaron, no importa si era fede o si era maiu. 
  */
 
-object feche {
-  var estaContento = true
-  const cancionero = cancioneroDeFeche
+object fede {
+  var estaSentimental = true
+  const cancionero = cancioneroDeFede
 
   method cancionero() = cancionero
-  method estaContento() = estaContento
+  method estaSentimental() = estaSentimental
   method cambiarDeAnimo() {
-    estaContento = estaContento.negate()
+    estaSentimental = estaSentimental.negate()
   }
 
   method tocarAcompaniamiento(cancion){
@@ -62,16 +51,30 @@ object feche {
   }
   
   method elegirCancion() {
-    if(estaContento) {
-       return cancionero.cancionDeQueen()
+    if(estaSentimental) {
+       return cancionero.cancionRomantica()
     } else {
-       return cancionero.cancionDePinkFloyd()
+       return cancionero.cancionRockera()
     }
   }
   
 }
+/*
+ * Y si le pasan a alguien que no es un músico, el programa se va a romper 
+ * obviamente. Por ejemplo si hacemos: maiu.tocaCon(cancioneroDeFede)
+ * Eso se va a romper porque cancioneroDeFede no es un músico ni 
+ * vamos a pretender que lo sea, o sea que está bien que el programa se rompa, 
+ * porque lo estamos usando mal.
+ */
 
-object cancioneroDeFeche {
-	method cancionDeQueen() = "Crazy Little Thing Called Love"
-	method cancionDePinkFloyd() = "Wish You Were Here"
+object cancioneroDeFede {
+	method cancionRomantica() = "More Than Words"
+	method cancionRockera() = "Kashmir"
 }
+
+ /* 
+ * Pero lo importante es que ahora es posible agregar tantos objetos
+ * como querramos que respeten esa INTERFAZ y el programa va a 
+ * funcionar sin problemas, sin tener que modificar la implementación
+ * del método tocarCon(musico) del objeto maiu.
+ */

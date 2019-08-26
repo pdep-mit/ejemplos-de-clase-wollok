@@ -1,18 +1,18 @@
 /*
  * La solución anterior ya no mete ruido para el problema que teníamos :)
  * Pero ahora nos planteamos, qué pasa si maiu quisiera poder tocar con
- * otros músicos, no sólo con feche, manteniendo el algoritmo general 
+ * otros músicos, no sólo con fede, manteniendo el algoritmo general 
  * al que llegamos, y sin repetir lógica?
  * 
  * En primer lugar tenemos que cambiar algo que está hardcodeado y es 
  * con quién es que va a tocar maiu. En vez de describir la solución 
- * mandándole mensajes a feche (referencia global), deberíamos cambiarla 
- * para hablar con un músico (que podría ser feche, o podría no ser feche). 
+ * mandándole mensajes a fede (referencia global), deberíamos cambiarla 
+ * para hablar con un músico (que podría ser fede, o podría no ser fede). 
  * Ese músico pasaría a ser un parámetro del método que ahora llamaremos tocarCon.
  * 
  * Entonces para lograr el mismo resultado que antes lográbamos mandando 
- * el mensaje: maiu.tocarConFeche() 
- * Ahora lo lograremos mandando el mensaje: maiu.tocarCon(feche)
+ * el mensaje: maiu.tocarConFede() 
+ * Ahora lo lograremos mandando el mensaje: maiu.tocarCon(fede)
  */
 
 object maiu {
@@ -41,15 +41,15 @@ object maiu {
  * de que el objeto no entiende el mensaje que le está mandando.
  */
 
-// No hace falta que feche cambie para lo que estamos haciendo :)
-object feche {
-  var estaContento = true
-  const cancionero = cancioneroDeFeche
+// No hace falta que fede cambie para lo que estamos haciendo :)
+object fede {
+  var estaSentimental = true
+  const cancionero = cancioneroDeFede
 
   method cancionero() = cancionero
-  method estaContento() = estaContento
+  method estaSentimental() = estaSentimental
   method cambiarDeAnimo() {
-    estaContento = estaContento.negate()
+    estaSentimental = estaSentimental.negate()
   }
 
   method tocarAcompaniamiento(cancion){
@@ -57,16 +57,16 @@ object feche {
   }
   
   method elegirCancion() {
-    if(estaContento) {
-       return cancionero.cancionDeQueen()
+    if(estaSentimental) {
+       return cancionero.cancionRomantica()
     } else {
-       return cancionero.cancionDePinkFloyd()
+       return cancionero.cancionRockera()
     }
   }
   
 }
 
-object cancioneroDeFeche {
-	method cancionDeQueen() = "Crazy Little Thing Called Love"
-	method cancionDePinkFloyd() = "Wish You Were Here"
+object cancioneroDeFede {
+	method cancionRomantica() = "More Than Words"
+	method cancionRockera() = "Kashmir"
 }
