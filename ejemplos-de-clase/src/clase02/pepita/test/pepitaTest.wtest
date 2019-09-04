@@ -1,0 +1,11 @@
+import clase01.pepita.pepita.*
+
+test "pepita vuela y baja energia" {
+	pepita.volar(10)
+	assert.equals(10, pepita.energia())
+}
+
+test "pepita come y sube energia" {
+	pepita.comer(5)
+	assert.equals(110, pepita.energia())
+}

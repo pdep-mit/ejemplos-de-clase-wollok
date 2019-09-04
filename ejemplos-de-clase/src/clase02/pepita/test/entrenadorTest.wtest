@@ -1,0 +1,12 @@
+import clase01.pepita.pepita.*
+
+test "Entrenador entrena a pepita" {
+	entrenador.entrenar(pepita)
+	assert.equals(0, pepita.energia())
+}
+
+test "Entrenador entrena a josefa" {
+	entrenador.entrenar(josefa)
+	assert.that(josefa.volo())
+	assert.that(josefa.comio())
+}
