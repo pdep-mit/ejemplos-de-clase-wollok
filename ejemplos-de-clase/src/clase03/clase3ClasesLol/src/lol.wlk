@@ -9,7 +9,7 @@ object torre {
   }
 
   method recibirAtaque(campeon) {
-    campeon.realizarAtaque(self)
+    //TODO
   }
 }
 
