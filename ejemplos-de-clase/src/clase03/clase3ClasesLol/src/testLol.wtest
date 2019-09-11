@@ -1,0 +1,57 @@
+import lol.*
+
+  
+describe "testLol" {
+
+	test "Zed con un espada realiza 20% mas de dmg a la torre" {
+		zed.arma(espada)
+		torre.recibirAtaque(zed)
+		assert.equals(torre.vida(),368)
+	}
+	
+	test "Zed con un martillo realiza 25% mas de dmg a la torre" {
+		zed.arma(martillo)
+		torre.recibirAtaque(zed)
+		assert.equals(torre.vida(),362.5)
+	}
+	test "Zed con un arco realiza 5% mas de dmg a la torre" {
+		zed.arma(arco)
+		torre.recibirAtaque(zed)
+		assert.equals(torre.vida(),384.5)
+	}
+	
+	test "Fizz con mana suficiente para realizar un hechizo realiza el doble de su habilidad de dmg a la torre y pierde mana"{
+		fizz.mana(120)
+		torre.recibirAtaque(fizz)
+		assert.equals(torre.vida(),340)
+		assert.equals(fizz.mana(),60)
+	}
+	
+	test "si la torre tiene vida no esta destruida"{
+		torre.vida(0)
+		assert.fail(torre.estaDestruida())
+	}
+	
+	test "si la torre no tiene vida  esta destruida"{
+		torre.vida(0)
+		assert.that(torre.estaDestruida())
+	}
+	
+	test "si Zed destruye la torre gana 75 de ataque"{
+		zed.ataque(110)
+		torre.vida(1)
+		torre.recibirAtaque(zed)
+		assert.that(torre.estaDestruida())
+		assert.equals(zed.ataque(),185)
+	}
+	
+	test "si Fizz destruye la torre gana 50 de mana y 100 de poder de habilidad"{
+		fizz.mana(180)
+		fizz.habilidad(80)
+		torre.vida(1)
+		torre.recibirAtaque(fizz)
+		assert.that(torre.estaDestruida())
+		assert.equals(fizz.habilidad(),180)
+		assert.equals(fizz.mana(),170)
+	}
+}
