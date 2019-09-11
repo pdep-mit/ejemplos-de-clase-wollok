@@ -10,7 +10,15 @@ Ejemplos:
 - Músicos
 - Pepita
 
+## Clase 3
 
+Clases. Conceptos:
+- Clases
+- Delegación
+- method lookup
+
+Ejemplos:
+- Lol
 
 # Ejemplos de años anteriores
 
