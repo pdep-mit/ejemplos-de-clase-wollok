@@ -1,4 +1,4 @@
-## Pepita testeada
+# Pepita testeada
 
 ¡Al ejercicio de Pepita de la clase anterior le agregamos tests!
 
