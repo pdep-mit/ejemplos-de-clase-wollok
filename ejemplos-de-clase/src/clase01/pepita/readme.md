@@ -1,4 +1,6 @@
-## Pepita, vola!
+# Pepita, vola!
+
+## Conozcamos a Pepita
 
 Pepita es una golondrina que sabe volar y comer.
 Inicialmente tiene 100 joules de energía.
