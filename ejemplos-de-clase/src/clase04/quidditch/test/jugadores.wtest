@@ -1,0 +1,20 @@
+import model.jugadores.*
+
+describe "Habilidad de los jugadores de Quidditch" {
+	test "La habilidad de un cazador es su puntería multiplicada por su fuerza" {
+		const cazador = new Cazador(punteria = 10, fuerza = 5)
+		assert.equals(50, cazador.habilidad())
+	}
+	test "La habilidad de un guardián es el triple de su nivel de reflejos"{
+		const guardian = new Guardian(reflejos = 5)
+		assert.equals(15, guardian.habilidad())
+	}
+	test "La habilidad de un golpeador es su puntería más su fuerza"{
+		const golpeador = new Golpeador(punteria = 5, fuerza = 4)
+		assert.equals(9, golpeador.habilidad())
+	}
+	test "La habilidad de un buscador es su nivel de reflejos multiplicado por su nivel de visión"{
+		const buscador = new Buscador(reflejos = 10, vision = 3)
+		assert.equals(30, buscador.habilidad())
+	}
+}

@@ -15,10 +15,23 @@ Ejemplos:
 Clases. Conceptos:
 - Clases
 - Delegación
-- method lookup
+- Method Lookup
 
 Ejemplos:
 - Lol
+
+## Clase 4
+
+Conceptos:
+- Bloques
+- Colecciones
+- Intro a idea de error
+  - `assert.throwsException(bloque)`
+  - `self.error(mensaje)`
+
+Ejemplos:
+- Pruebas generales sobre bloques y colecciones
+- Equipos de Quidditch
 
 # Ejemplos de años anteriores
 
