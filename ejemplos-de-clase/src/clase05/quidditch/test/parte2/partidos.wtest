@@ -1,0 +1,138 @@
+import model.jugadores.*
+import model.equiposDeQuidditch.*
+
+import creadorDeEquipoDePrueba.*
+
+describe "partidos" {
+	const guardian = new Guardian(reflejos = 3)
+	const buscador = new Buscador(reflejos = 5, vision = 2)
+	const cazador = new Cazador(punteria = 3, fuerza = 3)
+	const golpeador = new Golpeador(punteria = 2, fuerza = 3)
+	
+	var rival = creadorDeEquipoDePrueba.crearEquipo()
+	
+	test "Cuando un equipo juega contra otro, sus jugadores juegan" {
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConBuscador(buscador)
+		buscador.distanciaSnitch(100)
+		equipo.jugarTurno(rival)
+		assert.that(buscador.distanciaSnitch() < 100)
+	}
+	
+	test "Cuando un guardian juega su turno, no pasa nada" {
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConGuardian(guardian)		
+		guardian.jugar(equipo, rival)
+		assert.equals(0, equipo.puntos())
+	}
+	
+	test "Cuando un buscador juega un turno reduce su distancia a la snitch" {
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConBuscador(buscador)
+		buscador.jugar(equipo, rival)
+		assert.equals(990, buscador.distanciaSnitch())
+	}
+	
+	test "Cuando un buscador atrapa la snitch, suma 150 puntos a su equipo" {
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConBuscador(buscador)
+		buscador.distanciaSnitch(5)
+		
+		buscador.jugar(equipo, rival)
+		assert.equals(150, equipo.puntos())
+	}
+	
+	test "Cuando un cazador anota, suma 10 puntos" {
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
+		rival = creadorDeEquipoDePrueba.crearEquipoConCazador(
+						new Cazador(punteria  = 2, fuerza = 2)
+					)
+		cazador.obtenerQuaffle()
+		
+		cazador.jugar(equipo, rival)
+		assert.equals(10, equipo.puntos())
+	}
+	
+	test "Cuando un cazador es bloqueado, no suma puntos" {
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
+		const rivalMasHabilidoso = new Guardian(reflejos = 20)
+		rival = creadorDeEquipoDePrueba.crearEquipoConGuardian(rivalMasHabilidoso)
+		cazador.obtenerQuaffle()
+		
+		cazador.jugar(equipo, rival)
+		assert.equals(0, equipo.puntos())
+	}
+	
+	test "Cuando un cazador que no tiene la quaffle juega su turno, no suma puntos" {
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
+		
+		cazador.jugar(equipo, rival)
+		assert.equals(0, equipo.puntos()) 
+	}
+	
+	test "Cuando un cazador con la quaffle juega su turno, la pierde" {
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
+		cazador.obtenerQuaffle()
+		
+		cazador.jugar(equipo, rival)
+		assert.notThat(cazador.tieneQuaffle())
+	}
+	
+	test "Cuando un cazador que tiene la quaffle juega su turno, la obtiene el rival mas habilidoso que puede tener la quaffle" {
+		cazador.obtenerQuaffle()
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
+		const rivalQueSeQuedaConLaQuaffle = new Cazador(punteria = 12, fuerza = 2)
+		rival = creadorDeEquipoDePrueba
+							.crearEquipoConCazador(rivalQueSeQuedaConLaQuaffle)
+		
+		cazador.jugar(equipo, rival)
+		assert.that(rivalQueSeQuedaConLaQuaffle.tieneQuaffle())
+	}
+	
+	test "Cuando un cazador que no tiene la quaffle juega su turno, el rival no obtiene la quaffle" {
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
+		
+		cazador.jugar(equipo, rival)
+		assert.notThat(rival.tieneQuaffle()) 
+	}
+	
+	test "Cuando un golpeador juega, puede apuntarle a un cazador del equipo rival que tenga la quaffle, haciendo que la pierda" {
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConGolpeador(golpeador)
+		cazador.obtenerQuaffle()
+		rival = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
+		
+		golpeador.jugar(equipo, rival)
+		
+		assert.notThat(rival.tieneQuaffle())
+	}
+	
+	test "Cuando un golpeador juega y golpea a un cazador del equipo rival, su equipo obtiene la quaffle" {
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConGolpeador(golpeador)
+		cazador.obtenerQuaffle()
+		rival = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
+		
+		golpeador.jugar(equipo, rival)
+		
+		assert.that(equipo.tieneQuaffle())
+	}
+	
+	test "Cuando un golpeador juega, puede apuntarle al buscador del equipo rival, distanciandolo de la snitch" {
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConGolpeador(golpeador)
+		rival = creadorDeEquipoDePrueba.crearEquipoConBuscador(buscador)
+		buscador.distanciaSnitch(100)
+		
+		golpeador.jugar(equipo, rival)
+		assert.equals(120, buscador.distanciaSnitch())
+	}
+	
+	test "Cuando un golpeador juega, elige sólo un blanco útil del equipo rival para golpear" {
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConGolpeador(golpeador)
+		
+		rival = creadorDeEquipoDePrueba.crearEquipoConBuscador(buscador)
+		buscador.distanciaSnitch(100)
+		rival.integrantes()
+			.find {jugador => jugador.puedeTenerQuaffle()}
+			.obtenerQuaffle()
+		
+		golpeador.jugar(equipo, rival)
+		
+		assert.notThat(rival.tieneQuaffle())
+		assert.equals(100, buscador.distanciaSnitch())
+	}
+}
