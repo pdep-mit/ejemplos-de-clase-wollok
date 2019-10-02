@@ -16,4 +16,23 @@ class Equipo {
 		= self.integrantes().max({integrante =>
 			integrante.habilidad()
 		})
+		
+	method jugarContra(rival){
+		integrantes.forEach({unJugador => unJugador.jugarContra(rival, self)})
+	}
+	
+	method sumarPuntos(puntosGanados){
+		puntos += puntosGanados
+	}
+	
+	method puedeBloquear(cazadorABloquear) =
+		integrantes.any({jugador => jugador.capazDeBloquear()
+			             && jugador.habilidad() >= 2 * cazadorABloquear.habilidad()})
+	
+	
+	method obtenerQuaffle(){
+		integrantes.filter({jugador => jugador.puedeTenerQuaffle()})
+			               .max({jugador => jugador.habilidad()})
+			               .obtenerQuaffle()
+	}
 }
