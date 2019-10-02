@@ -35,4 +35,12 @@ class Equipo {
 			               .max({jugador => jugador.habilidad()})
 			               .obtenerQuaffle()
 	}
+	
+	method tieneQuaffle() = integrantes.any {
+		jugador => jugador.puedeTenerQuaffle() && jugador.tieneQuaffle()
+	}
+	
+	method blancoUtil() = integrantes.find({
+		jugador => jugador.esBlancoUtil()
+	})
 }

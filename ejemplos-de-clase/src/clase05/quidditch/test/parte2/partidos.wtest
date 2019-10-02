@@ -16,19 +16,19 @@ describe "partidos" {
 	test "Cuando un equipo juega contra otro, sus jugadores juegan" {
 		const equipo = creadorDeEquipoDePrueba.crearEquipoConBuscador(buscador)
 		buscador.distanciaSnitch(100)
-		equipo.jugarTurno(rival)
+		equipo.jugarContra(rival)
 		assert.that(buscador.distanciaSnitch() < 100)
 	}
 	
 	test "Cuando un guardian juega su turno, no pasa nada" {
 		const equipo = creadorDeEquipoDePrueba.crearEquipoConGuardian(guardian)		
-		guardian.jugar(equipo, rival)
+		guardian.jugarContra(rival, equipo)
 		assert.equals(0, equipo.puntos())
 	}
 	
 	test "Cuando un buscador juega un turno reduce su distancia a la snitch" {
 		const equipo = creadorDeEquipoDePrueba.crearEquipoConBuscador(buscador)
-		buscador.jugar(equipo, rival)
+		buscador.jugarContra(rival, equipo)
 		assert.equals(990, buscador.distanciaSnitch())
 	}
 	
@@ -36,7 +36,7 @@ describe "partidos" {
 		const equipo = creadorDeEquipoDePrueba.crearEquipoConBuscador(buscador)
 		buscador.distanciaSnitch(5)
 		
-		buscador.jugar(equipo, rival)
+		buscador.jugarContra(rival, equipo)
 		assert.equals(150, equipo.puntos())
 	}
 	
@@ -44,7 +44,7 @@ describe "partidos" {
 		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
 		cazador.obtenerQuaffle()
 		
-		cazador.jugar(equipo, rival)
+		cazador.jugarContra(rival, equipo)
 		assert.equals(10, equipo.puntos())
 	}
 	
@@ -54,14 +54,14 @@ describe "partidos" {
 		rival = creadorDeEquipoDePrueba.crearEquipoConGuardian(rivalMasHabilidoso)
 		cazador.obtenerQuaffle()
 		
-		cazador.jugar(equipo, rival)
+		cazador.jugarContra(rival, equipo)
 		assert.equals(0, equipo.puntos())
 	}
 	
 	test "Cuando un cazador que no tiene la quaffle juega su turno, no suma puntos" {
 		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
 		
-		cazador.jugar(equipo, rival)
+		cazador.jugarContra(rival, equipo)
 		assert.equals(0, equipo.puntos()) 
 	}
 	
@@ -69,7 +69,7 @@ describe "partidos" {
 		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
 		assert.notThat(rival.tieneQuaffle()) // Ningún rival tiene la quaffle antes de que juegue
 		
-		cazador.jugar(equipo, rival)
+		cazador.jugarContra(rival, equipo)
 		assert.notThat(rival.tieneQuaffle()) // Y después tampoco
 	}
 	
@@ -77,7 +77,7 @@ describe "partidos" {
 		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
 		cazador.obtenerQuaffle()
 		
-		cazador.jugar(equipo, rival)
+		cazador.jugarContra(rival, equipo)
 		assert.notThat(cazador.tieneQuaffle())
 	}
 	
@@ -95,7 +95,7 @@ describe "partidos" {
 		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
 		cazador.obtenerQuaffle()
 		
-		cazador.jugar(equipo, rival)
+		cazador.jugarContra(rival, equipo)
 		assert.that(rivalQueSeQuedaConLaQuaffle.tieneQuaffle())
 	}
 	
@@ -104,7 +104,7 @@ describe "partidos" {
 		cazador.obtenerQuaffle()
 		rival = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
 		
-		golpeador.jugar(equipo, rival)
+		golpeador.jugarContra(rival, equipo)
 		
 		assert.notThat(rival.tieneQuaffle())
 	}
@@ -114,7 +114,7 @@ describe "partidos" {
 		cazador.obtenerQuaffle()
 		rival = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
 		
-		golpeador.jugar(equipo, rival)
+		golpeador.jugarContra(rival, equipo)
 		
 		assert.that(equipo.tieneQuaffle())
 	}
@@ -124,7 +124,7 @@ describe "partidos" {
 		rival = creadorDeEquipoDePrueba.crearEquipoConBuscador(buscador)
 		buscador.distanciaSnitch(100)
 		
-		golpeador.jugar(equipo, rival)
+		golpeador.jugarContra(rival, equipo)
 		assert.equals(120, buscador.distanciaSnitch())
 	}
 	
@@ -138,7 +138,7 @@ describe "partidos" {
 		cazador.obtenerQuaffle()
 		
 		const equipo = creadorDeEquipoDePrueba.crearEquipoConGolpeador(golpeador)
-		golpeador.jugar(equipo, rival)
+		golpeador.jugarContra(rival, equipo)
 		
 		assert.notThat(rival.tieneQuaffle())
 		assert.equals(100, buscador.distanciaSnitch())

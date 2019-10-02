@@ -1,21 +1,24 @@
+object quaffle {
+	var property quienLaTiene
+}
+
 class Cazador {
 	const property punteria
 	const property fuerza
-	var tieneQuaffle = false
 	
 	method habilidad() = self.punteria() * self.fuerza()
 	
 	method jugarContra(rival, equipo){
-		if(tieneQuaffle){
+		if(self.tieneQuaffle()){
 			self.intentarMeterGol(rival, equipo)
 			self.perderQuaffle(rival)
 		}
 	}
 	
 	method perderQuaffle(rival){
-		tieneQuaffle = false
 		rival.obtenerQuaffle()
 	}
+	method tieneQuaffle() = quaffle.quienLaTiene() == self
 		
 	method intentarMeterGol(rival, equipo){
 		if(self.evitarBloqueo(rival)){
@@ -30,7 +33,12 @@ class Cazador {
 	method puedeTenerQuaffle() = true
 	
 	method obtenerQuaffle(){
-		tieneQuaffle = true
+		quaffle.quienLaTiene(self)
+	}
+	
+	method esBlancoUtil() = self.tieneQuaffle()
+	method recibirGolpe(rival){
+		self.perderQuaffle(rival)
 	}
 }
 
@@ -47,6 +55,8 @@ class Guardian {
 	method puedeTenerQuaffle() = false
 	
 	method obtenerQuaffle(){}
+	
+	method esBlancoUtil() = false
 }
 
 class Golpeador {
@@ -56,14 +66,19 @@ class Golpeador {
 	method habilidad() = self.punteria() + self.fuerza()
 	
 	method jugarContra(rival, equipo){
-		
+		const jugadorGolpeado = self.elegirJugadorParaGolpear(rival)
+		jugadorGolpeado.recibirGolpe(equipo)
 	}
+	
+	method elegirJugadorParaGolpear(rival) = rival.blancoUtil()
 	
 	method capazDeBloquear() = true
 	
 	method puedeTenerQuaffle() = false
 	
 	method obtenerQuaffle(){}
+	
+	method esBlancoUtil() = false
 }
 
 class Buscador {
@@ -74,8 +89,7 @@ class Buscador {
 	method habilidad() = self.reflejos() * self.vision()
 	
 	method jugarContra(rival, equipo){
-		distanciaSnitch -= self.habilidad()
-		
+		self.perseguirSnitch()		
 		if(distanciaSnitch == 0)
 			equipo.sumarPuntos(150)
 	}
@@ -89,4 +103,10 @@ class Buscador {
 	method puedeTenerQuaffle() = false
 	
 	method obtenerQuaffle(){}
+	
+	method esBlancoUtil() = true
+	
+	method recibirGolpe(rival){
+		distanciaSnitch = distanciaSnitch + (25 - reflejos).max(0)
+	}
 }
