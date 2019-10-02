@@ -2,19 +2,6 @@ import model.armadoDeEquipo.*
 import agregadorDeJugadores.*
 
 object creadorDeEquipoDePrueba {
-	method crearEquipo(){
-		const armadorDeEquipos = new ArmadorDeEquipos()
-		agregadorDeJugadores.agregarTodosLosJugadoresNecesarios(armadorDeEquipos)
-		return armadorDeEquipos.armarEquipo()
-	}
-	
-	method crearEquipoCon(bloqueParaElArmador){
-		const armadorDeEquipos = new ArmadorDeEquipos()
-		bloqueParaElArmador.apply(armadorDeEquipos)
-		agregadorDeJugadores.agregarTodosLosJugadoresNecesarios(armadorDeEquipos)
-		return armadorDeEquipos.armarEquipo()
-	}
-	
 	method crearEquipoConBuscador(buscador) =
 		self.crearEquipoCon({armador => armador.agregarBuscador(buscador)})
 	
@@ -26,4 +13,17 @@ object creadorDeEquipoDePrueba {
 		
 	method crearEquipoConGuardian(guardian) =
 		self.crearEquipoCon({armador => armador.agregarGuardian(guardian)})
+
+	method crearEquipo(){
+		return self.crearEquipoCon({armador => 
+			// No hay configuración adicional
+		})
+	}
+	
+	method crearEquipoCon(bloqueParaElArmador){
+		const armadorDeEquipos = new ArmadorDeEquipos()
+		bloqueParaElArmador.apply(armadorDeEquipos)
+		agregadorDeJugadores.agregarTodosLosJugadoresNecesarios(armadorDeEquipos)
+		return armadorDeEquipos.armarEquipo()
+	}
 }

@@ -1,5 +1,6 @@
 import model.jugadores.*
 import model.equiposDeQuidditch.*
+import model.armadoDeEquipo.*
 
 import creadorDeEquipoDePrueba.*
 
@@ -9,6 +10,7 @@ describe "partidos" {
 	const cazador = new Cazador(punteria = 3, fuerza = 3)
 	const golpeador = new Golpeador(punteria = 2, fuerza = 3)
 	
+	// Creo un equipo rival con jugadores mediocres por default
 	var rival = creadorDeEquipoDePrueba.crearEquipo()
 	
 	test "Cuando un equipo juega contra otro, sus jugadores juegan" {
@@ -40,9 +42,6 @@ describe "partidos" {
 	
 	test "Cuando un cazador anota, suma 10 puntos" {
 		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
-		rival = creadorDeEquipoDePrueba.crearEquipoConCazador(
-						new Cazador(punteria  = 2, fuerza = 2)
-					)
 		cazador.obtenerQuaffle()
 		
 		cazador.jugar(equipo, rival)
@@ -66,6 +65,14 @@ describe "partidos" {
 		assert.equals(0, equipo.puntos()) 
 	}
 	
+	test "Cuando un cazador que no tiene la quaffle juega su turno, el rival no obtiene la quaffle" {
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
+		assert.notThat(rival.tieneQuaffle()) // Ningún rival tiene la quaffle antes de que juegue
+		
+		cazador.jugar(equipo, rival)
+		assert.notThat(rival.tieneQuaffle()) // Y después tampoco
+	}
+	
 	test "Cuando un cazador con la quaffle juega su turno, la pierde" {
 		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
 		cazador.obtenerQuaffle()
@@ -75,21 +82,21 @@ describe "partidos" {
 	}
 	
 	test "Cuando un cazador que tiene la quaffle juega su turno, la obtiene el rival mas habilidoso que puede tener la quaffle" {
-		cazador.obtenerQuaffle()
+		// El cazador rival más hábil no es suficientemente hábil para bloquear
+		const rivalQueSeQuedaConLaQuaffle = new Cazador(punteria = 4, fuerza = 3)
+		// Pero este golpeador rival sí puede bloquear
+		const rivalQueBloquea = new Golpeador(punteria = 12, fuerza = 13)
+		
+		rival = creadorDeEquipoDePrueba.crearEquipoCon({ armadorDeEquipos =>
+			armadorDeEquipos.agregarCazador(rivalQueSeQuedaConLaQuaffle)
+			armadorDeEquipos.agregarGolpeador(rivalQueBloquea)
+		})
+		
 		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
-		const rivalQueSeQuedaConLaQuaffle = new Cazador(punteria = 12, fuerza = 2)
-		rival = creadorDeEquipoDePrueba
-							.crearEquipoConCazador(rivalQueSeQuedaConLaQuaffle)
+		cazador.obtenerQuaffle()
 		
 		cazador.jugar(equipo, rival)
 		assert.that(rivalQueSeQuedaConLaQuaffle.tieneQuaffle())
-	}
-	
-	test "Cuando un cazador que no tiene la quaffle juega su turno, el rival no obtiene la quaffle" {
-		const equipo = creadorDeEquipoDePrueba.crearEquipoConCazador(cazador)
-		
-		cazador.jugar(equipo, rival)
-		assert.notThat(rival.tieneQuaffle()) 
 	}
 	
 	test "Cuando un golpeador juega, puede apuntarle a un cazador del equipo rival que tenga la quaffle, haciendo que la pierda" {
@@ -122,14 +129,15 @@ describe "partidos" {
 	}
 	
 	test "Cuando un golpeador juega, elige sólo un blanco útil del equipo rival para golpear" {
-		const equipo = creadorDeEquipoDePrueba.crearEquipoConGolpeador(golpeador)
+		rival = creadorDeEquipoDePrueba.crearEquipoCon({armadorDeEquipos =>
+			armadorDeEquipos.agregarBuscador(buscador)
+			armadorDeEquipos.agregarCazador(cazador)
+		})
 		
-		rival = creadorDeEquipoDePrueba.crearEquipoConBuscador(buscador)
 		buscador.distanciaSnitch(100)
-		rival.integrantes()
-			.find {jugador => jugador.puedeTenerQuaffle()}
-			.obtenerQuaffle()
+		cazador.obtenerQuaffle()
 		
+		const equipo = creadorDeEquipoDePrueba.crearEquipoConGolpeador(golpeador)
 		golpeador.jugar(equipo, rival)
 		
 		assert.notThat(rival.tieneQuaffle())
