@@ -10,6 +10,13 @@ Ejemplos:
 - Músicos
 - Pepita
 
+## Clase 2
+
+Testeo unitario.
+
+Ejemplo:
+- Pepita (se agregan tests a lo de la clase 1)
+
 ## Clase 3
 
 Clases. Conceptos:
@@ -17,7 +24,7 @@ Clases. Conceptos:
 - Delegación
 - Method Lookup
 
-Ejemplos:
+Ejemplo:
 - Lol
 
 ## Clase 4
@@ -32,6 +39,23 @@ Conceptos:
 Ejemplos:
 - Pruebas generales sobre bloques y colecciones
 - Equipos de Quidditch
+
+## Clase 5
+
+Ejercitación con clases y colecciones.
+
+Ejemplo:
+- Quidditch: partiendo de lo de la clase 4.
+
+## Clase 6
+
+Conceptos:
+ - Herencia simple
+ - Method Lookup
+ - Redefinición (incluyendo super)
+ 
+Ejemplo:
+- Stargate
 
 # Ejemplos de años anteriores
 
