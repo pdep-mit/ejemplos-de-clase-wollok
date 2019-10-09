@@ -53,6 +53,7 @@ Conceptos:
  - Herencia simple
  - Method Lookup
  - Redefinición (incluyendo super)
+ - Errores
  
 Ejemplo:
 - Stargate
