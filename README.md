@@ -58,6 +58,15 @@ Conceptos:
 Ejemplo:
 - Stargate
 
+## Clase 7
+
+Conceptos:
+  - Herencia vs Composición
+  - Identidad y encapsulamiento
+  
+Ejemplo:
+- Pokegotchi
+
 # Ejemplos de años anteriores
 
 - [2017](https://github.com/pdep-mit/ejemplos-de-clase-wollok/tree/ejemplos-2017)
