@@ -2,7 +2,7 @@ import estadio.*
 
 class Pokemon{	
 	var property hambre = 20	
-	var especie = new Charmander()
+	var especie 
 
 	method felicidad() = 0.max(self.alegria() - hambre)
 	
