@@ -1,0 +1,84 @@
+import pokemon.*
+import entrenador.*
+import estadio.*
+
+describe "Pokemon Version 1 - Herencia" {
+
+	test "Cuando un pokemon come una baya, su hambre disminuye en 1" {
+		const pokemon = new Bulbasaur(hambre = 10)
+		pokemon.comerBaya()
+		assert.equals(9, pokemon.hambre())
+	}
+	
+	test "Cuando un pokemon que no tiene hambre come una baya, sigue sin hambre" {
+		const pokemon = new Bulbasaur(hambre = 0)
+		pokemon.comerBaya()
+		assert.equals(0, pokemon.hambre())
+	}
+	
+	test "Cuando un charmander usa su habilidad, aumenta su hambre en 1"{
+		const pokemon = new Charmander(hambre = 10)
+		pokemon.usoDeHabilidad()
+		assert.equals(11, pokemon.hambre())
+	}
+	test "Cuando un charmander usa su habilidad, la temperatura del estadio aumenta 3 grados"{
+		const pokemon = new Charmander()
+		const temperaturaPrevia = estadio.temperatura()
+		pokemon.usoDeHabilidad()
+		assert.equals(temperaturaPrevia+3, estadio.temperatura())
+	}
+	test "Cuando un squirtle usa su habilidad, aumenta su hambre en 3"{
+		const pokemon = new Squirtle(hambre = 10)
+		pokemon.usoDeHabilidad()
+		assert.equals(13, pokemon.hambre())
+	}
+	test "Cuando un squirtle usa su habilidad, se larga a llover en el estadio"{
+		const pokemon = new Squirtle()
+		estadio.estaLloviendo(false)
+		pokemon.usoDeHabilidad()
+		assert.that(estadio.estaLloviendo())
+	}
+	test "Cuando un bulbasaur usa su habilidad, disminuye su hambre en 10 si está soleado"{
+		const pokemon = new Bulbasaur(hambre = 15)
+		estadio.estaLloviendo(false)
+		pokemon.usoDeHabilidad()
+		assert.equals(5, pokemon.hambre())
+	}
+	test "Cuando un bulbasaur usa su habilidad, disminuye su hambre en 1 si está lloviendo"{
+		const pokemon = new Bulbasaur(hambre = 10)
+		estadio.estaLloviendo(true)
+		pokemon.usoDeHabilidad()
+		assert.equals(9, pokemon.hambre())
+	}
+	test "Cuando un bulbasaur usa su habilidad, aumenta la cantidad de veces que obtuvo energía del sol"{
+		const pokemon = new Bulbasaur(vecesQueObtuvoEnergiaDelSol = 2)
+		pokemon.usoDeHabilidad()
+		assert.equals(3, pokemon.vecesQueObtuvoEnergiaDelSol())
+	}
+	
+	test "La felicidad de un pokemon es su alegría menos su hambre" {
+		const pokemon = new Squirtle(hambre = 1)
+		const alegria = pokemon.alegria()
+		assert.equals(alegria - 1, pokemon.felicidad())
+	}
+	
+	test "La alegría de un charmander es la sensación térmica del estadio" {
+		const pokemon = new Charmander()
+		assert.equals(estadio.sensacionTermica(), pokemon.alegria())
+	}
+	
+	test "La alegría de un squirtle cuando está lloviendo es 7" {
+		estadio.estaLloviendo(true)
+		const pokemon = new Squirtle()
+		assert.equals(7, pokemon.alegria())
+	}
+	test "La alegría de un squirtle cuando no está lloviendo es 3" {
+		estadio.estaLloviendo(false)
+		const pokemon = new Squirtle()
+		assert.equals(3, pokemon.alegria())
+	}
+	test "La alegría de un bulbasaur es el triple de veces que obtuvo energía del sol" {
+		const pokemon = new Bulbasaur(vecesQueObtuvoEnergiaDelSol = 3)
+		assert.equals(9, pokemon.alegria())
+	}
+}
