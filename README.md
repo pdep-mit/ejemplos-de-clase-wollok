@@ -67,6 +67,19 @@ Conceptos:
 Ejemplo:
 - Pokegotchi
 
+## Clase 8
+
+Conceptos:
+ - Continuación excepciones: self.error() y throw
+ - Manejo incluyendo try/catch y testeo
+
+Ejemplo:
+- Carrito de compra
+
+## Clase 9
+
+Práctica integradora: Glaciares
+
 # Ejemplos de años anteriores
 
 - [2017](https://github.com/pdep-mit/ejemplos-de-clase-wollok/tree/ejemplos-2017)
