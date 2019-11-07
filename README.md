@@ -80,6 +80,10 @@ Ejemplo:
 
 Práctica integradora: Glaciares
 
+## Clase 10
+
+Práctica integradora: Festival de Invierno (Cómo entrenar a tu dragón)
+
 # Ejemplos de años anteriores
 
 - [2017](https://github.com/pdep-mit/ejemplos-de-clase-wollok/tree/ejemplos-2017)
