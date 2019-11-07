@@ -22,6 +22,10 @@
  
  /*
   * Punto 4: jinete resultante entre vikingo y dragon
+  * vikingo.montadoEn(dragon)
+  * 
+  * Retorna una instancia de la clase Jinete, no produce efecto
+  * ni sobre vikingo ni sobre dragon, lo cual es necesario para el punto 5
   */
 
 /*
