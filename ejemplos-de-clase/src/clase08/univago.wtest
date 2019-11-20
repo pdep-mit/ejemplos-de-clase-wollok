@@ -1,4 +1,4 @@
-import example.*
+import univago.*
 
 test "Un producto sin stock tira una excepcion al validarStock" {
 	const silla = new Producto(nombre="silla", stock=0, precio=1500)
