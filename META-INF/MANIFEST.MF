@@ -4,7 +4,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: clase01
 Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
-Bundle-SymbolicName: clase01; singleton:=true
+Bundle-SymbolicName: pdep-mit-wollok;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.ibm.icu,
  org.eclipse.xtext,
