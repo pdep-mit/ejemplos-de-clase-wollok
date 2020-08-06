@@ -33,11 +33,12 @@ que vuele una cantidad de kilómetros sólo necesitamos aumentar los gramos
 comidos o kilómetros volados respectivamente.
 
 Además a Josefa le podemos preguntar cómo se siente, y debe respondernos:
-* "Equilibrada" si comió lo mismo que lo que voló
 * "Explotada" si la hicimos volar pero no la alimentamos
 * "Bonita y gordita" si le dimos más de comer de lo que la hicimos volar
 * "Enérgica" si su energía es mayor a su energía inicial
 * "Indiferente" en cualquier otro caso
+
+> Jugar un poco con Josefa desde la consola, haciendo que vuele y que coma, consultando su energía y su estado emocional.
 
 ## Entrenador de pajaritos
 
@@ -45,3 +46,5 @@ Agregamos a nuestro sistema al entrenador, que debe poder entrenar a un pájaro 
 * Alimentar al pajarito 10 gramos de alpiste
 * Mandarlo a volar 20 kilómetros
 * Si la energía del pajarito es menor a 20, darle de comer 10 gramos de alpiste, de lo contrario darle de comer 2 gramos.
+
+> Hacer que el entrenador entrene a Pepita y luego a Josefa.
