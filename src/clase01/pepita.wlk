@@ -16,6 +16,7 @@ object pepita {
 
 /*
  * Lo que queremos hacer:
+ * pepita.energia()
  * pepita.volar(2)
  * pepita.energia()
  * pepita.comer(8)
