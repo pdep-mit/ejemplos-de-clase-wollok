@@ -6,8 +6,7 @@ object pepita {
 	}
 	
 	method volar(kilometros){
-		energia = 
-		  energia - 40 - 5 * kilometros
+		energia = energia - 40 - 5 * kilometros
 	}
 	
 	method comer(gramos){
@@ -39,8 +38,6 @@ object pepita {
  	}
  	
  	method estadoEmocional(){
- 		if(gramosComidos == kilometrosVolados)
- 		  return "Equilibrada"
  		if(self.volo() && not self.comio())
  		  return "Explotada"
  		if(gramosComidos > kilometrosVolados)
