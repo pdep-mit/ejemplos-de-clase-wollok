@@ -1,6 +1,6 @@
 La interfaz del josefa es:
 
-![Interfaz Josefa](interfaz-josefa.jpg)
+![Interfaz Josefa](diagramas/interfaz-josefa.jpg)
 
 Consultamos la energía de josefa y su estado emocional (no produce efecto, sólo retorna un valor):
 

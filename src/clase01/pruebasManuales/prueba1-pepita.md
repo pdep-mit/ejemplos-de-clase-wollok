@@ -1,6 +1,6 @@
 La interfaz del pepita es:
 
-![Interfaz Pepita](interfaz-pepita.jpg)
+![Interfaz Pepita](diagramas/interfaz-pepita.jpg)
 
 Consultamos la energía de pepita (no produce efecto, sólo retorna un valor):
 

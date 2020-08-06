@@ -1,10 +1,12 @@
+La interfaz del entrenador es:
+
+![Interfaz entrenador](diagramas/interfaz-entrenador.jpg)
+
+> Wollok infiere que puede entrenar tanto a josefa como a pepita por los mensajes que se le mandan al pajaro en el método `entrenar(pajaro)` del objeto entrenador.
+
 Inicialmente tenemos estos objetos en el diagrama:
 
 ![Estado inicial](diagramas/estado-inicial-entrenamiento.png)
-
-La interfaz del entrenador es:
-
-![Interfaz entrenador](interfaz-entrenador.jpg)
 
 Hacemos que el entrenador entrene a pepita:
 
