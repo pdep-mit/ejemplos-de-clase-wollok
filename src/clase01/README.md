@@ -10,11 +10,13 @@ Sabemos que:
 * Por cada gramo que come gana 2 joules de energía
 
 Queremos hacer con pepita desde la consola:
-* Saber cuál es su energía
+* Consultar su energía
 * Que vuele 2 kilómetros
 * Saber cuánta energía tiene en ese momento
 * Darle de comer 8 gramos de alpiste
 * Volver a preguntarle su energía
+
+Las pruebas manuales para esta primer parte están [acá](https://github.com/pdep-mit/ejemplos-de-clase-wollok/blob/ccadb3d6856857cde17fdb488aac5639b53962bd/src/clase01/pruebasManuales/prueba1-pepita.md)
 
 ## Aparece Josefa
 
@@ -41,6 +43,8 @@ Además a Josefa le podemos preguntar cómo se siente, y debe respondernos:
 
 > Jugar un poco con Josefa desde la consola, haciendo que vuele y que coma, consultando su energía y su estado emocional.
 
+Las pruebas manuales para esta segunda parte están [acá](https://github.com/pdep-mit/ejemplos-de-clase-wollok/blob/ccadb3d6856857cde17fdb488aac5639b53962bd/src/clase01/pruebasManuales/prueba2-josefa.md)
+
 ## Entrenador de pajaritos
 
 Agregamos a nuestro sistema al entrenador, que debe poder entrenar a un pájaro que le indiquemos. Su rutina de entrenamiento es la siguiente:
@@ -49,3 +53,5 @@ Agregamos a nuestro sistema al entrenador, que debe poder entrenar a un pájaro 
 * Si la energía del pajarito es menor a 20, darle de comer 10 gramos de alpiste, de lo contrario darle de comer 2 gramos.
 
 > Hacer que el entrenador entrene a Pepita y luego a Josefa.
+
+Las pruebas manuales para esta tercer parte están [acá](https://github.com/pdep-mit/ejemplos-de-clase-wollok/blob/ccadb3d6856857cde17fdb488aac5639b53962bd/src/clase01/pruebasManuales/prueba3-entrenamiento.md)
