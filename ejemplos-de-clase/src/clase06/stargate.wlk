@@ -1,6 +1,6 @@
 object comando {
 	const exploradores = #{}
-	const property planetaOrigen = new Planeta()
+	const property planetaOrigen = new Planeta(hostilidad = 0, nivelTecnologico = 0)
 	
 	method leConvieneExplorar(unPlaneta)
 		= exploradores.any({explorador => 
