@@ -38,3 +38,10 @@ Además a Josefa le podemos preguntar cómo se siente, y debe respondernos:
 * "Bonita y gordita" si le dimos más de comer de lo que la hicimos volar
 * "Enérgica" si su energía es mayor a su energía inicial
 * "Indiferente" en cualquier otro caso
+
+## Entrenador de pajaritos
+
+Agregamos a nuestro sistema al entrenador, que debe poder entrenar a un pájaro que le indiquemos. Su rutina de entrenamiento es la siguiente:
+* Alimentar al pajarito 10 gramos de alpiste
+* Mandarlo a volar 20 kilómetros
+* Si la energía del pajarito es menor a 20, darle de comer 10 gramos de alpiste, de lo contrario darle de comer 2 gramos.
