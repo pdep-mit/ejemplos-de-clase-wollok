@@ -1,16 +1,18 @@
 # Tom y Jerry
 
-## Parte 1
-
 Estamos armando un juego en el que tenemos a Tom, el gato, que se la pasa persiguiendo a Jerry, un ratón.
 
 Sabemos que Tom tiene una cantidad de energía que varía a lo largo del juego, dependiendo de sus actividades de comer ratones y de correr. También será relevante la velocidad a la que son capaces de correr Tom y Jerry.
+
+Ya disponemos de una implementación para Jerry, y algunas ideas de lo que necesitaremos implementar para Tom en el archivo `tomYJerry.wlk`. A continuación se describen los requerimientos para completar su definición.
+
+## Parte 1
 
 Cuando Tom come un ratón, su energía aumenta en 12 joules + el peso del ratón. La velocidad de Tom es 5 metros x segundo + (energia medida en joules / 10). 
 
 Cuando Tom corre durante una cantidad de segundos indicada, su energía disminuye en (0.5 x cantidad de metros que corrió).
 
-> Observar que la cuenta está en joules consumidos por metro, pero cuando me dicen cuánto corrió, me lo dicen en segundos. La velocidad que se toma es la que corresponde a la energía de Tom antes de empezar a correr, y no varía durante una carrera.
+> Observar que la cuenta está en joules consumidos por metro, pero cuando me dicen cuánto corrió, es en segundos. La velocidad a considerar para saber cuántos metros corre en esa cantidad de segundos es la que tiene Tom antes de empezar a correr, no varía durante una carrera.
 
 ### Pruebas mínimas
 
@@ -39,11 +41,11 @@ Debemos validar que:
 
 ## Wollok Game
 
-Disponemos de una interfaz gráfica para "jugar al juego". Si Tom consigue atrapar a Jerry se lo come siguiendo la lógica definida, y luego Jerry reaparece más veloz.
+Disponemos de una interfaz gráfica para "jugar al juego". Si Tom consigue atrapar a Jerry se lo come siguiendo la lógica definida en la **parte 1** del ejercicio, y luego Jerry revivirá más veloz un par de veces.
 
 Con las flechas se puede mover a Tom de a un casillero sin que eso impacte a su energía. 
 
 Y además:
-- Con el espacio se le indica a Tom que corra a Jerry
-- Con la tecla i Tom nos dice si le conviene correr a Jerry
-- Con la tecla s... pasa algo inesperado
+- Usando la **tecla espacio** se le indica a Tom que corra a Jerry (usando la lógica de la **parte 1**)
+- Usando la **tecla i** Tom nos dice si le conviene correr a Jerry (usando la lógica de la **parte 2**)
+- Usando la **tecla s**... averiguá qué pasa :wink:
