@@ -10,11 +10,12 @@ Ya disponemos de una implementación para Jerry, y algunas ideas de lo que neces
 
 ## Parte 1
 
-Cuando Tom come un ratón, su energía aumenta en 12 joules + el peso del ratón. La velocidad de Tom es 5 metros x segundo + (energia medida en joules / 10). 
+Necesitamos implementar la siguiente lógica para Tom:
+- La velocidad de Tom es 5 metros x segundo + (energia medida en joules / 10). 
+- Cuando Tom come un ratón, su energía aumenta en 12 joules + el peso del ratón. 
+- Cuando Tom corre durante una cantidad de segundos indicada, su energía disminuye en (0.5 x cantidad de metros que corrió).
 
-Cuando Tom corre durante una cantidad de segundos indicada, su energía disminuye en (0.5 x cantidad de metros que corrió).
-
-> Observar que la cuenta está en joules consumidos por metro, pero cuando me dicen cuánto corrió, es en segundos. La velocidad a considerar para saber cuántos metros corre en esa cantidad de segundos es la que tiene Tom antes de empezar a correr, no varía durante una carrera.
+> Observar que la cuenta para el consumo de energía al correr está en joules consumidos por metro, pero cuando me dicen cuánto corrió, es en segundos. La velocidad a considerar para saber cuántos metros corre en esa cantidad de segundos es la que tiene Tom antes de empezar a correr, no varía durante una carrera.
 
 ### Pruebas mínimas
 
