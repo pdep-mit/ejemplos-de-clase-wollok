@@ -6,6 +6,8 @@ Sabemos que Tom tiene una cantidad de energía que varía a lo largo del juego, 
 
 Ya disponemos de una implementación para Jerry, y algunas ideas de lo que necesitaremos implementar para Tom en el archivo `tomYJerry.wlk`. A continuación se describen los requerimientos para completar su definición.
 
+![Tom y Jerry](game/tomYJerry-game.gif)
+
 ## Parte 1
 
 Cuando Tom come un ratón, su energía aumenta en 12 joules + el peso del ratón. La velocidad de Tom es 5 metros x segundo + (energia medida en joules / 10). 
@@ -49,3 +51,5 @@ Y además:
 - Usando la **tecla espacio** se le indica a Tom que corra a Jerry (usando la lógica de la **parte 1**)
 - Usando la **tecla i** Tom nos dice si le conviene correr a Jerry (usando la lógica de la **parte 2**)
 - Usando la **tecla s**... averiguá qué pasa :wink:
+
+> Para correr el juego, seleccioná el archivo `game/tomYJerryGame.wpgm` y correlo con la opción `Run As -> Wollok Program`.
