@@ -1,12 +1,14 @@
 import wollok.game.*
 import personajesVisuales.*
 
-const tom = tomVisual
-const jerry = jerryVisual
-
 object juego {
 	const respawnMillis = 2000
+	const tom = tomVisual
+	const jerry = jerryVisual
+	
+	
 	method configurar(){
+		self.configurarVentana()
 		tom.configurarJuego(self)
 		self.agregarRaton(jerry)
 		self.configurarTeclas()
@@ -36,6 +38,11 @@ object juego {
 		
 		if(raton.revive())
 			self.agregarRaton(raton)
+	}
+	method configurarVentana() {
+		game.width(15)
+		game.height(10)
+		game.title("Tom y Jerry")
 	}
 }
 

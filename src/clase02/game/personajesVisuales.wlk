@@ -31,7 +31,7 @@ object tomVisual {
 		if(!game.hasVisual(perseguido))
 			self.error("Ya no está " + perseguido.nombre() + " para perseguir :(")
 			
-		return self.position().distance(perseguido.position())
+		return self.position().distance(perseguido.position()) * 3
 	}
 	
 	
@@ -66,7 +66,7 @@ object jerryVisual {
 		jerry.acelerar()
 	}
 	
-	method revive() = self.velocidad() < 5
+	method revive() = self.velocidad() < 20
 }
 
 object speedyGonzalez {

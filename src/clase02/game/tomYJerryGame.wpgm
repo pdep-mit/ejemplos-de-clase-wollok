@@ -2,9 +2,6 @@ import wollok.game.*
 import juego.*
 
 program tomYJerryGame {
-	game.width(15)
-	game.height(10)
-	game.title("Tom y Jerry")
 	juego.configurar()
 	game.start()
 }
