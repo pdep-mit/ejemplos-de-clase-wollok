@@ -52,9 +52,13 @@ object pepita {
  	method volo(){
  		return kilometrosVolados > 0
  	}
- 	method comio() = gramosComidos > 0
+ 	method comio() {
+ 		return gramosComidos > 0
+ 	}
  	
-	method energiaInicial() = 80
+	method energiaInicial() {
+		return 80
+	}
  }
  
  
