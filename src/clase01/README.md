@@ -16,7 +16,7 @@ Queremos hacer con pepita desde la consola:
 * Darle de comer 8 gramos de alpiste
 * Volver a preguntarle su energía
 
-Las pruebas manuales para esta primer parte están [acá](https://github.com/pdep-mit/ejemplos-de-clase-wollok/blob/ccadb3d6856857cde17fdb488aac5639b53962bd/src/clase01/pruebasManuales/prueba1-pepita.md)
+Las pruebas manuales para esta primer parte están [acá](https://github.com/pdep-mit/ejemplos-de-clase-wollok/blob/master/src/clase01/pruebasManuales/prueba1-pepita.md)
 
 ## Aparece Josefa
 
@@ -43,7 +43,7 @@ Además a Josefa le podemos preguntar cómo se siente, y debe respondernos:
 
 > Jugar un poco con Josefa desde la consola, haciendo que vuele y que coma, consultando su energía y su estado emocional.
 
-Las pruebas manuales para esta segunda parte están [acá](https://github.com/pdep-mit/ejemplos-de-clase-wollok/blob/ccadb3d6856857cde17fdb488aac5639b53962bd/src/clase01/pruebasManuales/prueba2-josefa.md)
+Las pruebas manuales para esta segunda parte están [acá](https://github.com/pdep-mit/ejemplos-de-clase-wollok/blob/master/src/clase01/pruebasManuales/prueba2-josefa.md)
 
 ## Entrenador de pajaritos
 
@@ -54,4 +54,4 @@ Agregamos a nuestro sistema al entrenador, que debe poder entrenar a un pájaro 
 
 > Hacer que el entrenador entrene a Pepita y luego a Josefa.
 
-Las pruebas manuales para esta tercer parte están [acá](https://github.com/pdep-mit/ejemplos-de-clase-wollok/blob/ccadb3d6856857cde17fdb488aac5639b53962bd/src/clase01/pruebasManuales/prueba3-entrenamiento.md)
+Las pruebas manuales para esta tercer parte están [acá](https://github.com/pdep-mit/ejemplos-de-clase-wollok/blob/master/src/clase01/pruebasManuales/prueba3-entrenamiento.md)
