@@ -27,9 +27,10 @@ object pepita {
  object josefa {
  	var gramosComidos = 0
  	var kilometrosVolados = 0
+ 	const energiaInicial = 80
  	
  	method energia(){
- 		return self.energiaInicial() + 5 * gramosComidos - 3 * kilometrosVolados
+ 		return energiaInicial + 5 * gramosComidos - 3 * kilometrosVolados
  	}
  	method comer(gramos){
  		gramosComidos = gramosComidos + gramos
@@ -43,7 +44,7 @@ object pepita {
  		  return "Explotada"
  		if(gramosComidos > kilometrosVolados)
  		  return "Bonita y gordita"
- 		if(self.energiaInicial() < self.energia())
+ 		if(energiaInicial < self.energia())
  		  return "Energica"
  		  
  		return "Indiferente"
@@ -55,10 +56,6 @@ object pepita {
  	method comio() {
  		return gramosComidos > 0
  	}
- 	
-	method energiaInicial() {
-		return 80
-	}
  }
  
  
