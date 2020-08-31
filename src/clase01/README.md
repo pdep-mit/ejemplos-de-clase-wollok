@@ -55,3 +55,12 @@ Agregamos a nuestro sistema al entrenador, que debe poder entrenar a un pájaro 
 > Hacer que el entrenador entrene a Pepita y luego a Josefa.
 
 Las pruebas manuales para esta tercer parte están [acá](https://github.com/pdep-mit/ejemplos-de-clase-wollok/blob/master/src/clase01/pruebasManuales/prueba3-entrenamiento.md)
+
+## Última extensión
+
+Queremos a agregar un ave que tiene una compañera, su nombre es Beti y se va a comportar así:
+* su energía va a ser la misma que la de su compañera, 
+* cuando come x cantidad de alpiste, le da de comer la mitad a su compañera,
+* cuando vuela x kms, su compañera también.
+
+Necesitamos poder indicarle a Beti quién es su compañera, y queremos que el entrenador también pueda entrenar a Beti.
