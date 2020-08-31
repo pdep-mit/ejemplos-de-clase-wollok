@@ -64,3 +64,5 @@ Queremos a agregar un ave que tiene una compañera, su nombre es Beti y se va a 
 * cuando vuela x kms, su compañera también.
 
 Necesitamos poder indicarle a Beti quién es su compañera, y queremos que el entrenador también pueda entrenar a Beti.
+
+![Beti](pruebasManuales/beti.jpg)
