@@ -13,13 +13,21 @@
  		kilometrosVolados = kilometrosVolados + kilometros
  	}
  	
- 	// TODO: Agregar que si voló y no comió está "Explotada"
  	method estadoEmocional(){
  		if(gramosComidos > kilometrosVolados)
  		  return "Bonita y gordita"
  		if(energiaInicial < self.energia())
  		  return "Energica"
- 		  
+ 		if(self.volo() && not self.comio())
+ 		  return "Explotada"
  		return "Indiferente"
+ 	}
+ 	
+ 	method comio(){
+ 		return gramosComidos > 0
+ 	}
+ 	
+ 	method volo(){
+ 		return kilometrosVolados > 0
  	}
  }

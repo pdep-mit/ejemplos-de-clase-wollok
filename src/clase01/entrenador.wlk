@@ -2,6 +2,7 @@
 // y que pepita y josefa estén disponibles para usar 
 import pepita.*
 import josefa.*
+import beti.*
 
 object entrenador {
  	method entrenar(pajaro){
