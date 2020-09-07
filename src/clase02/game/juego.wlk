@@ -1,17 +1,27 @@
 import wollok.game.*
 import personajesVisuales.*
 
-object juego {
+object juegoTomYJerry {
 	const respawnMillis = 2000
 	const tom = tomVisual
 	const jerry = jerryVisual
 	
+	method jugar(){
+		self.configurar()
+		game.start()
+	}
 	
 	method configurar(){
 		self.configurarVentana()
 		tom.configurarJuego(self)
 		self.agregarRaton(jerry)
 		self.configurarTeclas()
+	}
+	
+	method configurarTeclas() {
+		keyboard.space().onPressDo({ tom.corrida() })
+		keyboard.i().onPressDo({ tom.informarConveniencia() })
+		keyboard.s().onPressDo({self.agregarRaton(speedyGonzalez)})
 	}
 	
 	method agregarRaton(raton) {
@@ -23,12 +33,6 @@ object juego {
 	method quitarRaton(raton){
 		spawner.despawnear(raton)
 		game.removeTickEvent(spawner.respawnEvent(raton))
-	}
-	
-	method configurarTeclas() {
-		keyboard.space().onPressDo { tom.corrida() }
-		keyboard.i().onPressDo { tom.informarConveniencia() }
-		keyboard.s().onPressDo {self.agregarRaton(speedyGonzalez)}
 	}
 	
 	// Evento de colisión

@@ -1,5 +1,13 @@
 import tomYJerry.*
 
+describe "Comportamiento de Jerry" {
+	test "Cuando Jerry acelera, su velocidad debería incrementar un 50%" {
+		jerry.velocidad(3)
+		jerry.acelerar()
+		assert.equals(4.5, jerry.velocidad())
+	}
+}
+
 describe "Parte 1" {
 	test "La velocidad de Tom depende de su energía" {
 		tom.energia(20)
