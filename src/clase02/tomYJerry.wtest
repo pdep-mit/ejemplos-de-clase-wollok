@@ -28,12 +28,12 @@ describe "Parte 1" {
 }
 
 describe "Parte 2" {
-	test "A Tom le conviene correr a un ratón que le aporta más energía de la que perdería corriéndolo" {
+	test "A Tom le conviene correr a un ratón menos veloz que él si le aporta más energía de la que perdería corriéndolo" {
 		// TODO
 		assert.fail("Falta implementar")
 	}
 	
-	test "A Tom no le conviene correr a un ratón que le aporta menos energía de la que perdería corriéndolo" {
+	test "A Tom no le conviene correr a un ratón menos veloz que él si le aporta menos energía de la que perdería corriéndolo" {
 		// TODO
 		assert.fail("Falta implementar")
 	}
