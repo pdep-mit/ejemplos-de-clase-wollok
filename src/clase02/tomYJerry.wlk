@@ -1,21 +1,24 @@
 object tom {
 	var property energia = 80
 	
-	// TODO: Falta implementar
-	method velocidad() = 0
+	method velocidad() = 5 + energia / 10
 	
 	method comer(raton){
-		// TODO algo que produzca el efecto deseado
-		self.error("Falta implementar comer un ratón")
+		energia += self.energiaQueGanariaComiendo(raton)
 	}
 	
 	method correr(segundos){
-		// TODO algo que produzca el efecto deseado
-		self.error("Falta implementar correr x segundos")
+		energia -= self.energiaQuePerderiaCorriendo(self.metrosQueCorre(segundos))
 	}
+	method metrosQueCorre(segundos) = segundos * self.velocidad()
 	
-	// TODO: Falta implementar
-	method convieneCorrerRatonA(raton, distanciaEnMetros) = false
+	method convieneCorrerRatonA(raton, distanciaEnMetros)
+		= self.velocidad() > raton.velocidad() &&
+		    self.energiaQueGanariaComiendo(raton)
+		      > self.energiaQuePerderiaCorriendo(distanciaEnMetros)
+		      
+	method energiaQueGanariaComiendo(raton) = 12 + raton.peso()
+	method energiaQuePerderiaCorriendo(distanciaEnMetros) = 0.5 * distanciaEnMetros
 }
 
 object jerry {	

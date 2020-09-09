@@ -19,27 +19,39 @@ describe "Parte 1" {
 		tom.comer(jerry)
 		assert.equals(22 + jerry.peso(), tom.energia())
 	}
-	// FIXME no es un muy buen test este para validar cómo corre Tom
+	
 	test "Cuando Tom corre, pierde energía" {
 		tom.energia(10)
 		tom.correr(2)
-		assert.that(tom.energia() < 10)
+		assert.equals(4, tom.energia())
+	}
+	
+	test "Cuantos metros corre Tom en x segundos" {
+		tom.energia(10)
+		assert.equals(tom.velocidad() * 2, tom.metrosQueCorre(2))
 	}
 }
 
 describe "Parte 2" {
 	test "A Tom le conviene correr a un ratón menos veloz que él si le aporta más energía de la que perdería corriéndolo" {
-		// TODO
-		assert.fail("Falta implementar")
+		jerry.velocidad(tom.velocidad() - 1)
+		assert.that(tom.convieneCorrerRatonA(jerry, 2))
 	}
 	
 	test "A Tom no le conviene correr a un ratón menos veloz que él si le aporta menos energía de la que perdería corriéndolo" {
-		// TODO
-		assert.fail("Falta implementar")
+		jerry.velocidad(tom.velocidad() - 1)
+		assert.notThat(tom.convieneCorrerRatonA(jerry, 40))
 	}
 	
 	test "A Tom no le conviene correr a un ratón que es más veloz que él" {
-		// TODO
-		assert.fail("Falta implementar")
+		jerry.velocidad(tom.velocidad() + 1)
+		assert.notThat(tom.convieneCorrerRatonA(jerry, 10))
+	}
+	
+	test "Energia que ganaria tom si come un raton" {
+		assert.equals(17, tom.energiaQueGanariaComiendo(jerry))
+	}
+	test "Energia que gastaria tom si corre una cantidad de metros" {
+		assert.equals(1, tom.energiaQuePerderiaCorriendo(2))
 	}
 }
