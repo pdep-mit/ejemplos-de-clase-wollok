@@ -1,0 +1,121 @@
+import atencionDeAnimales.*
+import estacionDeAtencion.*
+
+describe "Parte 2: Manejo de dispositivos" {
+	test "Se le puede agregar un dispositivo a una estación de atención" {
+		const estacion = new EstacionDeAtencion(dispositivos = #{})
+		const dispositivo = new Bebedero()
+		estacion.agregarDispositivo(dispositivo)
+		assert.that(estacion.dispositivos().contains(dispositivo))
+	}
+	test "Se le puede quitar un dispositivo a una estación de atención" {
+		const bebedero = new Bebedero()
+		const comedero1 = new Comedero(pesoMaximoSoportado = 20)
+		const comedero2 = new Comedero(pesoMaximoSoportado = 50)
+		
+		const estacion = new EstacionDeAtencion(
+			dispositivos = #{bebedero, comedero1, comedero2}
+		)
+		
+		estacion.quitarDispositivo(comedero1)
+		assert.equals(#{bebedero, comedero2}, estacion.dispositivos())
+	}
+}
+
+describe "Parte 2: Consumo energético" {
+	test "Energía que consume un bebedero" {
+		const bebedero = new Bebedero()
+		assert.equals(10, bebedero.consumoEnergetico())
+	}
+	test "Energía que consume un comedero" {
+		const comedero = new Comedero(pesoMaximoSoportado = 110)
+		comedero.racion(5)
+		assert.equals(2200, comedero.consumoEnergetico())
+	}
+	
+	test "La energía que consume una estación de atención depende de sus dispositivos" {
+		const estacion = new EstacionDeAtencion(dispositivos = #{
+			new Bebedero(),
+			new Comedero(pesoMaximoSoportado = 20),
+			new Comedero(pesoMaximoSoportado = 50)
+		})
+		const sumaConsumo = 10 + 20*20 + 20*50
+		assert.equals(sumaConsumo + sumaConsumo*0.1, estacion.consumoEnergetico())
+	}
+}
+
+describe "Parte 2: Utilidad de dispositivos" {
+	const estacion = new EstacionDeAtencion(dispositivos = #{})
+	
+	test "Puede atender a un animal si tiene algún dispositivo útil para atenderlo" {
+		const animal = new Vaca(peso = 150, tieneSed = true)
+		estacion.agregarDispositivo(new Comedero(pesoMaximoSoportado = 100))
+		estacion.agregarDispositivo(new Bebedero())
+		assert.that(estacion.puedeAtender(animal))
+	}
+	test "No puede atender a un animal si no tiene algún dispositivo útil para atenderlo" {
+		const animal = new Vaca(peso = 150, tieneSed = false)
+		estacion.agregarDispositivo(new Comedero(pesoMaximoSoportado = 100))
+		estacion.agregarDispositivo(new Bebedero())
+		assert.notThat(estacion.puedeAtender(animal))
+	}
+	
+	test "Se pueden conocer los dispositivos útiles de una estación para un animal" {
+		const animal = new Vaca(peso = 150, tieneSed = true)
+		const dispositivoInutil = new Comedero(pesoMaximoSoportado = 100)
+		const dispositivoUtil1 = new Bebedero()
+		const dispositivoUtil2 = new Comedero(pesoMaximoSoportado = 200)
+		
+		estacion.agregarDispositivo(dispositivoInutil)
+		estacion.agregarDispositivo(dispositivoUtil1)
+		estacion.agregarDispositivo(dispositivoUtil2)
+		
+		assert.equals(#{dispositivoUtil1, dispositivoUtil2}, estacion.dispositivosUtiles(animal))
+	}
+}
+
+describe "Parte 2: Atención de animales en una estación" {
+	const dispositivoUtilDePocoConsumo = self.crearDispositivo(15, true) 
+	const dispositivoInutilDeMenosConsumo = self.crearDispositivo(10, false)
+	const dispositivoUtilDeMasConsumo = self.crearDispositivo(20, true)  
+		
+	const estacion = new EstacionDeAtencion(
+			dispositivos = #{dispositivoUtilDeMasConsumo, 
+							dispositivoInutilDeMenosConsumo,
+							dispositivoUtilDePocoConsumo
+			}
+		)
+	const animal = new Gallina()
+	
+	// Para simplificar las pruebas, crea un objeto anónimo que sirve como dispositivo
+	method crearDispositivo(consumo, esUtil) {
+		return object {
+			var property atendio = false
+			method esUtilParaAtender(animal) = esUtil
+			method atender(animal){
+				atendio = true
+			}
+			method consumoEnergetico() = consumo
+		}
+	}
+	
+	test "Al darle una atención básica a un animal, se lo atiende con el dispositivo útil que menos consume" {
+		estacion.darAtencionBasica(animal)
+		const dispositivosQueAtendieron
+			= estacion.dispositivos().filter {dispositivoDePrueba => 
+				dispositivoDePrueba.atendio()
+			}
+		assert.equals(#{dispositivoUtilDePocoConsumo}, dispositivosQueAtendieron)
+	}
+	
+	test "Al darle una atención completa a un animal, se lo atiende con todos los dispositivos útiles" {
+		estacion.darAtencionCompleta(animal)
+		const dispositivosQueAtendieron
+			= estacion.dispositivos().filter {dispositivoDePrueba => 
+				dispositivoDePrueba.atendio()
+			}
+		assert.equals(#{dispositivoUtilDePocoConsumo, dispositivoUtilDeMasConsumo},
+			dispositivosQueAtendieron
+		)
+	}
+}
