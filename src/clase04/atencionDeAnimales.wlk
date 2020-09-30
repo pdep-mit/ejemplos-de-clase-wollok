@@ -37,14 +37,13 @@ class Cerdo {
 	method tieneSed()
 		= vecesQueComioSinBeber > 3
     
-	// TODO: Atención de animales
-	// Comer y beber impacta al peso y al hambre.
-	// Nos interesa saber cuántas veces comió sin beber.
 	method beber(){
 		tieneHambre = true
+		vecesQueComioSinBeber = 0
 	}
 	method comer(racion){
 		peso += (racion - 0.2).max(0)
+		vecesQueComioSinBeber +=1
 		if(racion > 1){
 			tieneHambre = false
 		}
@@ -75,9 +74,7 @@ class Gallina {
 class Bebedero {
 	method esUtilParaAtender(animal) =
 		animal.tieneSed()	
-		
-	// TODO: Atención de animales
-	// Da de beber a un animal
+
 	method atender(animal){
 		animal.beber()
 	}
