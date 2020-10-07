@@ -62,3 +62,4 @@ class Cerdo inherits Mamifero {
 		= if(self.tieneHambre()) 0.5 else 0.3
 }
 
+
