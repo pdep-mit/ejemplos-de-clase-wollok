@@ -10,16 +10,17 @@
  * 
  * mision = new ConvertirseEnLeyenda(itemObligatorio = mapa)
  * 
- * mision1 = new Saqueo(victima = ...)
- * mision2 = new Saqueo(victima = ...)
+ * mision1 = new Saqueo(victima = new CiudadCostera(cuantoCobraElGrogXD = 4))
+ * mision2 = new Saqueo(victima = new CiudadCostera(cuantoCobraElGrogXD = 6))
  * 
  * configuracionSaqueos.maximoDeMonedas(7)
  * 
  * -----------
  * 
  * Punto 2:
- * barco.puedeFormarParte(pirata)  <---
+ * barco.puedeFormarParte(pirata)
  * barco.incorporarATripulacion(pirata)
+ * barco.mision(nuevaMision)
  * 
  * Punto 3:
  * barco.esTemible()
@@ -29,6 +30,10 @@
  * 
  * Punto 5:
  * barco.anclarEn(ciudadCostera)
+ * 
+ * Punto 6:
+ * espia.pasadoDeGrogXD()
+ * espia.seAnimaASaquearA(victima)
  */
  
  class BarcoPirata {
