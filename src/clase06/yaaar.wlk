@@ -155,6 +155,10 @@
  }
  
  class Mision {
+ 	// Agregado post clase: método abstracto esUtil(pirata)
+ 	// para reforzar la idea de que todas las misiones deben definirlo
+ 	method esUtil(pirata)
+ 	
  	method puedeSerRealizadaPor(barco){
  		return barco.superaPorcentajeDeOcupacion(90) 
  			&& self.cumpleCondicionesParaRealizarla(barco)
@@ -162,7 +166,7 @@
  	method cumpleCondicionesParaRealizarla(barco) = true
  }
  class BusquedaDelTesoro inherits Mision {
- 	method esUtil(pirata)
+ 	override method esUtil(pirata)
  		= self.tieneAlgunItemUtil(pirata) && pirata.monedas() <= 5
  	method tieneAlgunItemUtil(pirata) =
  		#{brujula, mapa, botellaDeGrogXD}.any({item => pirata.tieneItem(item)})
@@ -173,14 +177,14 @@
  class ConvertirseEnLeyenda inherits Mision {
  	const property itemObligatorio
  	
- 	method esUtil(pirata) = pirata.cantidadDeItems() >= 10
+ 	override method esUtil(pirata) = pirata.cantidadDeItems() >= 10
  		&& pirata.tieneItem(itemObligatorio)
  }
  
  class Saqueo inherits Mision {
  	const property victima
  	
- 	method esUtil(pirata)
+ 	override method esUtil(pirata)
  		= pirata.monedas() < self.maximoDeMonedas()
  			 && pirata.seAnimaASaquearA(victima)
  			 
