@@ -4,4 +4,6 @@
 
 ## Diagrama Estático
 
-... próximamente ...
+Diseño general de la solución final (el de la ppt pero con notas adicionales respecto a cómo nos quedó)
+
+![Diagrama](diagrama-yaaar.png)
