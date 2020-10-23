@@ -117,8 +117,21 @@
  	}
  }
  
+ /*
+  * Los items podían ser strings directamente en vez de usar una clase Item
+  * que no suma nada y agrega complejidad. Si tuvieran algún comportamiento extra ok,
+  * pero en este ejercicio no lo tenían.
+  * 
+  * Habría que tener en cuenta que dos ítems distintos con el mismo nombre se consideren
+  * iguales, para eso hace falta redefinir la igualdad (definida en Object).
+  * 
+  * Así logramos que esto de true:
+  * new Item(nombre = "mapa") == new Item(nombre = "mapa")
+  */
  class Item {
  	const property nombre
+ 	
+ 	override method ==(otroItem) = nombre == otroItem.nombre()
  }
  
  const botellaDeGrogXD = new Item(nombre = "botella de GrogXD")
