@@ -4,6 +4,11 @@ import clase07.estudiantes.*
 describe "Estudiantes" {
 	const cursoPdeP = new Curso(materia = "PdeP")
 	
+	method trabajoSobre(estudiante, descripcionTarea)
+		= estudiante.completo(cursoPdeP.tareasPedidas().find {tarea => 
+			tarea.descripcion() == descripcionTarea
+		})
+	
 	test "Si un estudiante recibe 2 tareas y estudia, le queda una pendiente" {
 		cursoPdeP.agregarEstudiante(caro)
 		cursoPdeP.darTarea("TP1", new Date(), 2)
@@ -16,16 +21,18 @@ describe "Estudiantes" {
 	test "No es cierto que un estudiante completó una tarea que no recibió" {
 		cursoPdeP.darTarea("TP1", new Date(), 2)
 		
-		assert.notThat(leo.completo(cursoPdeP.tareasPedidas().first()))
+		assert.notThat(self.trabajoSobre(leo, "TP1"))
 	}
 	
 	test "Cuando un estudiante completa una tarea, no impacta a otro estudiante que también la recibió" {
 		cursoPdeP.agregarEstudiante(caro)
 		cursoPdeP.agregarEstudiante(leo)
-		cursoPdeP.darTarea("TP1", new Date().minusDays(7), 2)
+		cursoPdeP.darTarea("TP1", new Date(), 2)
 		
 		caro.estudiar()
-		assert.equals(#{caro}, cursoPdeP.estanAlDia())
+		
+		assert.that(self.trabajoSobre(caro, "TP1"))
+		assert.notThat(self.trabajoSobre(leo, "TP1"))
 	}
 	
 	test "Leo elige trabajar sobre la tarea con fecha de entrega más próxima" {
@@ -35,8 +42,8 @@ describe "Estudiantes" {
 		
 		leo.estudiar()
 		
-		const tareaCompletada = cursoPdeP.tareasPedidas().find {tarea => leo.completo(tarea)}
-		assert.equals("TP1", tareaCompletada.descripcion())
+		assert.that(self.trabajoSobre(leo, "TP1"))
+		assert.notThat(self.trabajoSobre(leo, "TP2"))
 	}
 	test "Caro elige trabajar sobre la tarea que más tiempo requiere" {
 		cursoPdeP.agregarEstudiante(caro)
@@ -45,7 +52,7 @@ describe "Estudiantes" {
 		
 		caro.estudiar()
 		
-		const tareaCompletada = cursoPdeP.tareasPedidas().find {tarea => caro.completo(tarea)}
-		assert.equals("TP2", tareaCompletada.descripcion())
+		assert.notThat(self.trabajoSobre(caro, "TP1"))
+		assert.that(self.trabajoSobre(caro, "TP2"))
 	}
 }
