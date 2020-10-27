@@ -21,6 +21,10 @@ class Curso {
 		self.tareasVencidas().all {tarea => estudiante.completo(tarea)}
 	}
 	method tareasVencidas() = tareasPedidas.filter {tarea => tarea.vencida()}
+	
+	method agregarEstudiante(estudiante){
+		estudiantes.add(estudiante)
+	}
 }
 
 
