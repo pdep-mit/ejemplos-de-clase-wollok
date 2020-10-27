@@ -97,3 +97,11 @@ Mientras que a un estudiante común completar una tarea le requiere el tiempo es
 En cambio, a un distraído, se le suma el nivel de distracción que haya acumulado. Luego de estudiar su nivel de distracción aumenta en una unidad. Además estos estudiantes pueden despejarse, haciendo que su nivel de distracción quede en 0. 
 
 > Pensar cómo se construye un alumno distraído con nivel de distracción de 2 unidades que prioriza las tareas de la materia "PdeP".
+
+## Estudiantes Complecionistas
+
+Nos enteramos que los estudiantes pueden ponerse en modo complecionista, que impacta a la forma en la que estudian. En vez de elegir una tarea, cuando estudian trabajan sobre todas las que tengan pendientes en la misma sesión de estudio.
+
+Incorporar este agregado de modo que sea compatible con lo desarrollado anteriormente, sin repetir lógica.
+
+Nota: un estudiante complecionista puede ser también distraído o enfocado. Alguien prudente podría volverse complecionista, y eventualmente volver a elegir tareas de forma prudente o en base a cualquiera de los criterios desarrollados anteriormente.
