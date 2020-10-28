@@ -6,19 +6,17 @@ Tenemos modelados a los cursos de una carrera universitaria, los cuales son capa
 
 También pueden decir qué estudiantes están al día (quienes completaron todas las tareas vencidas).
 
-La fecha de entrega de una tarea podría cambiar luego de pedirla.
-
 ![Diagrama inicial](cursos.jpg)
 
-> No nos interesa cómo se implementan todavía los estudiantes, sólo el uso esperado.
+> No sabemos cómo se implementan los estudiantes todavía, sólo el uso que les da el curso.
 
 ## Estudiantes y tareas
 
 Cuando un estudiante recibe una tarea, no la completa inmediatamente.
 
-Eventualmente un estudiante puede ponerse a estudiar, para trabajar sobre alguna de las tareas que tenga pendientes.
+Eventualmente un estudiante puede ponerse a **estudiar**, para trabajar sobre alguna de las tareas que tenga pendientes.
 
-La forma de elegir la tarea a realizar no es igual para todos los estudiantes. Ampliaremos… 
+La forma de **elegir la tarea** a realizar no es igual para todos los estudiantes. *Ampliaremos…*
 
 > Por simplicidad, luego de una sesión de estudio, se completa la tarea elegida.
 
@@ -33,27 +31,23 @@ Ejemplo de uso:
 ```wollok
 >>> caro.recibirTarea(tarea1)
 >>> caro.recibirTarea(tarea2)
->>> leo.recibirTarea(tarea1)
+>>> leo.recibirTarea(tarea2)
 ```
 
 - Caro estudia, luego de lo cual elige una tarea y la completa. En el ejemplo, la tarea elegida es la misma que recibió Leo. Sólo Caro la completó.
 ```wollok
 >>> caro.estudiar()
 >>> caro.completo(tarea1)
-true
->>> leo.completo(tarea1)
 false
-```
-
-- Caro no completó todas sus tareas, sólo la elegida. 
-```wollok
 >>> caro.completo(tarea2)
+true
+>>> leo.completo(tarea2)
 false
 ```
 
 - Tampoco debería ser cierto que Leo haya completado una tarea si no la recibió en primer lugar.
 ```wollok
->>> leo.completo(tarea2)
+>>> leo.completo(tarea1)
 false
 ```
 
@@ -86,7 +80,7 @@ Queremos hacer que Leo y Caro puedan volverse prudentes / hijos del rigor en cua
 
 Necesitamos agregar formas nuevas de elegir tareas:
 - Prioritaria: se debe poder indicar a qué materia se le dará prioridad, y se elige trabajar sobre cualquier tarea, prefiriendo las de esa materia si las hay.
-- Remadora: se elige una tarea del curso que el estudiante tenga más colgado (suma de tiempo de tareas pendientes / suma de tiempo de tareas recibidas para ese curso)
+- Remadora: se elige una tarea del curso que el estudiante tenga más colgado (cantidad de tareas completas - cantidad de tareas pendientes para ese curso).
 
 ## Administración de tiempo
 
@@ -104,4 +98,4 @@ Nos enteramos que los estudiantes pueden ponerse en modo complecionista, que imp
 
 Incorporar este agregado de modo que sea compatible con lo desarrollado anteriormente, sin repetir lógica.
 
-Nota: un estudiante complecionista puede ser también distraído o enfocado. Alguien prudente podría volverse complecionista, y eventualmente volver a elegir tareas de forma prudente o en base a cualquiera de los criterios desarrollados anteriormente.
+Nota: un estudiante complecionista puede ser también distraído o enfocado. Alguien que elige tareas de forma prudente podría volverse complecionista, y eventualmente volver a elegir tareas de forma prudente o en base a cualquiera de los criterios desarrollados anteriormente.
