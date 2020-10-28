@@ -1,37 +1,18 @@
 import clase07.cursadas.*
 
-// TODO: Implementar para los distintos estudiantes (caro y leo):
-// - recibirTarea(tarea), para registrar que tiene una nueva tarea
-// - estudiar(), para que elija una tarea pendiente y trabaje sobre ella
-// - completo(tarea), que indique si completó la tarea indicada
+const leo = new Estudiante(formaDeEstudiar = remadora)
+const caro = new Estudiante(formaDeEstudiar = new Prioritaria(materia = "AdS"))
 
-// Sabemos que a la hora de elegir sobre qué tarea trabajar:
-// - Leo elige trabajar sobre la tarea con fecha de entrega más próxima
-// - Caro elige trabajar sobre la tarea que más tiempo le requiere
-/*
-object leo inherits Estudiante {
-	override method elegirTarea(tareas) = tareas.min {tarea =>
-		tarea.proximidadAFechaDeEntrega()
-	}
-}
-
-object caro inherits Estudiante {
-	override method elegirTarea(tareas) = tareas.max {tarea =>
-		tarea.tiempoEstimado()
-	}
-}
-*/
 class Estudiante {
 	const property tareasPendientes = []
 	const tareasCompletas = []
-	var property formaDeElegir
+	var property formaDeEstudiar
 	
 	method recibirTarea(tarea){
 		tareasPendientes.add(tarea)
 	}
 	method estudiar(){
-		const tareaElegida = self.elegirTarea(self.tareasPendientes())
-		self.trabajarSobre(tareaElegida)
+		formaDeEstudiar.estudiar(self)
 	}
 	method trabajarSobre(tareaElegida){
 		tareasPendientes.remove(tareaElegida)
@@ -39,8 +20,6 @@ class Estudiante {
 	}
 
 	method completo(tarea) = tareasCompletas.contains(tarea)
-	
-	method elegirTarea(tareas) = formaDeElegir.elegirTarea(tareas, self)
 	
 	method cursoMasColgado() = self.cursos().max {
 		curso => self.nivelDeCuelgue(curso)
@@ -53,32 +32,75 @@ class Estudiante {
 						.map {tarea => tarea.curso()}.asSet()
 						
 	method tareasRecibidas() = tareasCompletas + tareasPendientes
+	
+	method tiempoQueRequiere(tarea) = tarea.tiempoEstimado()
+
 }
 
-object hijoDelRigor {
-	method elegirTarea(tareas, estudiante) = tareas.min {tarea =>
+object hijoDelRigor inherits Selectiva {
+	override method elegirTarea(tareas, estudiante) = tareas.min {tarea =>
 		tarea.proximidadAFechaDeEntrega()
 	}
 }	
-object prudente {
-	method elegirTarea(tareas, estudiante) = tareas.max {tarea =>
-		tarea.tiempoEstimado()
+object prudente inherits Selectiva {
+	override method elegirTarea(tareas, estudiante) = tareas.max {tarea =>
+		estudiante.tiempoQueRequiere(tarea)
 	}
 }
 
-class Prioritaria {
+class Prioritaria inherits Selectiva {
 	const property materia
-	method elegirTarea(tareas, estudiante)
+	override method elegirTarea(tareas, estudiante)
 		= tareas.findOrElse({tarea =>
 				tarea.materia() == materia
 			}, {tareas.first()})
 }
 
-object remadora {
-	method elegirTarea(tareas, estudiante) = tareas.max { tarea =>
+object remadora inherits Selectiva {
+	override method elegirTarea(tareas, estudiante) = tareas.max { tarea =>
 		tarea.curso() == estudiante.cursoMasColgado()
 	}
 }
 
-const leo = new Estudiante(formaDeElegir = remadora)
-const caro = new Estudiante(formaDeElegir = new Prioritaria(materia = "AdS"))
+
+//////////////////////////////////////////////
+//// Formas de estudiar (último cambio)
+//////////////////////////////////////////////
+
+class Selectiva {
+	method estudiar(estudiante){
+	 	const tareaElegida = self.elegirTarea(estudiante.tareasPendientes(), estudiante)
+ 		estudiante.trabajarSobre(tareaElegida)
+	}
+	method elegirTarea(tareas, estudiante)
+}
+
+class Complecionista {
+	method estudiar(estudiante){
+		estudiante.tareasPendientes()
+			.forEach {tarea => estudiante.trabajarSobre(tarea)}
+	}
+}
+
+//////////////////////////////////////////////
+//// Administración de tiempo:
+//// Nuevos tipos de estudiantes
+//////////////////////////////////////////////
+
+class Distraido inherits Estudiante {
+	var distraccion = 0
+
+	override method estudiar(){
+		super()
+		distraccion += 1
+	}
+	method despejarse(){
+		distraccion = 0
+	}
+	override method tiempoQueRequiere(tarea) = super(tarea) + distraccion
+	
+}
+
+class Enfocado inherits Estudiante {
+	override method tiempoQueRequiere(tarea) = (super(tarea) - 2).max(1)
+}
