@@ -23,7 +23,9 @@ class Tarea {
 	const property descripcion
 	var property fechaDeEntrega
 	const property tiempoEstimado
+	const property curso
 	
 	method proximidadAFechaDeEntrega() = (fechaDeEntrega - new Date()).max(0)
 	method vencida() = self.proximidadAFechaDeEntrega() == 0
+	method materia() = curso.materia()
 }
