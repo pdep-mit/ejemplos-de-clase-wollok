@@ -1,0 +1,6 @@
+import wollok.game.*
+import clase08.game.setupJuego.*
+program atencionDeAnimales {
+	configuracionJuego.configurar()
+	game.start()
+}

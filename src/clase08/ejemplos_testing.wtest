@@ -1,0 +1,30 @@
+object a {
+	method romperTodo() {
+	    throw new DomainException(message = "BOOM")
+	}
+}
+
+// Si se usa esta otra implementación del objeto a,
+// el segundo test da verde y el tercero da amarillo
+
+/* 
+object a {
+	method romperTodooooooo() {
+	    throw new DomainException(message = "BOOM")
+	}
+}
+*/
+
+describe "Testeo avanzado de excepciones" {
+	test "Si a recibe romperTodo explota - v1" {
+  		a.romperTodo()
+  		// Si explota está bien (???)
+	}
+	test "Si a recibe romperTodo explota - v2" {
+	  assert.throwsException({a.romperTodo()})
+	}
+	test "Si a recibe romperTodo explota - v3" {
+	  assert.throwsExceptionWithType(
+	    new DomainException(), {a.romperTodo()})
+	}
+}
