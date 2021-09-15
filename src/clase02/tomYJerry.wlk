@@ -8,17 +8,20 @@ object tom {
 	}
 	
 	method correr(segundos){
-		energia -= self.energiaQuePerderiaCorriendo(self.metrosQueCorre(segundos))
+		energia -= self.energiaQueConsumiriaCorriendo(self.cantidadDeMetrosQueCorre(segundos))
 	}
-	method metrosQueCorre(segundos) = segundos * self.velocidad()
+	
+	method cantidadDeMetrosQueCorre(segundos)
+	  = self.velocidad() * segundos
 	
 	method convieneCorrerRatonA(raton, distanciaEnMetros)
-		= self.velocidad() > raton.velocidad() &&
-		    self.energiaQueGanariaComiendo(raton)
-		      > self.energiaQuePerderiaCorriendo(distanciaEnMetros)
-		      
+	  = self.velocidad() > raton.velocidad() &&
+	    self.energiaQueGanariaComiendo(raton) 
+	    	> self.energiaQueConsumiriaCorriendo(distanciaEnMetros)
+	    	
 	method energiaQueGanariaComiendo(raton) = 12 + raton.peso()
-	method energiaQuePerderiaCorriendo(distanciaEnMetros) = 0.5 * distanciaEnMetros
+	
+	method energiaQueConsumiriaCorriendo(distanciaEnMetros) = 0.5 * distanciaEnMetros
 }
 
 object jerry {	

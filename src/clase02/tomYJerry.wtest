@@ -19,23 +19,23 @@ describe "Parte 1" {
 		tom.comer(jerry)
 		assert.equals(22 + jerry.peso(), tom.energia())
 	}
-	
+
 	test "Cuando Tom corre, pierde energía" {
-		tom.energia(10)
-		tom.correr(2)
-		assert.equals(4, tom.energia())
+		tom.energia(20) // su velocidad sería 7
+		tom.correr(2) // corre dos segundos -> 14 metros
+		assert.equals(20 - 14 / 2, tom.energia())
 	}
 	
-	test "Cuantos metros corre Tom en x segundos" {
-		tom.energia(10)
-		assert.equals(tom.velocidad() * 2, tom.metrosQueCorre(2))
+	test "Cuantos metros corre Tom en una cantidad de segundos" {
+		tom.energia(20)
+		assert.equals(14, tom.cantidadDeMetrosQueCorre(2))
 	}
 }
 
 describe "Parte 2" {
 	test "A Tom le conviene correr a un ratón menos veloz que él si le aporta más energía de la que perdería corriéndolo" {
 		jerry.velocidad(tom.velocidad() - 1)
-		assert.that(tom.convieneCorrerRatonA(jerry, 2))
+		assert.that(tom.convieneCorrerRatonA(jerry, 20))
 	}
 	
 	test "A Tom no le conviene correr a un ratón menos veloz que él si le aporta menos energía de la que perdería corriéndolo" {
@@ -48,10 +48,11 @@ describe "Parte 2" {
 		assert.notThat(tom.convieneCorrerRatonA(jerry, 10))
 	}
 	
-	test "Energia que ganaria tom si come un raton" {
-		assert.equals(17, tom.energiaQueGanariaComiendo(jerry))
+	test "Energia que ganaria comiendo un ratón" {
+		assert.equals(jerry.peso() + 12, tom.energiaQueGanariaComiendo(jerry))
 	}
-	test "Energia que gastaria tom si corre una cantidad de metros" {
-		assert.equals(1, tom.energiaQuePerderiaCorriendo(2))
+	
+	test "Energia que perderia corriendo unos metros" {
+		assert.equals(10 / 2, tom.energiaQueConsumiriaCorriendo(10))
 	}
 }
