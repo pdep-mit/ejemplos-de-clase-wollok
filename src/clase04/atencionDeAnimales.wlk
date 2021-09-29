@@ -1,5 +1,5 @@
 // TODO: Atención de animales - punto de entrada
-// Opción 1: dispositivo.atender(animal) <-- :D
+// Opción 1: dispositivo.atender(animal) <-- 
 // Opción 2: animal.atenderseEn(dispositivo)
 
 /////////////////////////////////////
@@ -11,7 +11,7 @@
 // tieneHambre()
 // peso()
 // beber()
-// comer(racion)
+// comer(kilos)
 /////////////////
 
 class Vaca {
@@ -23,15 +23,15 @@ class Vaca {
 		tieneSed = false
 		peso -= 0.5
 	}
-	method comer(racion){
-		peso += racion / 3
+	method comer(kilos){
+		peso += kilos / 3
 		tieneSed = true
 	}
 }
 
 class Cerdo {
 	var property peso
-	var property tieneHambre = false
+	var property tieneHambre = true
 	var vecesQueComioSinBeber = 0
 	
 	method tieneSed()
@@ -41,12 +41,14 @@ class Cerdo {
 		tieneHambre = true
 		vecesQueComioSinBeber = 0
 	}
-	method comer(racion){
-		peso += (racion - 0.2).max(0)
-		vecesQueComioSinBeber +=1
-		if(racion > 1){
+	method comer(kilos){
+		peso += (kilos-0.2).max(0)
+		
+		if(kilos > 1){
 			tieneHambre = false
 		}
+		
+		vecesQueComioSinBeber += 1
 	}
 }
 
@@ -56,10 +58,10 @@ class Gallina {
 	method tieneSed() = false
 	
 	method beber(){
-		// No se observan cambios
+		// Cuando bebe no se observa ningún cambio.
 	}
-	method comer(racion){
-		// No se observan cambios
+	method comer(kilos){
+		// Cuando come no se observa ningún cambio.
 	}
 }
 
@@ -69,12 +71,13 @@ class Gallina {
 
 ///////////////////////////////
 // esUtilParaAtender(animal)
+// atender(animal)
 ///////////////////////////////
 
 class Bebedero {
 	method esUtilParaAtender(animal) =
 		animal.tieneSed()	
-
+		
 	method atender(animal){
 		animal.beber()
 	}
@@ -84,17 +87,19 @@ class Bebedero {
 
 class Comedero {
 	const pesoMaximoSoportado
-	const racion 
+	// Nota: le puse un default para poder correr los tests de la parte 2
+	// que para la mayoría no es relevante
+	var property racion = 1   
+	
 	method esUtilParaAtender(animal) =
 		animal.tieneHambre()
 			&& animal.peso() < pesoMaximoSoportado
 			
 	method atender(animal){
-		if(self.superaPesoMaximo(animal))
-			self.error("El animal es demasiado pesado para atenderlo")
+		if(animal.peso() > pesoMaximoSoportado)
+			self.error("Demasiado pesado")
 		animal.comer(racion)
 	}
-	method superaPesoMaximo(animal) = animal.peso() > pesoMaximoSoportado
 	
 	method consumoEnergetico() = 20 * pesoMaximoSoportado
 }

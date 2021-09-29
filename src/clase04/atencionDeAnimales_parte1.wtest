@@ -129,7 +129,7 @@ describe "Parte 1: Bebederos" {
 }
 
 describe "Parte 1: Comederos" {
-	const comedero = new Comedero(pesoMaximoSoportado = 100, racion = 2)
+	const comedero = new Comedero(pesoMaximoSoportado = 100, racion = 5)
 	// Uso al cerdo porque es un animal relativamente simple en este aspecto
 	const animalHambriento = new Cerdo(peso = 80, tieneHambre = true)
 	const animalPesado = new Cerdo(peso = 110, tieneHambre = true)
@@ -147,6 +147,7 @@ describe "Parte 1: Comederos" {
 	
 	test "Cuando un animal se atiende en un comedero, le da de comer la ración de comida" {
 		const pesoPrevio = animalHambriento.peso()
+	    comedero.racion(2)
 		comedero.atender(animalHambriento)
 		// +1.8 por la regla de los cerdos
 		assert.equals(pesoPrevio + 1.8, animalHambriento.peso())
