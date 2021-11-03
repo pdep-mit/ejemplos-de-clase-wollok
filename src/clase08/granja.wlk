@@ -21,18 +21,17 @@ object granja {
 	 * 							- NoHayRacionesException
 	 */
 	method daAtencion(dispositivo, animal){
-		const consumoEnergetico = dispositivo.consumoEnergetico()
-		const puntosQueGana = self.puntosQueGanaPorBuenaAtencion(
-			dispositivo, animal
-		)
+		const dineroAGastar = dispositivo.consumoEnergetico()
+		const puntosAGanar = self.puntosQueGanaPorBuenaAtencion(dispositivo, animal)
 		
 		try {
 			dispositivo.atender(animal)
-			self.gastarDinero(consumoEnergetico)
-			self.ganarPuntos(puntosQueGana)
-		} catch e: NoSePudoAtenderException {
+			self.gastarDinero(dineroAGastar) 
+			self.ganarPuntos(puntosAGanar)
+		} catch e : NoSePudoAtenderException {
+			// sólo si falló la atención
 			self.penalizarPorAtencionFallida()
-			throw e
+			throw e // se vuelve a lanzar la excepción
 		}
 	}
 	method gastarDinero(dinero){

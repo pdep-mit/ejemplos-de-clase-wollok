@@ -18,3 +18,12 @@ Cuando la granja le da atención a un animal con un dispositivo queremos que:
 Los otros manejos de errores más avanzados relacionados con la vista están en el archivo `game/juegoGranja.wlk`. Ahí está la lógica para mostrar carteles en caso de que no hayan raciones o que surja un error inesperado, incluyendo múltiples catch para manejar los distintos errores de más particular a más general (similar a como se trabajaba con pattern matching en Haskell).
 
 Se incluyen comentarios que explican a detalle el por qué de cada catch.
+
+## Controles
+
+Al ejecutar el juego se pueden usar los siguientes controles:
+
+i -> los dispositivos informan su consumo
+r -> recarga raciones al comedero recargable
+
+Cambios de personaje: c (cerdo), v (vaca), g (gallina), p (el conejo pepito)

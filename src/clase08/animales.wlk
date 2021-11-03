@@ -71,6 +71,10 @@ object conejoPepito {
   var property peso = 3
   method tieneHambre() = true
   method tieneSed() = true
+  
+  // Este objeto está mal programado porque
+  // no respeta la interfaz de los otros animales!!!
+  // Al recibir comer(racion) no va a entender el mensaje
   method comer(){
     peso += 1
   }
