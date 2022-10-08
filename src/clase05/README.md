@@ -6,21 +6,21 @@ Continuando con el programa para [atender animales de granja](https://github.com
 
 ### Requerimientos iniciales
 
-Queremos extender nuestro sistema de atención de animales con comederos recargables.
+Queremos extender nuestro sistema de atención de animales con **comederos recargables**.
 
-Deberían comportarse como comederos normales, y además inicialmente necesitamos:
+En general estos comederos deberían comportarse como comederos normales, y además inicialmente necesitamos:
 
 - Que tengan una cantidad variable de raciones en stock.
 - Saber si tiene raciones de comida.
 - Recargarle una cantidad de comida (en kgs), aumentando la cantidad de raciones en stock en base al tamaño de la ración configurada para ese comedero.
 
-> Los comederos programados anteriormente no deberían verse afectados por este agregado.
+> **Importante**: Los comederos programados anteriormente no deberían verse afectados por este agregado.
 
 ### Consumo energético
 
 Queremos cambiar el comportamiento de los **comederos recargables** respecto a su **consumo energético**.
 
-A diferencia de los comederos normales, el consumo energético debería ser el doble de la cantidad de raciones que tiene.
+A diferencia de los comederos normales, cuyo consumo energético equivalía a 20 kwatts multiplicado por el peso máximo soportado por el comedero, el consumo energético de un comedero recargable debería ser simplemente el doble de la cantidad de raciones que tiene.
 
 ### ¿Es útil?
 
