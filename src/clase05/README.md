@@ -1,6 +1,6 @@
 # Atención de Animales - Continuación
 
-Continuando con el programa para atender animales de granja de la clase anterior...
+Continuando con el programa para [atender animales de granja](https://github.com/pdep-mit/ejemplos-de-clase-wollok/tree/master/src/clase04#atenci%C3%B3n-de-animales) de la clase anterior...
 
 ## Parte 1 - Comederos Recargables
 
