@@ -1,8 +1,8 @@
 import clase08.excepciones.*
 
 object granja {
-	var dineroDisponible = 5000
-	var buenasAtenciones = 0
+	var property dineroDisponible = 5000
+	var property buenasAtenciones = 0
 	method image() = "granja.png"
 	
 	/*
@@ -21,18 +21,26 @@ object granja {
 	 * 							- NoHayRacionesException
 	 */
 	method daAtencion(dispositivo, animal){
-		const dineroAGastar = dispositivo.consumoEnergetico()
-		const puntosAGanar = self.puntosQueGanaPorBuenaAtencion(dispositivo, animal)
+		const consumo = dispositivo.consumoEnergetico()
+		const puntos = self.puntosQueGanaPorBuenaAtencion(dispositivo, animal)
 		
 		try {
 			dispositivo.atender(animal)
-			self.gastarDinero(dineroAGastar) 
-			self.ganarPuntos(puntosAGanar)
+			self.gastarDinero(consumo)
+			self.ganarPuntos(puntos)
 		} catch e : NoSePudoAtenderException {
-			// sólo si falló la atención
 			self.penalizarPorAtencionFallida()
-			throw e // se vuelve a lanzar la excepción
+			
+			// Versión que analizamos, pero no cumple con lanzar la excepción del mismo tipo que la que se atrapó:
+//
+//			throw new NoSePudoAtenderException(message = "No se atendio correctamente al animal",
+//				cause = e
+//			)
+
+			// Versión que cumple con lo pedido, vale directamente lanzar la excepción que atrapamos nuevamente:
+			throw e
 		}
+				
 	}
 	method gastarDinero(dinero){
 		if(dinero >= dineroDisponible)

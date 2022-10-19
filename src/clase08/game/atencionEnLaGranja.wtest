@@ -1,0 +1,71 @@
+import clase08.excepciones.*
+import clase08.granja.*
+import clase08.dispositivos.*
+import clase08.animales.*
+
+describe "Juego de Granja" {
+
+	test "Cuando se atiende exitosamente al animal, se gasta dinero" {
+		granja.dineroDisponible(1000)
+		granja.daAtencion(new Bebedero(), new Gallina())
+		assert.equals(990, granja.dineroDisponible())
+	}
+	test "Cuando se atiende exitosamente al animal, se ganan puntos" {
+		granja.buenasAtenciones(10)
+		granja.daAtencion(new Bebedero(), new Gallina())
+		assert.equals(11, granja.buenasAtenciones())
+	}
+	test "Si se atiende exitosamente al animal pero no alcanza el dinero, la granja quiebra" {
+		granja.dineroDisponible(1)
+		assert.throwsExceptionWithType(new GranjaEnQuiebraException(), {
+			granja.daAtencion(new Bebedero(), new Gallina())
+		})
+		
+	}
+	
+	test "Si no se atiende exitosamente al animal por ser muy pesado, la atención falla por ese motivo" {
+		assert.throwsExceptionWithType(new NoSePudoAtenderException(), {
+			granja.daAtencion(new Comedero(racion = 1, pesoMaximoSoportado = 10), 
+			new Cerdo(peso = 50)
+			)
+		})
+	}
+	test "Si no se atiende exitosamente al animal por falta de raciones, la atención falla por ese motivo" {
+		assert.throwsExceptionWithType(new NoHayRacionesException(), {
+			granja.daAtencion(new ComederoRecargable(stockDeRaciones = 0, 
+				racion = 1, pesoMaximoSoportado = 100
+			), 
+			new Cerdo(peso = 50)
+			)
+		})
+	}
+	test "Si no se atiende exitosamente al animal, no se gasta dinero" {
+		granja.dineroDisponible(100000)
+		
+		assert.throwsException({
+			granja.daAtencion(new Comedero(racion = 1, pesoMaximoSoportado = 10), 
+			new Cerdo(peso = 50))
+			})
+
+		assert.equals(100000, granja.dineroDisponible())
+	}
+	test "Si no se atiende exitosamente al animal, se pierden puntos" {
+		granja.buenasAtenciones(10)
+		
+		assert.throwsException({
+			granja.daAtencion(new Comedero(racion = 1, pesoMaximoSoportado = 10), 
+			new Cerdo(peso = 50))
+			})
+
+		assert.equals(7, granja.buenasAtenciones())
+	}
+	test "Si se atiende exitosamente al animal pero la granja quiebra, no se pierden puntos" {
+		granja.buenasAtenciones(10)
+		granja.dineroDisponible(1)
+		assert.throwsExceptionWithType(new GranjaEnQuiebraException(), {
+			granja.daAtencion(new Bebedero(), new Gallina())
+		})
+
+		assert.equals(10, granja.buenasAtenciones())
+	}
+}
