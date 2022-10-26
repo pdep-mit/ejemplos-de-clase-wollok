@@ -4,6 +4,10 @@
 
 ## Diagrama Estático
 
-Diseño general de la solución final (el de la ppt pero con notas adicionales respecto a cómo nos quedó)
+Diseño general de la solución final (el de la ppt pero con notas adicionales respecto a cómo nos quedó al final de la clase)
 
 ![Diagrama](diagrama-yaaar.png)
+
+> Este diagrama fue armado para la clase del 2020 que quedó [subida a youtube](https://www.youtube.com/watch?v=GBjjVAoqpqg), y el código de esa cursada está [acá](https://github.com/pdep-mit/ejemplos-de-clase-wollok/blob/4466e5af1edae07f2e3dc55bdd91d524fb5234c7/src/clase06/yaaar.wlk).
+>
+> Si bien las soluciones de cursadas posteriores puede que difieran, debería ser suficientemente representativo.
