@@ -12,4 +12,8 @@ Diseño general de la solución final (el de la ppt pero con notas adicionales r
 >
 > Si bien las soluciones de cursadas posteriores puede que difieran, debería ser suficientemente representativo.
 
-En la solución de la cursada de 2022 adelantamos el tema de manejo de errores, por lo que se usa `throw` con excepciones de dominio propias en vez de `self.error(mensaje)`.
+## Solución 2022
+
+En la solución de la cursada de 2022 adelantamos el tema de [manejo de errores](https://github.com/pdep-mit/bitacora-de-clase/blob/master/clase-24.md), por lo que se usa `throw` con excepciones de dominio propias en vez de `self.error(mensaje)`.
+
+Además exploramos muchas variantes, todas quedaron explicadas en el código que puede encontrarse en [yaaar2022.wlk](https://github.com/pdep-mit/ejemplos-de-clase-wollok/blob/16f1780e281bda371a06ef3adf32c8bb9923575b/src/clase06/yaaar2022.wlk) 🚀
