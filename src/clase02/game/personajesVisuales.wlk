@@ -56,7 +56,7 @@ object tomVisual {
 }
 
 object jerryVisual {
-	var property position  
+	var property position = game.origin() 
 	method image() = "jerry.png"  
 	method nombre() = "Jerry"
 	
@@ -70,7 +70,7 @@ object jerryVisual {
 }
 
 object speedyGonzalez {
-	var property position
+	var property position = game.origin()
 	
 	method velocidad() = 7
 	method peso() = 2

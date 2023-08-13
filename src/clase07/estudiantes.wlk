@@ -1,4 +1,4 @@
-import clase07.cursadas.*
+import cursadas.*
 
 const leo = new Estudiante(formaDeEstudiar = remadora)
 const caro = new Estudiante(formaDeEstudiar = new Prioritaria(materia = "AdS"))

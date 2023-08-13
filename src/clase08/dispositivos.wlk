@@ -1,7 +1,9 @@
 import clase08.animales.*
 import clase08.excepciones.*
+import wollok.game.*
 
 class Comedero {
+	const property position = game.at(3,6)
 	const pesoMaximoSoportado
 	const racion
 
@@ -34,7 +36,7 @@ class Comedero {
 	method image() = "comedero.png"
 }
 
-class ComederoRecargable inherits Comedero {
+class ComederoRecargable inherits Comedero(position = game.at(7, 4)) {
 
 	var stockDeRaciones = 0
 
@@ -71,6 +73,7 @@ class ComederoRecargable inherits Comedero {
 
 
 class Bebedero {
+	const property position = game.at(3, 2)
 	method esUtilParaAtender(animal) =
 		animal.tieneSed()	
 

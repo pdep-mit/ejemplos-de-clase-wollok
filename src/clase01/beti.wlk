@@ -1,5 +1,7 @@
+import pepita.*
+
 object beti {
-	var companiera
+	var companiera = pepita 
 	method companiera(nuevaCompaniera){
 		companiera = nuevaCompaniera
 	}

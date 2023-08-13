@@ -1,6 +1,9 @@
 import clase08.excepciones.*
+import wollok.game.*
 
 object granja {
+	const property position = game.at(game.width()-4, 0)
+	
 	var property dineroDisponible = 5000
 	var property buenasAtenciones = 0
 	method image() = "granja.png"

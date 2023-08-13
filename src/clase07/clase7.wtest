@@ -1,0 +1,22 @@
+import cursadas.*
+import estudiantes.*
+
+test "prueba general" {
+	const pdep = new Curso(materia = "pdep")
+	const tarea1 = new Tarea(descripcion = "TP1", 
+		fechaDeEntrega = new Date().plusDays(2), tiempoEstimado = 2, curso = pdep)
+	const tarea2 = new Tarea(descripcion = "TP2", 
+		fechaDeEntrega = new Date().plusDays(10), tiempoEstimado = 3, curso = pdep)
+	
+	caro.recibirTarea(tarea1)
+	caro.recibirTarea(tarea2)
+	leo.recibirTarea(tarea2)
+	
+	caro.formaDeEstudiar(prudente)
+	
+	caro.estudiar()
+	
+	assert.notThat(caro.completo(tarea1))
+	assert.that(caro.completo(tarea2))
+	assert.notThat(leo.completo(tarea2))
+}

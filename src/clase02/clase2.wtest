@@ -1,0 +1,58 @@
+import tomYJerry.*
+
+describe "Comportamiento de Jerry" {
+	test "Cuando Jerry acelera, su velocidad debería incrementar un 50%" {
+		jerry.velocidad(3)
+		jerry.acelerar()
+		assert.equals(4.5, jerry.velocidad())
+	}
+}
+
+describe "Parte 1" {
+	test "La velocidad de Tom depende de su energía" {
+		tom.energia(20)
+		assert.equals(7, tom.velocidad())
+	}
+	
+	test "Cuando Tom come un ratón, su energía aumenta en base al peso del ratón" {
+		tom.energia(10)
+		tom.comer(jerry)
+		assert.equals(22 + jerry.peso(), tom.energia())
+	}
+
+	test "Cuando Tom corre, pierde energía" {
+		tom.energia(20) // su velocidad sería 7
+		tom.correr(2) // corre dos segundos -> 14 metros
+		assert.equals(20 - 14 / 2, tom.energia())
+	}
+	
+	test "Cuantos metros corre Tom en una cantidad de segundos" {
+		tom.energia(20)
+		assert.equals(14, tom.cantidadDeMetrosQueCorre(2))
+	}
+}
+
+describe "Parte 2" {
+	test "A Tom le conviene correr a un ratón menos veloz que él si le aporta más energía de la que perdería corriéndolo" {
+		jerry.velocidad(tom.velocidad() - 1)
+		assert.that(tom.convieneCorrerRatonA(jerry, 20))
+	}
+	
+	test "A Tom no le conviene correr a un ratón menos veloz que él si le aporta menos energía de la que perdería corriéndolo" {
+		jerry.velocidad(tom.velocidad() - 1)
+		assert.notThat(tom.convieneCorrerRatonA(jerry, 40))
+	}
+	
+	test "A Tom no le conviene correr a un ratón que es más veloz que él" {
+		jerry.velocidad(tom.velocidad() + 1)
+		assert.notThat(tom.convieneCorrerRatonA(jerry, 10))
+	}
+	
+	test "Energia que ganaria comiendo un ratón" {
+		assert.equals(jerry.peso() + 12, tom.energiaQueGanariaComiendo(jerry))
+	}
+	
+	test "Energia que perderia corriendo unos metros" {
+		assert.equals(10 / 2, tom.energiaQueConsumiriaCorriendo(10))
+	}
+}

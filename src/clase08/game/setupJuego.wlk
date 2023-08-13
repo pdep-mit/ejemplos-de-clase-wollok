@@ -28,9 +28,9 @@ object configuracionJuego {
 				racion = 5, stockDeRaciones = 5	)
 		const bebedero = new Bebedero()
 		const dispositivos = [comederoNormal, comederoRecargable, bebedero]
-		game.addVisualIn(comederoNormal, game.at(3,6))
-		game.addVisualIn(bebedero, game.at(3, 2))
-		game.addVisualIn(comederoRecargable, game.at(7, 4))
+		game.addVisual(comederoNormal)
+		game.addVisual(bebedero)
+		game.addVisual(comederoRecargable)
 		
 		dispositivos.forEach {dispositivo =>
 			game.showAttributes(dispositivo)
@@ -49,14 +49,14 @@ object configuracionJuego {
 		}
 	}
 	method configurarGranja() {
-		game.addVisualIn(granja, game.at(game.width()-4, 0))
+		game.addVisual(granja)
 		game.showAttributes(granja)
 	}
 	method animal(animalAControlar) {
 		personaje.animal(animalAControlar) 
 	}
 	method configurarPersonaje() {
-		game.addVisualCharacterIn(personaje, game.origin())	
+		game.addVisualCharacter(personaje)	
 		
 		keyboard.c().onPressDo({ self.animal(cerdo) })
 		keyboard.v().onPressDo({ self.animal(vaca) })
@@ -69,6 +69,7 @@ object configuracionJuego {
 
 class PersonajeControlado {
 	var property animal
+	var property position = game.origin()
 	method image() = animal.image()
 	
 	method atenderEn(dispositivo) {
