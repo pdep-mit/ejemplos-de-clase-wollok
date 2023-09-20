@@ -1,0 +1,38 @@
+import rickYMorty.*
+
+describe "Glorzo, cuando el anfitrion es Rick" {
+	const glorzo = new Glorzo(anfitrion = rick)
+
+	test "Glorzo puede tener como anfitrión a Rick y calcular su poder" {
+		const poderEsperado = rick.poder()
+		assert.equals(poderEsperado, glorzo.poder())
+	}
+
+	test "Glorzo puede tener como anfitrión a Rick y recibir daño" {
+		const energiaInicialDeRick = rick.energia()
+		const danioARecibir = 30
+		
+		glorzo.recibirDanio(danioARecibir)
+		
+		assert.equals(energiaInicialDeRick - danioARecibir, rick.energia())
+	}
+}
+
+describe "Glorzo, cuando el anfitrion es Morty" {
+	const glorzo = new Glorzo(anfitrion = morty)
+
+	test "Gorzo puede tener como anfitrión a Morty y calcular su poder" {
+		const poderEsperado = morty.poder()
+		assert.equals(poderEsperado, glorzo.poder())
+	}
+
+	test "Gorzo puede tener como anfitrión a Morty y recibir daño" {
+		const energiaInicialDeMorty = morty.energia()
+		const danioARecibir = 20
+		
+		glorzo.recibirDanio(danioARecibir)
+		
+		assert.equals(energiaInicialDeMorty - danioARecibir, morty.energia())
+	}
+}
+

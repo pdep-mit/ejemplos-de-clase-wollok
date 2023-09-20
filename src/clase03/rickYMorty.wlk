@@ -18,37 +18,12 @@ class Glorzo {
 
 // RICK Y MORTY
 
-class Morty {
-	var property energia = 50
-	const property dimension
-	
-	const poderBase = 100
-	
-	method poder() = if(self.traumado()) poderBase else poderBase * 3
-	
-	method atacar(contrincante){
-		energia -= 10
-	}
-	
-	method traumado() = energia < 30
-}
-
-const mortyOriginal = new Morty(dimension = "C-137")
-
 object rick {
 	var property energia = 100
-	
-	var poderBase = 200
-	var property pistolaDePortales = pistolaOficial
-	
-	// Alternativa sin definir objetos independientes para las pistolas de portales
-	/*
+	var poderBase = 200 
 	const poderDePistolaDePortales = 50
+
 	method poder() = poderBase + poderDePistolaDePortales
-	 */
-	 
-	// Alternativa delegando en otro objeto que represente a la pistola de protales
-	method poder() = poderBase + pistolaDePortales.poder()
 	
 	method atacar(contrincante) {
 		if(self.poder() > contrincante.poder()){
@@ -56,18 +31,32 @@ object rick {
 		} else {
 			energia -= 50
 		}
-		
 		contrincante.recibirDanio(self.poder())
 	}
 	
 	method esDeSuDimension(unMorty) = unMorty.dimension() == "C-137"
 }
 
-object pistolaOficial {
-	//method poder() = 50
+class Morty {
+	var property energia = 50
+	const poderBase = 100
+	const property dimension
+			
+	method poder() = poderBase * if(self.estaTraumado()) 3 
+								 else 1
 	
-	// Equivalente con sintaxis de llaves
-	method poder() {
-		return 50
-	} 
+	method estaTraumado() = energia < 30
+	method atacar(contrincante) {
+		energia -= 10
+	}
 }
+
+// Podemos referenciar globalmente a una instancia 
+// particular que cumpla el rol del "morty original",
+// o sea el de la dimensión a la que pertenece rick.
+// En las pruebas que usan la referencia morty se usaría esta instancia,
+// pero podríamos instanciar otro para lo que querramos.
+const morty = new Morty(dimension = "C-137")
+
+
+

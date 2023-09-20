@@ -1,0 +1,81 @@
+import rickYMorty.*
+
+// Objeto extra definido para facilitar el testeo
+// del ataque de rick y morty
+
+object contrincanteDePrueba {
+	var property poder = 0
+	var property recibioDanio = false
+	var property ultimoDanioRecibido = 0
+	
+	method recibirDanio(danio){
+		ultimoDanioRecibido = danio
+		recibioDanio = true
+	}
+}
+
+describe "Comportamiento de Rick - Parte 1" {
+
+	test "Cuando rick ataca a un contrincante mas poderoso 
+			disminuye su energia" {
+		contrincanteDePrueba.poder(1000)
+		const energiaInicial = rick.energia()
+		
+		rick.atacar(contrincanteDePrueba)
+		
+		assert.equals(rick.energia(), energiaInicial - 50)
+	}
+
+	test "Cuando rick ataca a un contrincante menos poderoso
+			aumenta su poder" {
+		contrincanteDePrueba.poder(10)
+		const poderInicial = rick.poder()
+		
+		rick.atacar(contrincanteDePrueba)
+		
+		assert.equals(rick.poder(), poderInicial + 10)
+	}
+
+	test "Cuando rick ataca a un contrincante, el otro recibe danio" {
+		rick.atacar(contrincanteDePrueba)
+		assert.that(contrincanteDePrueba.recibioDanio())
+		assert.equals(rick.poder(), contrincanteDePrueba.ultimoDanioRecibido())
+	}
+
+}
+
+describe "Comportamiento de Morty - Parte 1" {
+	test "La energia inicial de Morty es 50" {
+		assert.equals(50, morty.energia())
+	}
+	test "El poder de Morty es 100 si no está traumado" {
+		morty.energia(40)
+		assert.equals(100, morty.poder())
+	}
+
+	test "El poder de Morty se triplica si está traumado" {
+		morty.energia(20)
+		assert.equals(300, morty.poder())
+	}
+	
+	test "Cuando Morty ataca pierde 10 de energia" {
+		const energiaInicial = morty.energia()
+		morty.atacar(contrincanteDePrueba)
+		assert.equals(energiaInicial - 10, morty.energia())
+	}
+
+	test "Cuando Morty ataca, su contrincante no recibe daño" {
+		morty.atacar(contrincanteDePrueba)
+		assert.notThat(contrincanteDePrueba.recibioDanio())
+	}
+	
+	test "Morty está traumado si su energía es menor a 30" {
+		morty.energia(25)
+		assert.that(morty.estaTraumado())
+	}
+	test "Morty no está traumado si su energía es al menos 30" {
+		morty.energia(30)
+		assert.notThat(morty.estaTraumado())
+	}
+}
+

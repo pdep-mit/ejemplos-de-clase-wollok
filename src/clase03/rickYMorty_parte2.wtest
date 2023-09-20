@@ -1,0 +1,26 @@
+import rickYMorty.*
+
+describe "Muchos Mortys" {
+
+	test "Se pueden tener 2 Mortys de dimensiones diferentes" {
+		const mortyC137 = new Morty(dimension = "C-137")
+		const mortyC138 = new Morty(dimension = "C-138")
+
+		assert.notEquals(mortyC137.dimension(), mortyC138.dimension())
+	}
+	
+	test "Dos Mortys con los mismos valores para todos sus atributos no son iguales (porque su identidad es diferente)" {
+		const morty1 = new Morty(dimension = "C-137")
+		const morty2 = new Morty(dimension = "C-137")
+
+		assert.notEquals(morty1, morty2)
+	}
+	
+	test "Un Morty de la dimensión C-137 es de la dimensión de rick" {
+		assert.that(rick.esDeSuDimension(new Morty(dimension = "C-137")))
+	}
+	
+	test "Un Morty de una dimensión que no es la C-137 no es de la dimensión de rick" {
+		assert.notThat(rick.esDeSuDimension(new Morty(dimension = "C-138")))
+	}
+}

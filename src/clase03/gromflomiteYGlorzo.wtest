@@ -1,0 +1,34 @@
+import rickYMorty.*
+
+describe "Gromflomite" {
+	const gromflomite = new Gromflomite()
+	
+	test "El poder de Gromflomite es 50" {
+		assert.equals(50, gromflomite.poder())
+	}
+	
+	test "Cuando Gromflomite recibe daño pierde energia en función al daño recibido" {
+		const energiaInicial = gromflomite.energia()
+		const danioARecibir = 10
+		gromflomite.recibirDanio(danioARecibir)
+		assert.equals(energiaInicial-danioARecibir/5, gromflomite.energia())
+	}
+}
+
+describe "Glorzo" {
+	const gromflomite = new Gromflomite()
+	const glorzo = new Glorzo(anfitrion = gromflomite)
+	
+	test "El poder de Glorzo equivale al de su anfitrión" {
+		assert.equals(gromflomite.poder(), glorzo.poder())
+	}
+	
+	test "Cuando Glorzo recibe daño, su anfitrión pierde tanta energía como daño recibido" {
+		const energiaInicial = gromflomite.energia()
+		const danioARecibir = 10
+		
+		glorzo.recibirDanio(danioARecibir)
+		assert.equals(energiaInicial-danioARecibir, gromflomite.energia())
+	}
+}
+
